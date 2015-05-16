@@ -1,0 +1,21 @@
+* Add pom exec test for command line: --glue TestGlue features
+
+
+
+* For ACEServer project write the regex information to "target/gherkin-steps.js" in the following format:
+This is to enable the ACE browser editor to pickup changing regex for feature file authoring.
+	// Steps that can be used for gherkin
+	var simplePotentials = [
+	"Given I have a 6502 machine",
+	"When I assemble this file *"
+	];
+
+	// Note: The indentation for snippets must be tabs not spaces!
+	var complexPotentials = "\
+	snippet Then the memory at address is value\n\
+		Then the memory at ${1:address} is ${2:value}\n\
+	";
+
+
+
+* Process the regex intelligently by applying any method types and names to the snippets.
