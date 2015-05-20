@@ -16,6 +16,3 @@ This is to enable the ACE browser editor to pickup changing regex for feature fi
 		Then the memory at ${1:address} is ${2:value}\n\
 	";
 
-
-
-* Process the regex intelligently by applying any method types and names to the snippets.

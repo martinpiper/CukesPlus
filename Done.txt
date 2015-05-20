@@ -1,1 +1,5 @@
 Create CukesPlus project structure.
+
+
+
+* Process the regex intelligently by applying any method types to the snippets.

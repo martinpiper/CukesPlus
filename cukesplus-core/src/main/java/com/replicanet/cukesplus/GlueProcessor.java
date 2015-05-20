@@ -2,15 +2,21 @@ package com.replicanet.cukesplus;
 
 import cucumber.api.StepDefinitionReporter;
 import cucumber.runtime.Glue;
+import cucumber.runtime.ParameterInfo;
 import cucumber.runtime.Runtime;
 import cucumber.runtime.StepDefinition;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import static cucumber.runtime.java.ExtractJavaStepDefinitionMembers.extractMethod;
+import static cucumber.runtime.java.ExtractJavaStepDefinitionMembers.extractParameterInfos;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -19,11 +25,18 @@ import static org.hamcrest.Matchers.*;
  */
 public class GlueProcessor
 {
+	private static class StepInformation
+	{
+		String pattern;
+		Method method;
+		List<ParameterInfo> parameterInfos;
+	}
+
 	public static void processGlue(Runtime runtime)
 	{
 		Glue glue = runtime.getGlue();
 
-		final SortedMap<String,String> glueMap = new TreeMap<String,String>();
+		final TreeMap<String, StepInformation> glueMap = new TreeMap<String,StepInformation>();
 		glue.reportStepDefinitions( new StepDefinitionReporter()
 		{
 			@Override
@@ -31,24 +44,27 @@ public class GlueProcessor
 			{
 				// TODO: Going to need to resolve what kind of keyword is used: Given, When, Then, And
 				// This will probably need access to the Java Method and its annotation
-				glueMap.put(stepDefinition.getLocation(true), stepDefinition.getPattern());
+				StepInformation stepInformation = new StepInformation();
+				stepInformation.pattern = stepDefinition.getPattern();
+				stepInformation.method = extractMethod(stepDefinition);
+				stepInformation.parameterInfos = extractParameterInfos(stepDefinition);
+
+				glueMap.put(stepDefinition.getLocation(true), stepInformation);
 			}
 		});
 
 		final StringBuilder output = new StringBuilder();
-		for(SortedMap.Entry<String,String> entry : glueMap.entrySet())
+		for(SortedMap.Entry<String,StepInformation> entry : glueMap.entrySet())
 		{
-			String theRegex = entry.getValue();
+			String theRegex = entry.getValue().pattern;
 			// Tidy the regex so it can be used in auto complete matchers
 			// http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html
 			// Remove any string start or end constructs
-			if (theRegex.charAt(0) == '^')
+			theRegex = theRegex.trim();
+			theRegex = StringUtils.strip(theRegex,"^$");
+			if (theRegex.length() == 0)
 			{
-				theRegex = theRegex.substring(1);
-			}
-			if (theRegex.charAt(theRegex.length()-1) == '$')
-			{
-				theRegex = theRegex.substring(0,theRegex.length()-1);
+				continue;
 			}
 
 			// TODO: Look for any regex commands that are not part of capture groups and resolve them to suitable text
@@ -61,6 +77,8 @@ public class GlueProcessor
 			String tidiedRegex = "";
 			int captureGroupStart = -1;
 			int captureGroupEnd = -1;
+			int captureGroup = 0;
+			int outputGroup = 1;	// Starts at one for the text mate groups
 
 			while (pos < theRegex.length())
 			{
@@ -105,14 +123,31 @@ public class GlueProcessor
 
 				String theCaptureGroup = theRegex.substring(captureGroupStart , captureGroupEnd+1);
 				tidiedRegex += theRegex.substring(lastPos , captureGroupStart);
-				// MPi: TODO: This '*' can be expanded to include the parameter type or variable name with textmate style "${1:number} groups
-				tidiedRegex += "*";
+				// Include the parameter type with textmate style "${1:number} groups
+				List<ParameterInfo> parameterInfos = entry.getValue().parameterInfos;
+				if ( null != parameterInfos && captureGroup < parameterInfos.size())
+				{
+					// Use the type name without any dots
+					String typeName = parameterInfos.get(captureGroup).getType().toString();
+					int pos2 = typeName.lastIndexOf('.');
+					if ( pos2 != -1)
+					{
+						typeName = typeName.substring(pos2+1);
+					}
+					tidiedRegex += "${" + outputGroup + ":" + typeName + "}";
+				}
+				else
+				{
+					// MPi: TODO: Deduce a suitable identifier from the regex in the capture group
+					tidiedRegex += "*";
+				}
 				pos = captureGroupEnd + 1;
 				lastPos = pos;
 
 				// Start searching for the next one
 				captureGroupStart = -1;
 				captureGroupEnd = -1;
+				captureGroup++;
 			}
 			// Add anything left in the original regex
 			if (lastPos < theRegex.length())
