@@ -1,6 +1,7 @@
 package com.replicanet.cukesplus;
 
 import cucumber.api.StepDefinitionReporter;
+import cucumber.api.java.en.*;
 import cucumber.runtime.Glue;
 import cucumber.runtime.ParameterInfo;
 import cucumber.runtime.Runtime;
@@ -42,7 +43,6 @@ public class GlueProcessor
 			@Override
 			public void stepDefinition(StepDefinition stepDefinition)
 			{
-				// TODO: Going to need to resolve what kind of keyword is used: Given, When, Then, And
 				// This will probably need access to the Java Method and its annotation
 				StepInformation stepInformation = new StepInformation();
 				stepInformation.pattern = stepDefinition.getPattern();
@@ -155,6 +155,42 @@ public class GlueProcessor
 				tidiedRegex += theRegex.substring(lastPos);
 			}
 
+			Method method = entry.getValue().method;
+			if (null != method)
+			{
+				// Resolve what kind of keyword is used: Given, When, Then, And
+ 				if (null != method.getDeclaredAnnotation(Given.class))
+				{
+					tidiedRegex = "Given " + tidiedRegex;
+				}
+				else if (null != method.getDeclaredAnnotation(When.class))
+				{
+					tidiedRegex = "When " + tidiedRegex;
+				}
+				else if (null != method.getDeclaredAnnotation(Then.class))
+				{
+					tidiedRegex = "Then " + tidiedRegex;
+				}
+				else if (null != method.getDeclaredAnnotation(And.class))
+				{
+					tidiedRegex = "And " + tidiedRegex;
+				}
+				else if (null != method.getDeclaredAnnotation(But.class))
+				{
+					tidiedRegex = "But " + tidiedRegex;
+				}
+				else
+				{
+					tidiedRegex = "* " + tidiedRegex;
+				}
+			}
+			else
+			{
+				// No method, so fallback to the generic * step format
+				tidiedRegex = "* " + tidiedRegex;
+			}
+
+			// MPi: TODO: Add to simplePotentials
 			System.out.println(tidiedRegex);
 		}
 		try
