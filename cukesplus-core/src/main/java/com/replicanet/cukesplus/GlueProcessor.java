@@ -12,6 +12,8 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -31,6 +33,28 @@ public class GlueProcessor
 		String pattern;
 		Method method;
 		List<ParameterInfo> parameterInfos;
+		List<String> parameterNames;
+	}
+
+	public static List<String> getParameterNames(Method method)
+	{
+		Parameter[] parameters = method.getParameters();
+		List<String> parameterNames = new ArrayList<>();
+
+		for (Parameter parameter : parameters)
+		{
+			if(!parameter.isNamePresent())
+			{
+//				System.out.println("**** Could not get names");
+				return null;
+			}
+
+			String parameterName = parameter.getName();
+			System.out.println("**** Got name" + parameterName);
+			parameterNames.add(parameterName);
+		}
+
+		return parameterNames;
 	}
 
 	public static void processGlue(Runtime runtime)
@@ -48,6 +72,14 @@ public class GlueProcessor
 				stepInformation.pattern = stepDefinition.getPattern();
 				stepInformation.method = extractMethod(stepDefinition);
 				stepInformation.parameterInfos = extractParameterInfos(stepDefinition);
+				try
+				{
+					stepInformation.parameterNames = getParameterNames(stepInformation.method);
+				}
+				catch (Exception e)
+				{
+					// Unable to get any parameter names, don't worry about it.
+				}
 
 				glueMap.put(stepDefinition.getLocation(true), stepInformation);
 			}
@@ -125,10 +157,17 @@ public class GlueProcessor
 				tidiedRegex += theRegex.substring(lastPos , captureGroupStart);
 				// Include the parameter type with textmate style "${1:number} groups
 				List<ParameterInfo> parameterInfos = entry.getValue().parameterInfos;
+				List<String> parameterNames = entry.getValue().parameterNames;
 				if ( null != parameterInfos && captureGroup < parameterInfos.size())
 				{
 					// Use the type name without any dots
 					String typeName = parameterInfos.get(captureGroup).getType().toString();
+
+					if ( null != parameterNames && captureGroup < parameterNames.size())
+					{
+						typeName += " " + parameterNames.get(captureGroup);
+					}
+
 					int pos2 = typeName.lastIndexOf('.');
 					if ( pos2 != -1)
 					{

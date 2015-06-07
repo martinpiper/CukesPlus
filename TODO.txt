@@ -16,3 +16,7 @@ This is to enable the ACE browser editor to pickup changing regex for feature fi
 		Then the memory at ${1:address} is ${2:value}\n\
 	";
 
+
+
+* Obtain method parameter names http://stackoverflow.com/questions/2237803/can-i-obtain-method-parameter-name-using-java-reflection
+** Added com.replicanet.cukesplus.GlueProcessor.getParameterNames(Method method) which uses java.lang.reflect.Parameter.isNamePresent()
