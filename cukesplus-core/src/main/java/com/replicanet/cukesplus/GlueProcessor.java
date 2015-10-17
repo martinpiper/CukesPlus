@@ -85,7 +85,8 @@ public class GlueProcessor
 			}
 		});
 
-		final StringBuilder output = new StringBuilder();
+		final StringBuilder outputSimple = new StringBuilder();
+		final StringBuilder outputComplex = new StringBuilder();
 		for(SortedMap.Entry<String,StepInformation> entry : glueMap.entrySet())
 		{
 			String theRegex = entry.getValue().pattern;
@@ -99,18 +100,18 @@ public class GlueProcessor
 				continue;
 			}
 
-			// TODO: Look for any regex commands that are not part of capture groups and resolve them to suitable text
-
-			// TODO: Remove any escapes like '\(' should be '(' and '\\' should be '\'
+			// Look for any regex commands that are not part of capture groups and resolve them to suitable text
 
 			// Trim any capture groups
 			int lastPos = 0;
 			int pos = 0;
 			String tidiedRegex = "";
+			String plainRegex = "";
 			int captureGroupStart = -1;
 			int captureGroupEnd = -1;
 			int captureGroup = 0;
 			int outputGroup = 1;	// Starts at one for the text mate groups
+			boolean isComplexRegex = false;
 
 			while (pos < theRegex.length())
 			{
@@ -155,25 +156,39 @@ public class GlueProcessor
 
 				String theCaptureGroup = theRegex.substring(captureGroupStart , captureGroupEnd+1);
 				tidiedRegex += theRegex.substring(lastPos , captureGroupStart);
+				plainRegex += theRegex.substring(lastPos , captureGroupStart);
 				// Include the parameter type with textmate style "${1:number} groups
 				List<ParameterInfo> parameterInfos = entry.getValue().parameterInfos;
+				// For parameter names to work then the compiler options in the pom.xml need to be:
+				/*
+					<compilerArgs>
+						<arg>-parameters</arg>
+					</compilerArgs>
+				*/
+				// MPi: TODO: Alternatively parameter name hints could be extracted from a new method annotation that the framework understands
 				List<String> parameterNames = entry.getValue().parameterNames;
 				if ( null != parameterInfos && captureGroup < parameterInfos.size())
 				{
 					// Use the type name without any dots
 					String typeName = parameterInfos.get(captureGroup).getType().toString();
 
-					if ( null != parameterNames && captureGroup < parameterNames.size())
-					{
-						typeName += " " + parameterNames.get(captureGroup);
-					}
-
 					int pos2 = typeName.lastIndexOf('.');
 					if ( pos2 != -1)
 					{
 						typeName = typeName.substring(pos2+1);
 					}
+
+					String simpleName = typeName;
+
+					if ( null != parameterNames && captureGroup < parameterNames.size())
+					{
+						simpleName = parameterNames.get(captureGroup);
+						typeName += " " + simpleName;
+					}
+
 					tidiedRegex += "${" + outputGroup + ":" + typeName + "}";
+					plainRegex += simpleName;
+					isComplexRegex = true;
 				}
 				else
 				{
@@ -192,6 +207,7 @@ public class GlueProcessor
 			if (lastPos < theRegex.length())
 			{
 				tidiedRegex += theRegex.substring(lastPos);
+				plainRegex += theRegex.substring(lastPos);
 			}
 
 			Method method = entry.getValue().method;
@@ -201,39 +217,67 @@ public class GlueProcessor
  				if (null != method.getDeclaredAnnotation(Given.class))
 				{
 					tidiedRegex = "Given " + tidiedRegex;
+					plainRegex  = "Given " + plainRegex;
 				}
 				else if (null != method.getDeclaredAnnotation(When.class))
 				{
 					tidiedRegex = "When " + tidiedRegex;
+					plainRegex = "When " + plainRegex;
 				}
 				else if (null != method.getDeclaredAnnotation(Then.class))
 				{
 					tidiedRegex = "Then " + tidiedRegex;
+					plainRegex = "Then " + plainRegex;
 				}
 				else if (null != method.getDeclaredAnnotation(And.class))
 				{
 					tidiedRegex = "And " + tidiedRegex;
+					plainRegex = "And " + plainRegex;
 				}
 				else if (null != method.getDeclaredAnnotation(But.class))
 				{
 					tidiedRegex = "But " + tidiedRegex;
+					plainRegex = "But " + plainRegex;
 				}
 				else
 				{
 					tidiedRegex = "* " + tidiedRegex;
+					plainRegex = "* " + plainRegex;
 				}
 			}
 			else
 			{
 				// No method, so fallback to the generic * step format
 				tidiedRegex = "* " + tidiedRegex;
+				plainRegex = "* " + plainRegex;
 			}
 
-			// MPi: TODO: Add to simplePotentials
+			// JavaScript will handle any escapes like '\(' which should be '(' and '\\' which should be '\'
+			// MPi: TODO: Handle escapes for HTML syntax reports
+			// MPi: TODO: HTML Syntax reports should be sorted and grouped by functionality and sorted within the group
+
+			// For the ACEServer feature file editor add to complexPotentials if complex named capture groups are present, otherwise add to simplePotentials.
+			// The feature editor will prompt for and display complex snippets with named parameters differently.
+			System.out.println(plainRegex);
 			System.out.println(tidiedRegex);
+			if (isComplexRegex)
+			{
+				outputComplex.append("snippet " + plainRegex + "\\n\\\n");
+				outputComplex.append("\t" + tidiedRegex + "\\n\\\n");
+			}
+			else
+			{
+				if(outputSimple.length() > 0)
+				{
+					outputSimple.append(",\n");
+				}
+				outputSimple.append("\"" + tidiedRegex + "\"");
+			}
 		}
 		try
 		{
+			String output = "var simplePotentials = [\n" + outputSimple + "\n];\n";
+			output += "var complexPotentials = \"\\\n" + outputComplex + "\";\n";
 			FileUtils.writeStringToFile(new File("target" , "gherkin-steps.js"), output.toString());
 		}
 		catch (IOException e)
