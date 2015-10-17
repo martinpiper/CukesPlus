@@ -7,6 +7,7 @@ import cucumber.runtime.ParameterInfo;
 import cucumber.runtime.Runtime;
 import cucumber.runtime.StepDefinition;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
@@ -57,6 +58,18 @@ public class GlueProcessor
 		return parameterNames;
 	}
 
+	static class Section
+	{
+		String text;
+		boolean isParameter;
+
+		public Section(String text, boolean isParameter)
+		{
+			this.text = text;
+			this.isParameter = isParameter;
+		}
+	}
+
 	public static void processGlue(Runtime runtime)
 	{
 		Glue glue = runtime.getGlue();
@@ -85,6 +98,8 @@ public class GlueProcessor
 			}
 		});
 
+		final TreeMap<String, String> stepByHTML = new TreeMap<String,String>();
+
 		final StringBuilder outputSimple = new StringBuilder();
 		final StringBuilder outputComplex = new StringBuilder();
 		for(SortedMap.Entry<String,StepInformation> entry : glueMap.entrySet())
@@ -107,6 +122,7 @@ public class GlueProcessor
 			int pos = 0;
 			String tidiedRegex = "";
 			String plainRegex = "";
+			final ArrayList<Section> regexSections = new ArrayList<>();
 			int captureGroupStart = -1;
 			int captureGroupEnd = -1;
 			int captureGroup = 0;
@@ -155,8 +171,10 @@ public class GlueProcessor
 				assertThat(captureGroupEnd , is(greaterThan(captureGroupStart)));
 
 				String theCaptureGroup = theRegex.substring(captureGroupStart , captureGroupEnd+1);
-				tidiedRegex += theRegex.substring(lastPos , captureGroupStart);
-				plainRegex += theRegex.substring(lastPos , captureGroupStart);
+				String section = theRegex.substring(lastPos , captureGroupStart);
+				tidiedRegex += section;
+				plainRegex += section;
+				regexSections.add(new Section(section , false));
 				// Include the parameter type with textmate style "${1:number} groups
 				List<ParameterInfo> parameterInfos = entry.getValue().parameterInfos;
 				// For parameter names to work then the compiler options in the pom.xml need to be:
@@ -188,12 +206,15 @@ public class GlueProcessor
 
 					tidiedRegex += "${" + outputGroup + ":" + typeName + "}";
 					plainRegex += simpleName;
+					regexSections.add(new Section(simpleName , true));
 					isComplexRegex = true;
 				}
 				else
 				{
 					// MPi: TODO: Deduce a suitable identifier from the regex in the capture group
 					tidiedRegex += "*";
+					plainRegex += "*";
+					regexSections.add(new Section("*" , true));
 				}
 				pos = captureGroupEnd + 1;
 				lastPos = pos;
@@ -206,8 +227,10 @@ public class GlueProcessor
 			// Add anything left in the original regex
 			if (lastPos < theRegex.length())
 			{
-				tidiedRegex += theRegex.substring(lastPos);
-				plainRegex += theRegex.substring(lastPos);
+				String section = theRegex.substring(lastPos);
+				tidiedRegex += section;
+				plainRegex += section;
+				regexSections.add(new Section(section , false));
 			}
 
 			Method method = entry.getValue().method;
@@ -218,31 +241,37 @@ public class GlueProcessor
 				{
 					tidiedRegex = "Given " + tidiedRegex;
 					plainRegex  = "Given " + plainRegex;
+					regexSections.add(0, new Section("Given " , false));
 				}
 				else if (null != method.getDeclaredAnnotation(When.class))
 				{
 					tidiedRegex = "When " + tidiedRegex;
 					plainRegex = "When " + plainRegex;
+					regexSections.add(0, new Section("When " , false));
 				}
 				else if (null != method.getDeclaredAnnotation(Then.class))
 				{
 					tidiedRegex = "Then " + tidiedRegex;
 					plainRegex = "Then " + plainRegex;
+					regexSections.add(0, new Section("Then " , false));
 				}
 				else if (null != method.getDeclaredAnnotation(And.class))
 				{
 					tidiedRegex = "And " + tidiedRegex;
 					plainRegex = "And " + plainRegex;
+					regexSections.add(0, new Section("And " , false));
 				}
 				else if (null != method.getDeclaredAnnotation(But.class))
 				{
 					tidiedRegex = "But " + tidiedRegex;
 					plainRegex = "But " + plainRegex;
+					regexSections.add(0, new Section("But " , false));
 				}
 				else
 				{
 					tidiedRegex = "* " + tidiedRegex;
 					plainRegex = "* " + plainRegex;
+					regexSections.add(0, new Section("* " , false));
 				}
 			}
 			else
@@ -250,11 +279,32 @@ public class GlueProcessor
 				// No method, so fallback to the generic * step format
 				tidiedRegex = "* " + tidiedRegex;
 				plainRegex = "* " + plainRegex;
+				regexSections.add(0, new Section("* " , false));
 			}
 
 			// JavaScript will handle any escapes like '\(' which should be '(' and '\\' which should be '\'
-			// MPi: TODO: Handle escapes for HTML syntax reports
+			// Handles escapes for HTML syntax reports
 			// MPi: TODO: HTML Syntax reports should be sorted and grouped by functionality and sorted within the group
+			String htmlSection = "<i>";
+			boolean first = true;
+			for (Section section : regexSections)
+			{
+				if (section.isParameter)
+				{
+					htmlSection += "<b>";
+				}
+				htmlSection += StringEscapeUtils.escapeHtml4(StringEscapeUtils.unescapeJava(section.text));
+				if (section.isParameter)
+				{
+					htmlSection += "</b>";
+				}
+				if (first)
+				{
+					first = false;
+					htmlSection += "</i>";
+				}
+			}
+			stepByHTML.put(StringEscapeUtils.unescapeJava(plainRegex) , htmlSection);
 
 			// For the ACEServer feature file editor add to complexPotentials if complex named capture groups are present, otherwise add to simplePotentials.
 			// The feature editor will prompt for and display complex snippets with named parameters differently.
@@ -279,6 +329,21 @@ public class GlueProcessor
 			String output = "var simplePotentials = [\n" + outputSimple + "\n];\n";
 			output += "var complexPotentials = \"\\\n" + outputComplex + "\";\n";
 			FileUtils.writeStringToFile(new File("target" , "gherkin-steps.js"), output.toString());
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		try
+		{
+			String htmlOut = "<html><body><ul>";
+			for(SortedMap.Entry<String,String> entry : stepByHTML.entrySet())
+			{
+				htmlOut += "<li>" + entry.getValue() + "</li>";
+			}
+			htmlOut += "</ul></body></html>";
+			FileUtils.writeStringToFile(new File("target" , "syntax.html"), htmlOut.toString());
 		}
 		catch (IOException e)
 		{
