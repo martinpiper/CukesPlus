@@ -61,12 +61,20 @@ public class GlueProcessor
 	static class Section
 	{
 		String text;
+		String complexText;
 		boolean isParameter;
 
-		public Section(String text, boolean isParameter)
+		public Section(String text)
 		{
 			this.text = text;
-			this.isParameter = isParameter;
+			this.isParameter = false;
+		}
+
+		public Section(String text, String complexText)
+		{
+			this.text = text;
+			this.complexText = complexText;
+			this.isParameter = true;
 		}
 	}
 
@@ -99,6 +107,8 @@ public class GlueProcessor
 		});
 
 		final TreeMap<String, String> stepByHTML = new TreeMap<String,String>();
+		final TreeMap<String, String> stepByHTMLWithoutKeyword = new TreeMap<String,String>();
+		final TreeMap<String, String> stepByHTMLByClassName = new TreeMap<String,String>();
 
 		final StringBuilder outputSimple = new StringBuilder();
 		final StringBuilder outputComplex = new StringBuilder();
@@ -120,8 +130,6 @@ public class GlueProcessor
 			// Trim any capture groups
 			int lastPos = 0;
 			int pos = 0;
-			String tidiedRegex = "";
-			String plainRegex = "";
 			final ArrayList<Section> regexSections = new ArrayList<>();
 			int captureGroupStart = -1;
 			int captureGroupEnd = -1;
@@ -172,9 +180,7 @@ public class GlueProcessor
 
 				String theCaptureGroup = theRegex.substring(captureGroupStart , captureGroupEnd+1);
 				String section = theRegex.substring(lastPos , captureGroupStart);
-				tidiedRegex += section;
-				plainRegex += section;
-				regexSections.add(new Section(section , false));
+				regexSections.add(new Section(section));
 				// Include the parameter type with textmate style "${1:number} groups
 				List<ParameterInfo> parameterInfos = entry.getValue().parameterInfos;
 				// For parameter names to work then the compiler options in the pom.xml need to be:
@@ -198,23 +204,21 @@ public class GlueProcessor
 
 					String simpleName = typeName;
 
+					// If the variable name exists then use that instead
 					if ( null != parameterNames && captureGroup < parameterNames.size())
 					{
 						simpleName = parameterNames.get(captureGroup);
 						typeName += " " + simpleName;
 					}
 
-					tidiedRegex += "${" + outputGroup + ":" + typeName + "}";
-					plainRegex += simpleName;
-					regexSections.add(new Section(simpleName , true));
+					String complexParameter = "${" + outputGroup + ":" + typeName + "}";
+					regexSections.add(new Section(simpleName , complexParameter));
 					isComplexRegex = true;
 				}
 				else
 				{
 					// MPi: TODO: Deduce a suitable identifier from the regex in the capture group
-					tidiedRegex += "*";
-					plainRegex += "*";
-					regexSections.add(new Section("*" , true));
+					regexSections.add(new Section("*" , "*"));
 				}
 				pos = captureGroupEnd + 1;
 				lastPos = pos;
@@ -228,9 +232,7 @@ public class GlueProcessor
 			if (lastPos < theRegex.length())
 			{
 				String section = theRegex.substring(lastPos);
-				tidiedRegex += section;
-				plainRegex += section;
-				regexSections.add(new Section(section , false));
+				regexSections.add(new Section(section));
 			}
 
 			Method method = entry.getValue().method;
@@ -239,51 +241,41 @@ public class GlueProcessor
 				// Resolve what kind of keyword is used: Given, When, Then, And
  				if (null != method.getDeclaredAnnotation(Given.class))
 				{
-					tidiedRegex = "Given " + tidiedRegex;
-					plainRegex  = "Given " + plainRegex;
-					regexSections.add(0, new Section("Given " , false));
+					regexSections.add(0, new Section("Given "));
 				}
 				else if (null != method.getDeclaredAnnotation(When.class))
 				{
-					tidiedRegex = "When " + tidiedRegex;
-					plainRegex = "When " + plainRegex;
-					regexSections.add(0, new Section("When " , false));
+					regexSections.add(0, new Section("When "));
 				}
 				else if (null != method.getDeclaredAnnotation(Then.class))
 				{
-					tidiedRegex = "Then " + tidiedRegex;
-					plainRegex = "Then " + plainRegex;
-					regexSections.add(0, new Section("Then " , false));
+					regexSections.add(0, new Section("Then "));
 				}
 				else if (null != method.getDeclaredAnnotation(And.class))
 				{
-					tidiedRegex = "And " + tidiedRegex;
-					plainRegex = "And " + plainRegex;
-					regexSections.add(0, new Section("And " , false));
+					regexSections.add(0, new Section("And "));
 				}
 				else if (null != method.getDeclaredAnnotation(But.class))
 				{
-					tidiedRegex = "But " + tidiedRegex;
-					plainRegex = "But " + plainRegex;
-					regexSections.add(0, new Section("But " , false));
+					regexSections.add(0, new Section("But "));
 				}
 				else
 				{
-					tidiedRegex = "* " + tidiedRegex;
-					plainRegex = "* " + plainRegex;
-					regexSections.add(0, new Section("* " , false));
+					regexSections.add(0, new Section("* "));
 				}
 			}
 			else
 			{
 				// No method, so fallback to the generic * step format
-				tidiedRegex = "* " + tidiedRegex;
-				plainRegex = "* " + plainRegex;
-				regexSections.add(0, new Section("* " , false));
+				regexSections.add(0, new Section("* "));
 			}
 
 			// JavaScript will handle any escapes like '\(' which should be '(' and '\\' which should be '\'
-			// Handles escapes for HTML syntax reports
+			String tidiedRegex = "";
+			String plainRegex = "";
+			String withoutKeyword = "";
+
+			// Handle escapes for HTML syntax reports
 			// MPi: TODO: HTML Syntax reports should be sorted and grouped by functionality and sorted within the group
 			String htmlSection = "<i>";
 			boolean first = true;
@@ -292,19 +284,35 @@ public class GlueProcessor
 				if (section.isParameter)
 				{
 					htmlSection += "<b>";
-				}
-				htmlSection += StringEscapeUtils.escapeHtml4(StringEscapeUtils.unescapeJava(section.text));
-				if (section.isParameter)
-				{
+					htmlSection += StringEscapeUtils.escapeHtml4(StringEscapeUtils.unescapeJava(section.text));
 					htmlSection += "</b>";
+					tidiedRegex += section.complexText;
 				}
+				else
+				{
+					htmlSection += StringEscapeUtils.escapeHtml4(StringEscapeUtils.unescapeJava(section.text));
+					tidiedRegex += section.text;
+				}
+				plainRegex += section.text;
+
 				if (first)
 				{
 					first = false;
 					htmlSection += "</i>";
 				}
+				else
+				{
+					withoutKeyword += section.text;
+				}
 			}
+
 			stepByHTML.put(StringEscapeUtils.unescapeJava(plainRegex) , htmlSection);
+			stepByHTMLWithoutKeyword.put(StringEscapeUtils.unescapeJava(withoutKeyword) , htmlSection);
+			if (null != method)
+			{
+				String className = method.getDeclaringClass().getSimpleName();
+				stepByHTMLByClassName.put(className + " " + StringEscapeUtils.unescapeJava(withoutKeyword), htmlSection);
+			}
 
 			// For the ACEServer feature file editor add to complexPotentials if complex named capture groups are present, otherwise add to simplePotentials.
 			// The feature editor will prompt for and display complex snippets with named parameters differently.
@@ -337,12 +345,45 @@ public class GlueProcessor
 
 		try
 		{
-			String htmlOut = "<html><body><ul>";
+			String htmlOut = "<html><body>";
+
+			htmlOut += "<h1>Syntax sorted by full step line</h1>";
+			htmlOut += "<ul>";
 			for(SortedMap.Entry<String,String> entry : stepByHTML.entrySet())
 			{
 				htmlOut += "<li>" + entry.getValue() + "</li>";
 			}
-			htmlOut += "</ul></body></html>";
+			htmlOut += "</ul>";
+
+			htmlOut += "<h1>Sorted without keyword</h1>";
+			htmlOut += "<ul>";
+			for(SortedMap.Entry<String,String> entry : stepByHTMLWithoutKeyword.entrySet())
+			{
+				htmlOut += "<li>" + entry.getValue() + "</li>";
+			}
+			htmlOut += "</ul>";
+
+			htmlOut += "<h1>Grouped by functionality sorted without keyword</h1>";
+			String previousGlue = "";
+			for(SortedMap.Entry<String,String> entry : stepByHTMLByClassName.entrySet())
+			{
+				String thisGlue = entry.getKey().split(" " , 2)[0];
+				if (!thisGlue.equals(previousGlue))
+				{
+					if (!previousGlue.isEmpty())
+					{
+						htmlOut += "</ul>";
+					}
+					htmlOut += "<h2>" + thisGlue + "</h2>";
+					htmlOut += "<ul>";
+					previousGlue = thisGlue;
+				}
+				// MPi: TODO: Create a sub-list for each new class name in the key
+				htmlOut += "<li>" + entry.getValue() + "</li>";
+			}
+			htmlOut += "</ul>";
+
+			htmlOut += "</body></html>";
 			FileUtils.writeStringToFile(new File("target" , "syntax.html"), htmlOut.toString());
 		}
 		catch (IOException e)
