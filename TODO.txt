@@ -70,3 +70,10 @@ This is to enable the ACE browser editor to pickup changing regex for feature fi
 	For example of source control changes indicate that source file in certain paths change then map these to execute certain feature files first and/or apply tag filters.
 	With realtime report generation this will help indicate significant problems in lengthy continuous integration build and test run cycles.
 	Giving more timely reports to developers will help shorten the time between test failure reports and code fixes.
+
+
+
+* Add a system property option to produce a HTML report file, in the target directory, of known feature files from the command line arguments.
+	Then start ACEServer with that file.
+	The report file would contains URLs in the form: demo/autocompletion.html?filename=t1.feature
+	This would allow editing of files known to the framework
