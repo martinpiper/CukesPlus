@@ -10,3 +10,5 @@ Adds functionality to Cucumber. This is accomplished by hooking into Cucumber be
 - JUnit RunWith class is now com.replicanet.cukesplus.junit.CucumberPlus (instead of cucumber.api.junit.Cucumber)
 
 * Extracts glue regex and methods before execution.
+
+* Set system property "com.replicanet.cukesplus.server.featureEditor" to start the web based feature file editor.

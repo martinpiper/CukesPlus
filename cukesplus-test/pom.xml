@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>com.replicanet</groupId>
 		<artifactId>cukesplus</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
     <artifactId>cukesplus-test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.replicanet</groupId>
             <artifactId>cukesplus-core</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.2-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
