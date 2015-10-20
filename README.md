@@ -12,3 +12,28 @@ Adds functionality to Cucumber. This is accomplished by hooking into Cucumber be
 * Extracts glue regex and methods before execution.
 
 * Set system property "com.replicanet.cukesplus.server.featureEditor" to start the web based feature file editor.
+
+To enable parameter names in the pom.xml file:
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<compilerArgs>
+						<arg>-parameters</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+To enable parameter names in IntelliJ:
+
+	* Select the module in the project tree view
+	* File->Settings (Ctrl+Alt+S)
+	* Build, Execution, Deployment -> Compiler -> Java Compiler
+	* Additional command line parameters: -parameters

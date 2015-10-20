@@ -212,6 +212,7 @@ public class GlueProcessor
 					}
 
 					String complexParameter = "${" + outputGroup + ":" + typeName + "}";
+					outputGroup++;
 					regexSections.add(new Section(simpleName , complexParameter));
 					isComplexRegex = true;
 				}
@@ -284,13 +285,13 @@ public class GlueProcessor
 				if (section.isParameter)
 				{
 					htmlSection += "<b>";
-					htmlSection += StringEscapeUtils.escapeHtml4(StringEscapeUtils.unescapeJava(section.text));
+					htmlSection += StringEscapeUtils.escapeHtml4(section.text);
 					htmlSection += "</b>";
 					tidiedRegex += section.complexText;
 				}
 				else
 				{
-					htmlSection += StringEscapeUtils.escapeHtml4(StringEscapeUtils.unescapeJava(section.text));
+					htmlSection += StringEscapeUtils.escapeHtml4(section.text);
 					tidiedRegex += section.text;
 				}
 				plainRegex += section.text;
@@ -306,12 +307,12 @@ public class GlueProcessor
 				}
 			}
 
-			stepByHTML.put(StringEscapeUtils.unescapeJava(plainRegex) , htmlSection);
-			stepByHTMLWithoutKeyword.put(StringEscapeUtils.unescapeJava(withoutKeyword) , htmlSection);
+			stepByHTML.put(plainRegex , htmlSection);
+			stepByHTMLWithoutKeyword.put(withoutKeyword , htmlSection);
 			if (null != method)
 			{
 				String className = method.getDeclaringClass().getSimpleName();
-				stepByHTMLByClassName.put(className + " " + StringEscapeUtils.unescapeJava(withoutKeyword), htmlSection);
+				stepByHTMLByClassName.put(className + " " + withoutKeyword, htmlSection);
 			}
 
 			// For the ACEServer feature file editor add to complexPotentials if complex named capture groups are present, otherwise add to simplePotentials.
@@ -320,8 +321,8 @@ public class GlueProcessor
 			System.out.println(tidiedRegex);
 			if (isComplexRegex)
 			{
-				outputComplex.append("snippet " + plainRegex + "\\n\\\n");
-				outputComplex.append("\t" + tidiedRegex + "\\n\\\n");
+				outputComplex.append("snippet " + StringEscapeUtils.escapeJava(plainRegex) + "\\n\\\n");
+				outputComplex.append("\t" + StringEscapeUtils.escapeJava(tidiedRegex) + "\\n\\\n");
 			}
 			else
 			{
@@ -329,7 +330,7 @@ public class GlueProcessor
 				{
 					outputSimple.append(",\n");
 				}
-				outputSimple.append("\"" + tidiedRegex + "\"");
+				outputSimple.append("\"" + StringEscapeUtils.escapeJava(tidiedRegex) + "\"");
 			}
 		}
 		try

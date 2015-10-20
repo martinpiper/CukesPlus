@@ -8,9 +8,8 @@ import cucumber.api.java.en.When;
  */
 public class Glue2
 {
-	@Given("^I run this test with more glue$")
-	public void i_run_this_test_with_more_glue() throws Throwable
+	@Given("^I run this test with more glue \"(.*)\" here and \"(\\d)\" there$")
+	public void i_run_this_test_with_more_glue(String text , int param2) throws Throwable
 	{
-//		throw new PendingException();
 	}
 }
