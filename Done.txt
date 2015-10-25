@@ -11,3 +11,6 @@ Create CukesPlus project structure.
 	Then start ACEServer with that file.
 	The report file would contains URLs in the form: demo/autocompletion.html?filename=t1.feature
 	This would allow editing of files known to the framework
+
+
+* Added ACEServerCallback to create the file list html page after a file is saved.

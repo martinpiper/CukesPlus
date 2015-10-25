@@ -1,6 +1,7 @@
 package com.replicanet.cukesplus;
 
 import com.replicanet.ACEServer;
+import com.replicanet.ACEServerCallback;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 
@@ -48,12 +49,8 @@ public class FeatureServerCheck
 		}
 	}
 
-	public static boolean checkForFeatureServer(String[] argv) throws IOException
+	public static void buildFileList(String[] argv)
 	{
-		if (System.getProperty("com.replicanet.cukesplus.server.featureEditor") == null)
-		{
-			return false;
-		}
 		Set<String> filesList = new TreeSet<>();
 		for (String arg : argv)
 		{
@@ -83,10 +80,41 @@ public class FeatureServerCheck
 			htmlFileList += "<tr><td><a href = \"demo/autocompletion.html?filename=" + path + "\" target='_parent'>" + path + "</a></td></tr>";
 		}
 		htmlFileList += "</table></body></html>";
-		FileUtils.writeStringToFile(new File("target", "fileList.html"), htmlFileList);
+		try
+		{
+			FileUtils.writeStringToFile(new File("target", "fileList.html"), htmlFileList);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public static boolean checkForFeatureServer(String[] argv) throws IOException
+	{
+		if (System.getProperty("com.replicanet.cukesplus.server.featureEditor") == null)
+		{
+			return false;
+		}
+
+		buildFileList(argv);
+
+		ACEServer.addCallback(new ACEServerCallback()
+		{
+			@Override
+			public void afterGet(String s)
+			{
+			}
+
+			@Override
+			public void afterPut(String s)
+			{
+				buildFileList(argv);
+			}
+		});
 		// http://127.0.0.1:8001/ace-builds-master/demo/autocompletion.html?filename=features/test.feature
 		ACEServer.startServer(new InetSocketAddress(8001));
-//			System.out.println("http://127.0.0.1:8001/ace-builds-master/fileList.html");
+//		System.out.println("http://127.0.0.1:8001/ace-builds-master/fileList.html");
 		System.out.println("http://127.0.0.1:8001/ace-builds-master/demo/autocompletion.html");
 		return true;
 	}
