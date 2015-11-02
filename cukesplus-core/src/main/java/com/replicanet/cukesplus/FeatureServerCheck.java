@@ -2,13 +2,14 @@ package com.replicanet.cukesplus;
 
 import com.replicanet.ACEServer;
 import com.replicanet.ACEServerCallback;
+import gherkin.deps.com.google.gson.JsonArray;
+import gherkin.deps.com.google.gson.JsonParser;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 
-import java.io.File;
-import java.io.FileFilter;
-import java.io.IOException;
+import java.io.*;
 import java.net.InetSocketAddress;
+import java.nio.charset.StandardCharsets;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -101,6 +102,82 @@ public class FeatureServerCheck
 
 		ACEServer.addCallback(new ACEServerCallback()
 		{
+			public InputStream beforeGet(String uri)
+			{
+				if (!uri.contains(".feature.debug.json"))
+				{
+					return null;
+				}
+				// An example of what to do to return runtime generated data
+				File dir = new File("target");
+				FileFilter fileFilter = new WildcardFileFilter("report*.json");
+				File[] files = dir.listFiles(fileFilter);
+
+				for (File file : files)
+				{
+					try
+					{
+						BufferedReader br = new BufferedReader(new FileReader(file));
+
+						JsonParser parser = new JsonParser();
+						JsonArray rootObjs = parser.parse(br).getAsJsonArray();
+						br.close();
+
+						int i;
+						for (i = 0; i < rootObjs.size(); i++)
+						{
+							String toRet = "{\n" +
+									"\"lines\" : [\n";
+							boolean outputAny = false;
+							String reportUri = rootObjs.get(i).getAsJsonObject().get("uri").getAsString();
+							// We found a match in the report for the file we are interested in seeing debug information for
+							if (uri.contains(reportUri.replace("\\" , "/")))
+							{
+								JsonArray elementObjs = rootObjs.get(0).getAsJsonObject().get("elements").getAsJsonArray();
+								int j;
+								for (j = 0; j < elementObjs.size() ; j++)
+								{
+									JsonArray stepsObjs = elementObjs.get(j).getAsJsonObject().get("steps").getAsJsonArray();
+									int k;
+									for (k = 0 ; k < stepsObjs.size() ; k++)
+									{
+										if (outputAny)
+										{
+											toRet += " ,\n";
+										}
+										outputAny = true;
+										String status = stepsObjs.get(k).getAsJsonObject().get("result").getAsJsonObject().get("status").getAsString();
+										int line = stepsObjs.get(k).getAsJsonObject().get("line").getAsInt();
+										line--;
+										// MPi: TODO: Optimise contiguous ranges of lines
+										toRet += "\t{ \"type\" : \"";
+										toRet += status + "_step_line";
+										toRet += "\" ,   \"from\" : "+line+" ,    \"to\" : "+line+"}";
+									}
+								}
+							}
+							toRet += "\n\t]\n" +
+									"}\n";
+							if (outputAny)
+							{
+								return new ByteArrayInputStream(toRet.getBytes(StandardCharsets.UTF_8));
+							}
+						}
+					}
+					catch (FileNotFoundException e)
+					{
+						e.printStackTrace();
+					}
+					catch (IOException e)
+					{
+						e.printStackTrace();
+					}
+
+				}
+
+				return null;
+			}
+
 			@Override
 			public void afterGet(String s)
 			{

@@ -50,7 +50,7 @@
         <dependency>
             <groupId>ACEServer</groupId>
             <artifactId>ACEServer</artifactId>
-            <version>0.0.2-SNAPSHOT</version>
+            <version>0.0.4-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

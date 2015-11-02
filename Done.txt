@@ -14,3 +14,7 @@ Create CukesPlus project structure.
 
 
 * Added ACEServerCallback to create the file list html page after a file is saved.
+
+
+* Added feature file line highlighting based on previous run test results.
+ 	target/report*.json files are scanned for any matching URIs to feature files being viewed in the ACEServer
