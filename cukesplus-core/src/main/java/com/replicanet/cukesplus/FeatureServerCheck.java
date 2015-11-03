@@ -91,7 +91,7 @@ public class FeatureServerCheck
 		}
 	}
 
-	public static boolean checkForFeatureServer(String[] argv) throws IOException
+	public static boolean checkForFeatureServer(final String[] argv) throws IOException
 	{
 		if (System.getProperty("com.replicanet.cukesplus.server.featureEditor") == null)
 		{
@@ -133,7 +133,7 @@ public class FeatureServerCheck
 							// We found a match in the report for the file we are interested in seeing debug information for
 							if (uri.contains(reportUri.replace("\\" , "/")))
 							{
-								JsonArray elementObjs = rootObjs.get(0).getAsJsonObject().get("elements").getAsJsonArray();
+								JsonArray elementObjs = rootObjs.get(i).getAsJsonObject().get("elements").getAsJsonArray();
 								int j;
 								for (j = 0; j < elementObjs.size() ; j++)
 								{

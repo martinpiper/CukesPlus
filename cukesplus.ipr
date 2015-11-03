@@ -240,15 +240,15 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
   <component name="libraryTable">
-    <library name="Maven: ACEServer:ACEServer:0.0.4-SNAPSHOT">
+    <library name="Maven: ACEServer:ACEServer:0.0.6-SNAPSHOT">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/ACEServer/ACEServer/0.0.4-SNAPSHOT/ACEServer-0.0.4-SNAPSHOT.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/ACEServer/ACEServer/0.0.6-SNAPSHOT/ACEServer-0.0.6-SNAPSHOT.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/ACEServer/ACEServer/0.0.4-SNAPSHOT/ACEServer-0.0.4-SNAPSHOT-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/ACEServer/ACEServer/0.0.6-SNAPSHOT/ACEServer-0.0.6-SNAPSHOT-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/ACEServer/ACEServer/0.0.4-SNAPSHOT/ACEServer-0.0.4-SNAPSHOT-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/ACEServer/ACEServer/0.0.6-SNAPSHOT/ACEServer-0.0.6-SNAPSHOT-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: commons-io:commons-io:2.3">
