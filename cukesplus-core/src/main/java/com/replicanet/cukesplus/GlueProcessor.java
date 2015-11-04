@@ -51,7 +51,7 @@ public class GlueProcessor
 			}
 
 			String parameterName = parameter.getName();
-			System.out.println("**** Got name" + parameterName);
+//			System.out.println("**** Got name" + parameterName);
 			parameterNames.add(parameterName);
 		}
 
@@ -317,8 +317,8 @@ public class GlueProcessor
 
 			// For the ACEServer feature file editor add to complexPotentials if complex named capture groups are present, otherwise add to simplePotentials.
 			// The feature editor will prompt for and display complex snippets with named parameters differently.
-			System.out.println(plainRegex);
-			System.out.println(tidiedRegex);
+//			System.out.println(plainRegex);
+//			System.out.println(tidiedRegex);
 			if (isComplexRegex)
 			{
 				outputComplex.append("snippet " + StringEscapeUtils.escapeJava(plainRegex) + "\\n\\\n");

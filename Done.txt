@@ -18,3 +18,8 @@ Create CukesPlus project structure.
 
 * Added feature file line highlighting based on previous run test results.
  	target/report*.json files are scanned for any matching URIs to feature files being viewed in the ACEServer
+
+
+
+* Add appropriate ACEServerCallback.beforeGet() callback responses to URLs with extensions ".run.file", ".run.suite" and ".clear.results"
+	Will need to check the run requests are synchronously executed with suitable command line parameters.

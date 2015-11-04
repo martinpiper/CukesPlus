@@ -15,4 +15,8 @@ Feature: Testing this CukesPlus2
     Given I am unimplemented
 
   Scenario: Different errors 4
+    Given I run this test
+    Given I run this test
+    Given I run this test
+    Given I throw an exception
     Given I throw an exception

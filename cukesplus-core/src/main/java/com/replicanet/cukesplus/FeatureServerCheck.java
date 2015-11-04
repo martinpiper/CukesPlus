@@ -10,6 +10,8 @@ import org.apache.commons.io.filefilter.WildcardFileFilter;
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -18,6 +20,12 @@ import java.util.TreeSet;
  */
 public class FeatureServerCheck
 {
+
+	public static final String RUN_FILE = ".run.file";
+	public static final String FEATURE_DEBUG_JSON = ".feature.debug.json";
+	public static final String RUN_SUITE = ".run.suite";
+	public static final String CLEAR_RESULTS = ".clear.results";
+
 	public static void getDirectoryContents(Set<String> filesList , File dir)
 	{
 		File[] files = dir.listFiles();
@@ -91,6 +99,8 @@ public class FeatureServerCheck
 		}
 	}
 
+	static volatile boolean doingRun = false;
+
 	public static boolean checkForFeatureServer(final String[] argv) throws IOException
 	{
 		if (System.getProperty("com.replicanet.cukesplus.server.featureEditor") == null)
@@ -102,12 +112,114 @@ public class FeatureServerCheck
 
 		ACEServer.addCallback(new ACEServerCallback()
 		{
+			final InputStream emptyReply = new ByteArrayInputStream("".getBytes(StandardCharsets.UTF_8));
+
 			public InputStream beforeGet(String uri)
 			{
-				if (!uri.contains(".feature.debug.json"))
+				if (uri.endsWith(FEATURE_DEBUG_JSON))
 				{
-					return null;
+					return handleFeatureDebugJson(uri);
 				}
+				else if (uri.endsWith(RUN_FILE))
+				{
+					return handleRunFile(uri);
+				}
+				else if (uri.endsWith(RUN_SUITE))
+				{
+					return handleRunSuite(argv);
+				}
+				else if (uri.endsWith(CLEAR_RESULTS))
+				{
+					return handleClearResults();
+				}
+				return null;
+			}
+
+			private InputStream handleRunFile(String uri)
+			{
+				int pos = uri.lastIndexOf(RUN_FILE);
+				String realFile = uri.substring(0,pos);
+
+				// Remove all passed in feature files then add the single file we want to run
+				List<String> trimmedArgv = new ArrayList<String>();
+				boolean addNext = false;
+				for (String arg : argv)
+				{
+					if (addNext)
+					{
+						addNext = false;
+						trimmedArgv.add(arg);
+						continue;
+					}
+
+					if (arg.startsWith("--"))
+					{
+						trimmedArgv.add(arg);
+						addNext = true;	// Parameters starting with "--" have a second parameter that we always want to include
+						continue;
+					}
+
+					if (arg.startsWith("-") || arg.startsWith("/"))
+					{
+						trimmedArgv.add(arg);
+						continue;
+					}
+
+					if (arg.endsWith(".feature") || arg.endsWith(".macroFeature"))
+					{
+						continue;
+					}
+
+					File file = new File(arg);
+					if (file.exists() && file.isDirectory())
+					{
+						continue;
+					}
+
+					trimmedArgv.add(arg);
+				}
+
+				trimmedArgv.add(realFile);
+				return handleRunSuite(trimmedArgv.toArray(new String[trimmedArgv.size()]));
+			}
+
+			private InputStream handleRunSuite(String[] thisArgv)
+			{
+				if (doingRun)
+				{
+					System.out.println("Test run in progress, run request ignored");
+					return emptyReply;
+				}
+				try
+				{
+					doingRun = true;
+					byte exitstatus = Main.run(thisArgv, Thread.currentThread().getContextClassLoader());
+					System.out.println("FeatureServer run exitstatus = " + exitstatus);
+				}
+				catch (IOException e)
+				{
+					System.out.println("FeatureServer run");
+					e.printStackTrace();
+				}
+				doingRun = false;
+				return emptyReply;
+			}
+
+			private InputStream handleClearResults()
+			{
+				File dir = new File("target");
+				FileFilter fileFilter = new WildcardFileFilter("report*.json");
+				File[] files = dir.listFiles(fileFilter);
+
+				for (File file : files)
+				{
+					FileUtils.deleteQuietly(file);
+				}
+				return emptyReply;
+			}
+
+			private InputStream handleFeatureDebugJson(String uri)
+			{
 				// An example of what to do to return runtime generated data
 				File dir = new File("target");
 				FileFilter fileFilter = new WildcardFileFilter("report*.json");
@@ -175,7 +287,7 @@ public class FeatureServerCheck
 
 				}
 
-				return null;
+				return emptyReply;
 			}
 
 			@Override

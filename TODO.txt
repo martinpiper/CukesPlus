@@ -1,8 +1,3 @@
-* Add appropriate ACEServerCallback.beforeGet() callback responses to URLs with extensions ".run.file", ".run.suite" and ".clear.results"
-	Will need to check the run requests are synchronously executed with suitable command line parameters.
-
-
-
 * Feature macro processing.
 	For example given the macro feature file:
 		Feature: foo
