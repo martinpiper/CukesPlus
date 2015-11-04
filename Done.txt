@@ -35,3 +35,7 @@ Create CukesPlus project structure.
 
 
 * Report Scenario Outline examples table results as well as the scenario result
+
+
+
+* Fixed escaped regex "\(" and "\)" sequences

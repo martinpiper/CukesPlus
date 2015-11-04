@@ -152,9 +152,11 @@ public class GlueProcessor
 
 					if (captureGroupStart >= 1 && theRegex.charAt(captureGroupStart-1) == '\\')
 					{
+						theRegex = theRegex.substring(0 , pos-2) + theRegex.substring(pos-1);
 						captureGroupStart = -1;
+						pos--;
+						continue;
 					}
-					continue;
 				}
 
 				if (captureGroupEnd == -1)
@@ -168,7 +170,9 @@ public class GlueProcessor
 					pos = captureGroupEnd + 1;
 					if (captureGroupEnd >= 1 && theRegex.charAt(captureGroupEnd - 1) == '\\')
 					{
+						theRegex = theRegex.substring(0 , pos-2) + theRegex.substring(pos-1);
 						captureGroupEnd = -1;
+						pos--;
 						continue;
 					}
 				}
@@ -232,6 +236,16 @@ public class GlueProcessor
 			// Add anything left in the original regex
 			if (lastPos < theRegex.length())
 			{
+				// Handle any remaining "\)" sequences
+				pos = lastPos;
+				while ( (pos = theRegex.indexOf(')', pos)) != -1)
+				{
+					if (pos >= 1 && theRegex.charAt(pos - 1) == '\\')
+					{
+						theRegex = theRegex.substring(0, pos - 1) + theRegex.substring(pos);
+					}
+				}
+
 				String section = theRegex.substring(lastPos);
 				regexSections.add(new Section(section));
 			}

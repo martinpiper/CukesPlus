@@ -12,3 +12,7 @@ Feature: Testing this CukesPlus
     | a | b |
     | 1 | 2 |
     | 3 | 4 |
+
+  Scenario:
+    When this value foooo matches the string (hello) then dance
+  
