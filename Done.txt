@@ -23,3 +23,15 @@ Create CukesPlus project structure.
 
 * Add appropriate ACEServerCallback.beforeGet() callback responses to URLs with extensions ".run.file", ".run.suite" and ".clear.results"
 	Will need to check the run requests are synchronously executed with suitable command line parameters.
+
+
+
+* Handle Examples table in "test.feature" so the relevant line in the table is highlighted with the test result
+
+
+
+* Remove any duplicate report line states
+
+
+
+* Report Scenario Outline examples table results as well as the scenario result

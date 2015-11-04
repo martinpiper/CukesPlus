@@ -240,15 +240,15 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
   <component name="libraryTable">
-    <library name="Maven: ACEServer:ACEServer:0.0.9-SNAPSHOT">
+    <library name="Maven: ACEServer:ACEServer:0.0.10-SNAPSHOT">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/ACEServer/ACEServer/0.0.9-SNAPSHOT/ACEServer-0.0.9-SNAPSHOT.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/ACEServer/ACEServer/0.0.10-SNAPSHOT/ACEServer-0.0.10-SNAPSHOT.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/ACEServer/ACEServer/0.0.9-SNAPSHOT/ACEServer-0.0.9-SNAPSHOT-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/ACEServer/ACEServer/0.0.10-SNAPSHOT/ACEServer-0.0.10-SNAPSHOT-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/ACEServer/ACEServer/0.0.9-SNAPSHOT/ACEServer-0.0.9-SNAPSHOT-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/ACEServer/ACEServer/0.0.10-SNAPSHOT/ACEServer-0.0.10-SNAPSHOT-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: commons-io:commons-io:2.3">
@@ -262,15 +262,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.3/commons-io-2.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: info.cukes:cucumber-core:1.2.0">
+    <library name="Maven: info.cukes:cucumber-core:1.2.4">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.0/cucumber-core-1.2.0.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.4/cucumber-core-1.2.4.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.0/cucumber-core-1.2.0-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.4/cucumber-core-1.2.4-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.0/cucumber-core-1.2.0-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.4/cucumber-core-1.2.4-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: info.cukes:cucumber-html:0.2.3">
@@ -284,37 +284,37 @@
         <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-html/0.2.3/cucumber-html-0.2.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: info.cukes:cucumber-java:1.2.0">
+    <library name="Maven: info.cukes:cucumber-java:1.2.4">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-java/1.2.0/cucumber-java-1.2.0.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-java/1.2.4/cucumber-java-1.2.4.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-java/1.2.0/cucumber-java-1.2.0-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-java/1.2.4/cucumber-java-1.2.4-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-java/1.2.0/cucumber-java-1.2.0-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-java/1.2.4/cucumber-java-1.2.4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: info.cukes:cucumber-junit:1.2.0">
+    <library name="Maven: info.cukes:cucumber-junit:1.2.4">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-junit/1.2.0/cucumber-junit-1.2.0.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-junit/1.2.4/cucumber-junit-1.2.4.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-junit/1.2.0/cucumber-junit-1.2.0-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-junit/1.2.4/cucumber-junit-1.2.4-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-junit/1.2.0/cucumber-junit-1.2.0-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-junit/1.2.4/cucumber-junit-1.2.4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: info.cukes:cucumber-jvm-deps:1.0.3">
+    <library name="Maven: info.cukes:cucumber-jvm-deps:1.0.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-jvm-deps/1.0.3/cucumber-jvm-deps-1.0.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-jvm-deps/1.0.5/cucumber-jvm-deps-1.0.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-jvm-deps/1.0.3/cucumber-jvm-deps-1.0.3-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-jvm-deps/1.0.5/cucumber-jvm-deps-1.0.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-jvm-deps/1.0.3/cucumber-jvm-deps-1.0.3-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-jvm-deps/1.0.5/cucumber-jvm-deps-1.0.5-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: info.cukes:gherkin:2.12.2">

@@ -1,15 +1,3 @@
-* Handle Examples table in "test.feature" so the relevant line in the table is highlighted with the test result
-
-
-
-* Remove any duplicate report line states
-
-
-
-* Report Scenario Outline examples table results as well as the scenario result
-
-
-
 * Feature macro processing.
 	For example given the macro feature file:
 		Feature: foo
@@ -43,7 +31,7 @@
 		# The parameter is referenced by adding the name to the $ in the step
 		@Given("^I wibble (.*) this (.*) times (.*)$")
 		$first $second
-		# Nore the third named parameter is on a new line without indentation
+		# Note the third named parameter is on a new line without indentation
 		$third
 			* also uses this $first parameter
 			# Numbers can still be used to index the parameters

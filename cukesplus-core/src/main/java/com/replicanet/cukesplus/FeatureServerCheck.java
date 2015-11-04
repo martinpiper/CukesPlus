@@ -10,10 +10,7 @@ import org.apache.commons.io.filefilter.WildcardFileFilter;
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Checks to see if the feature file server needs to be started and calculates what file list to start it with
@@ -238,40 +235,75 @@ public class FeatureServerCheck
 						int i;
 						for (i = 0; i < rootObjs.size(); i++)
 						{
-							String toRet = "{\n" +
-									"\"lines\" : [\n";
-							boolean outputAny = false;
 							String reportUri = rootObjs.get(i).getAsJsonObject().get("uri").getAsString();
-							// We found a match in the report for the file we are interested in seeing debug information for
-							if (uri.contains(reportUri.replace("\\" , "/")))
+
+							// Look for match in the report for the file we are interested in seeing debug information for
+							if (!uri.contains(reportUri.replace("\\" , "/")))
 							{
-								JsonArray elementObjs = rootObjs.get(i).getAsJsonObject().get("elements").getAsJsonArray();
-								int j;
-								for (j = 0; j < elementObjs.size() ; j++)
-								{
-									JsonArray stepsObjs = elementObjs.get(j).getAsJsonObject().get("steps").getAsJsonArray();
-									int k;
-									for (k = 0 ; k < stepsObjs.size() ; k++)
-									{
-										if (outputAny)
-										{
-											toRet += " ,\n";
-										}
-										outputAny = true;
-										String status = stepsObjs.get(k).getAsJsonObject().get("result").getAsJsonObject().get("status").getAsString();
-										int line = stepsObjs.get(k).getAsJsonObject().get("line").getAsInt();
-										line--;
-										// MPi: TODO: Optimise contiguous ranges of lines
-										toRet += "\t{ \"type\" : \"";
-										toRet += status + "_step_line";
-										toRet += "\" ,   \"from\" : "+line+" ,    \"to\" : "+line+"}";
-									}
-								}
+								continue;
 							}
-							toRet += "\n\t]\n" +
-									"}\n";
-							if (outputAny)
+
+							Map<Integer,String> stateByLine = new TreeMap<>();
+							JsonArray elementObjs = rootObjs.get(i).getAsJsonObject().get("elements").getAsJsonArray();
+							int j;
+							for (j = 0; j < elementObjs.size() ; j++)
 							{
+								String keyword = elementObjs.get(j).getAsJsonObject().get("keyword").getAsString();
+								JsonArray stepsObjs = elementObjs.get(j).getAsJsonObject().get("steps").getAsJsonArray();
+								int k;
+								String lastStatus = "skipped";
+								boolean first = true;
+								for (k = 0 ; k < stepsObjs.size() ; k++)
+								{
+									String status = stepsObjs.get(k).getAsJsonObject().get("result").getAsJsonObject().get("status").getAsString();
+									if (first)
+									{
+										first = false;
+										lastStatus = status;
+									}
+									else if (!status.contentEquals("skipped"))
+									{
+										// Only use the last good status from the steps, not skipped status from the steps
+										lastStatus = status;
+									}
+									int line = stepsObjs.get(k).getAsJsonObject().get("line").getAsInt();
+									String anyOtherStates = stateByLine.get(line);
+									if (null != anyOtherStates && (anyOtherStates.contentEquals("failed") || anyOtherStates.contentEquals("pending")))
+									{
+										// Preserve any previous state that shows an interesting error for this line
+										continue;
+									}
+									stateByLine.put(line , status);
+								}
+
+								// Emit information for the scenario or the examples table line for the scenario outline
+								int line = elementObjs.get(j).getAsJsonObject().get("line").getAsInt();
+								stateByLine.put(line , lastStatus);
+							}
+
+							if (!stateByLine.isEmpty())
+							{
+								String toRet = "{\n" +
+										"\"lines\" : [\n";
+
+								// MPi: TODO: Optimise contiguous ranges of lines
+								boolean first = true;
+								for(Map.Entry<Integer,String> entry : stateByLine.entrySet())
+								{
+									if (!first)
+									{
+										toRet += " ,\n";
+									}
+									first = false;
+									toRet += "\t{ \"type\" : \"";
+									toRet += entry.getValue() + "_step_line";
+									toRet += "\" ,   \"from\" : " + entry.getKey() + " ,    \"to\" : " + entry.getKey() + "}";
+								}
+
+
+								toRet += "\n\t]\n" +
+										"}\n";
+
 								return new ByteArrayInputStream(toRet.getBytes(StandardCharsets.UTF_8));
 							}
 						}

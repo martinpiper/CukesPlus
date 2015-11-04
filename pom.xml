@@ -7,7 +7,7 @@
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<cucumber.version>1.2.0</cucumber.version>
+		<cucumber.version>1.2.4</cucumber.version>
 		<junit.version>4.11</junit.version>
 	</properties>
 	<modules>

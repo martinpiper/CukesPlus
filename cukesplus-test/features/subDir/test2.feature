@@ -5,6 +5,15 @@ Feature: Testing this CukesPlus2
     Given this step isn't implemented
     And something else
 
+
+  Scenario Outline: First test2
+    Given I run this test
+  Examples:
+    | a |
+    | 1 |
+    | 2 |
+
+
   Scenario: Different errors 1
     Given I am passing
 
