@@ -1,3 +1,15 @@
+* Handle Examples table in "test.feature" so the relevant line in the table is highlighted with the test result
+
+
+
+* Remove any duplicate report line states
+
+
+
+* Report Scenario Outline examples table results as well as the scenario result
+
+
+
 * Feature macro processing.
 	For example given the macro feature file:
 		Feature: foo
