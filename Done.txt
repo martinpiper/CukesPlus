@@ -39,3 +39,7 @@ Create CukesPlus project structure.
 
 
 * Fixed escaped regex "\(" and "\)" sequences
+
+
+
+* When running a file or a suite an external test framework process is started.

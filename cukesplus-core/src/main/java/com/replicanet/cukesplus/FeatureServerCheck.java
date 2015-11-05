@@ -22,6 +22,7 @@ public class FeatureServerCheck
 	public static final String FEATURE_DEBUG_JSON = ".feature.debug.json";
 	public static final String RUN_SUITE = ".run.suite";
 	public static final String CLEAR_RESULTS = ".clear.results";
+	public static final String SERVER_FEATURE_EDITOR = "com.replicanet.cukesplus.server.featureEditor";
 
 	public static void getDirectoryContents(Set<String> filesList , File dir)
 	{
@@ -98,12 +99,14 @@ public class FeatureServerCheck
 
 	static volatile boolean doingRun = false;
 
-	public static boolean checkForFeatureServer(final String[] argv) throws IOException
+	public static boolean checkForFeatureServer(final Class theClass, final String[] argv) throws IOException
 	{
-		if (System.getProperty("com.replicanet.cukesplus.server.featureEditor") == null)
+		if (System.getProperty(SERVER_FEATURE_EDITOR) == null)
 		{
 			return false;
 		}
+
+		System.clearProperty(SERVER_FEATURE_EDITOR);
 
 		buildFileList(argv);
 
@@ -138,7 +141,7 @@ public class FeatureServerCheck
 				String realFile = uri.substring(0,pos);
 
 				// Remove all passed in feature files then add the single file we want to run
-				List<String> trimmedArgv = new ArrayList<String>();
+				List<String> trimmedArgv = new LinkedList<String>();
 				boolean addNext = false;
 				for (String arg : argv)
 				{
@@ -190,8 +193,83 @@ public class FeatureServerCheck
 				try
 				{
 					doingRun = true;
-					byte exitstatus = Main.run(thisArgv, Thread.currentThread().getContextClassLoader());
+
+					List<String> newArgs = new LinkedList<>();
+					newArgs.add("java");
+
+					// Make sure the properties that we want are passed to the new process
+					Properties propToEnum = System.getProperties();
+					Enumeration e = propToEnum.propertyNames();
+					while (e.hasMoreElements())
+					{
+						String key = (String) e.nextElement();
+						String r = String.format("-D%s=%s", key, propToEnum.getProperty(key));
+						newArgs.add(r);
+					}
+
+/*					String path = FeatureServerCheck.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+					File f = new File(path);
+					path = f.getCanonicalPath();
+					System.out.println("Current path: " + path);
+					if (path.endsWith(".jar"))
+					{
+						newArgs.add("-jar");
+						newArgs.add(path);
+					}
+					else
+					{
+						newArgs.add("-cp");
+						newArgs.add(path);
+						newArgs.add(Main.class.getCanonicalName());
+					}
+*/
+
+					System.out.println("Current path: " + System.getProperty("java.class.path"));
+					newArgs.add("-cp");
+					newArgs.add(System.getProperty("java.class.path"));
+					newArgs.add(theClass.getCanonicalName());
+
+					for (String arg : thisArgv)
+					{
+						newArgs.add(arg);
+					}
+
+					System.out.println("FeatureServer starting run...");
+					ProcessBuilder builder = new ProcessBuilder(newArgs.toArray(new String[newArgs.size()]));
+					builder.redirectErrorStream(true);
+					Process process = builder.start();
+//					process.getOutputStream().close();
+
+					// Consume and print output until the process finishes
+					try
+					{
+						InputStream input = process.getInputStream();
+						BufferedReader br = null;
+						try
+						{
+							br = new BufferedReader(new InputStreamReader(input));
+							String line = null;
+							while ((line = br.readLine()) != null)
+							{
+								System.out.println(line);
+							}
+						}
+						finally
+						{
+							br.close();
+						}
+					}
+					catch (Exception e2)
+					{
+					}
+
+					int exitstatus = process.exitValue();
 					System.out.println("FeatureServer run exitstatus = " + exitstatus);
+					process = null;
+					builder = null;
+
+					// It's the end of the run, tidy up any memory we have accumulated this run
+					System.gc();
 				}
 				catch (IOException e)
 				{

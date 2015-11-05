@@ -1,21 +1,13 @@
 package com.replicanet.cukesplus;
 
-import com.replicanet.ACEServer;
-import cucumber.runtime.*;
 import cucumber.runtime.Runtime;
+import cucumber.runtime.RuntimeOptions;
 import cucumber.runtime.io.MultiLoader;
 import cucumber.runtime.io.ResourceLoaderClassFinder;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.WildcardFileFilter;
 
-import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
-import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Set;
-import java.util.TreeSet;
 
 /**
  *
@@ -24,7 +16,7 @@ public class Main
 {
 	public static void main(String[] argv) throws Throwable
 	{
-		if(FeatureServerCheck.checkForFeatureServer(argv))
+		if(FeatureServerCheck.checkForFeatureServer(Main.class, argv))
 		{
 			return;
 		}
