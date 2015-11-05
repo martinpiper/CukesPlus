@@ -43,3 +43,7 @@ Create CukesPlus project structure.
 
 
 * When running a file or a suite an external test framework process is started.
+
+
+
+* Added syntax hints with and without the keyword to improve hint matching choices.

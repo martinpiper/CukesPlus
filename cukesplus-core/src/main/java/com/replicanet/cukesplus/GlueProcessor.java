@@ -331,21 +331,11 @@ public class GlueProcessor
 
 			// For the ACEServer feature file editor add to complexPotentials if complex named capture groups are present, otherwise add to simplePotentials.
 			// The feature editor will prompt for and display complex snippets with named parameters differently.
-//			System.out.println(plainRegex);
-//			System.out.println(tidiedRegex);
-			if (isComplexRegex)
-			{
-				outputComplex.append("snippet " + StringEscapeUtils.escapeJava(plainRegex) + "\\n\\\n");
-				outputComplex.append("\t" + StringEscapeUtils.escapeJava(tidiedRegex) + "\\n\\\n");
-			}
-			else
-			{
-				if(outputSimple.length() > 0)
-				{
-					outputSimple.append(",\n");
-				}
-				outputSimple.append("\"" + StringEscapeUtils.escapeJava(tidiedRegex) + "\"");
-			}
+			appendHint(outputSimple, outputComplex, isComplexRegex, tidiedRegex, plainRegex);
+			tidiedRegex = tidiedRegex.split(" ", 2)[1];
+			plainRegex = plainRegex.split(" ", 2)[1];
+			// Append hints without starting step keyword, for better matching
+			appendHint(outputSimple, outputComplex, isComplexRegex, tidiedRegex, plainRegex);
 		}
 		try
 		{
@@ -404,6 +394,23 @@ public class GlueProcessor
 		catch (IOException e)
 		{
 			e.printStackTrace();
+		}
+	}
+
+	private static void appendHint(StringBuilder outputSimple, StringBuilder outputComplex, boolean isComplexRegex, String tidiedRegex, String plainRegex)
+	{
+		if (isComplexRegex)
+		{
+			outputComplex.append("snippet " + StringEscapeUtils.escapeJava(plainRegex) + "\\n\\\n");
+			outputComplex.append("\t" + StringEscapeUtils.escapeJava(tidiedRegex) + "\\n\\\n");
+		}
+		else
+		{
+			if(outputSimple.length() > 0)
+			{
+				outputSimple.append(",\n");
+			}
+			outputSimple.append("\"" + StringEscapeUtils.escapeJava(tidiedRegex) + "\"");
 		}
 	}
 }
