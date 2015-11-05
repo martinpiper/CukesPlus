@@ -47,3 +47,7 @@ Create CukesPlus project structure.
 
 
 * Added syntax hints with and without the keyword to improve hint matching choices.
+
+
+
+* Added run selection/current line request
