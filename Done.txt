@@ -51,3 +51,7 @@ Create CukesPlus project structure.
 
 
 * Added run selection/current line request
+
+
+
+* If feature file is executed from the feature editor with line filters line any tag filters are removed from the command line before starting the test run

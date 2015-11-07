@@ -143,12 +143,26 @@ public class FeatureServerCheck
 				// Remove all passed in feature files then add the single file we want to run
 				List<String> trimmedArgv = new LinkedList<String>();
 				boolean addNext = false;
+				boolean skipNext = false;
 				for (String arg : argv)
 				{
+					if (skipNext)
+					{
+						skipNext = false;
+						continue;
+					}
+
 					if (addNext)
 					{
 						addNext = false;
 						trimmedArgv.add(arg);
+						continue;
+					}
+
+					// If running line number filters then remove any tags, since tags and line number filters produce an error from Cucumber
+					if (arg.equals("--tags"))
+					{
+						skipNext = true;
 						continue;
 					}
 
@@ -339,14 +353,14 @@ public class FeatureServerCheck
 										first = false;
 										lastStatus = status;
 									}
-									else if (!status.contentEquals("skipped"))
+									else if (!status.equals("skipped"))
 									{
 										// Only use the last good status from the steps, not skipped status from the steps
 										lastStatus = status;
 									}
 									int line = stepsObjs.get(k).getAsJsonObject().get("line").getAsInt();
 									String anyOtherStates = stateByLine.get(line);
-									if (null != anyOtherStates && (anyOtherStates.contentEquals("failed") || anyOtherStates.contentEquals("pending")))
+									if (null != anyOtherStates && (anyOtherStates.equals("failed") || anyOtherStates.equals("pending")))
 									{
 										// Preserve any previous state that shows an interesting error for this line
 										continue;
