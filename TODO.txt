@@ -1,6 +1,14 @@
+* If line run then no tag filter
+
+
 * Use the Cucumber snippett generator to improve the code hints for the web editor
 	https://github.com/cucumber/cucumber-jvm/blob/20db608a5535850139ba25fcdb9be3ae46991855/core/src/main/java/cucumber/runtime/snippets/SnippetGenerator.java
 These escape patterns need handling if they don't appear in a capture group: "\\\\" "\\$" "\\(" "\\)" "\\[" "\\]" "\\?" "\\*" "\\+" "\\." "\\^"
+
+
+
+* Add a list of potential values that can be used for regex sections (either paramters/capture groups or other regex areas)
+	Can bew retrieved from the regex itself or comments in the step definition
 
 
 
