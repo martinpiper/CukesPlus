@@ -56,14 +56,14 @@
         <processorPath useClasspath="true" />
       </profile>
       <profile default="false" name="Annotation profile for cukesplus-core" enabled="true">
-        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="cukesplus-core" />
       </profile>
       <profile default="false" name="Annotation profile for cukesplus-test" enabled="true">
-        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
@@ -81,6 +81,7 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cukesplus-core" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cukesplus-test" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
   <component name="EntryPointsManager">
     <entry_points version="2.0" />

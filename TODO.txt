@@ -85,3 +85,7 @@ This is to enable the ACE browser editor to pickup changing regex for feature fi
 
 
 * Spot text areas and tables and output suitable snippets.
+
+
+
+* Generate syntax hints or at the very least if they don't exist return back syntax hints with a message telling the user to run once and refresh the page.
