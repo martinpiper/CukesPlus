@@ -17,7 +17,7 @@ import java.util.*;
  */
 public class FeatureServerCheck
 {
-
+	public static final String RECORD_FILE = ".record.file";
 	public static final String RUN_FILE = ".run.file";
 	public static final String FEATURE_DEBUG_JSON = ".feature.debug.json";
 	public static final String RUN_SUITE = ".run.suite";
@@ -120,6 +120,10 @@ public class FeatureServerCheck
 				{
 					return handleFeatureDebugJson(uri);
 				}
+				else if (uri.endsWith(RECORD_FILE))
+				{
+					return handleRecordFile(uri);
+				}
 				else if (uri.endsWith(RUN_FILE))
 				{
 					return handleRunFile(uri);
@@ -133,6 +137,22 @@ public class FeatureServerCheck
 					return handleClearResults();
 				}
 				return null;
+			}
+
+			private InputStream handleRecordFile(String uri)
+			{
+				FileUtils.deleteQuietly(new File("target/events.txt"));
+
+				System.setProperty("com.replicanet.cukesplus.recording.selenium" , "");
+
+				int pos = uri.lastIndexOf(RECORD_FILE);
+				String realFile = uri.substring(0,pos);
+				realFile += RUN_FILE;
+
+				InputStream ret = handleRunFile(realFile);
+
+				System.clearProperty("com.replicanet.cukesplus.recording.selenium");
+				return ret;
 			}
 
 			private InputStream handleRunFile(String uri)
@@ -204,93 +224,105 @@ public class FeatureServerCheck
 					System.out.println("Test run in progress, run request ignored");
 					return emptyReply;
 				}
-				try
+
+				doingRun = true;
+
+				List<String> newArgs = new LinkedList<>();
+				newArgs.add("java");
+
+				// Make sure the properties that we want are passed to the new process
+				Properties propToEnum = System.getProperties();
+				Enumeration e = propToEnum.propertyNames();
+				while (e.hasMoreElements())
 				{
-					doingRun = true;
-
-					List<String> newArgs = new LinkedList<>();
-					newArgs.add("java");
-
-					// Make sure the properties that we want are passed to the new process
-					Properties propToEnum = System.getProperties();
-					Enumeration e = propToEnum.propertyNames();
-					while (e.hasMoreElements())
-					{
-						String key = (String) e.nextElement();
-						String r = String.format("-D%s=%s", key, propToEnum.getProperty(key));
-						newArgs.add(r);
-					}
+					String key = (String) e.nextElement();
+					String r = String.format("-D%s=%s", key, propToEnum.getProperty(key));
+					newArgs.add(r);
+				}
 
 /*					String path = FeatureServerCheck.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-					File f = new File(path);
-					path = f.getCanonicalPath();
-					System.out.println("Current path: " + path);
-					if (path.endsWith(".jar"))
-					{
-						newArgs.add("-jar");
-						newArgs.add(path);
-					}
-					else
-					{
-						newArgs.add("-cp");
-						newArgs.add(path);
-						newArgs.add(Main.class.getCanonicalName());
-					}
+				File f = new File(path);
+				path = f.getCanonicalPath();
+				System.out.println("Current path: " + path);
+				if (path.endsWith(".jar"))
+				{
+					newArgs.add("-jar");
+					newArgs.add(path);
+				}
+				else
+				{
+					newArgs.add("-cp");
+					newArgs.add(path);
+					newArgs.add(Main.class.getCanonicalName());
+				}
 */
 
-					System.out.println("Current path: " + System.getProperty("java.class.path"));
-					newArgs.add("-cp");
-					newArgs.add(System.getProperty("java.class.path"));
-					newArgs.add(theClass.getCanonicalName());
+				System.out.println("Current path: " + System.getProperty("java.class.path"));
+				newArgs.add("-cp");
+				newArgs.add(System.getProperty("java.class.path"));
+				newArgs.add(theClass.getCanonicalName());
 
-					for (String arg : thisArgv)
+				for (String arg : thisArgv)
+				{
+					newArgs.add(arg);
+				}
+
+				new Thread(new Runnable()
+				{
+					@Override
+					public void run()
 					{
-						newArgs.add(arg);
-					}
-
-					System.out.println("FeatureServer starting run...");
-					ProcessBuilder builder = new ProcessBuilder(newArgs.toArray(new String[newArgs.size()]));
-					builder.redirectErrorStream(true);
-					Process process = builder.start();
-//					process.getOutputStream().close();
-
-					// Consume and print output until the process finishes
-					try
-					{
-						InputStream input = process.getInputStream();
-						BufferedReader br = null;
 						try
 						{
-							br = new BufferedReader(new InputStreamReader(input));
-							String line = null;
-							while ((line = br.readLine()) != null)
+
+						System.out.println("FeatureServer starting run...");
+						ProcessBuilder builder = new ProcessBuilder(newArgs.toArray(new String[newArgs.size()]));
+						builder.redirectErrorStream(true);
+						Process process = builder.start();
+//					process.getOutputStream().close();
+
+						// Consume and print output until the process finishes
+						try
+						{
+							InputStream input = process.getInputStream();
+							BufferedReader br = null;
+							try
 							{
-								System.out.println(line);
+								br = new BufferedReader(new InputStreamReader(input));
+								String line = null;
+								while ((line = br.readLine()) != null)
+								{
+									System.out.println(line);
+								}
+							}
+							finally
+							{
+								br.close();
 							}
 						}
-						finally
+						catch (Exception e2)
 						{
-							br.close();
 						}
-					}
-					catch (Exception e2)
-					{
-					}
 
-					int exitstatus = process.exitValue();
-					System.out.println("FeatureServer run exitstatus = " + exitstatus);
-					process = null;
-					builder = null;
+						int exitstatus = process.exitValue();
+						System.out.println("FeatureServer run exitstatus = " + exitstatus);
+						process = null;
+						builder = null;
 
-					// It's the end of the run, tidy up any memory we have accumulated this run
-					System.gc();
-				}
-				catch (IOException e)
-				{
-					System.out.println("FeatureServer run");
-					e.printStackTrace();
-				}
-				doingRun = false;
+						}
+						catch (IOException e)
+						{
+							System.out.println("FeatureServer run");
+							e.printStackTrace();
+						}
+						doingRun = false;
+					}
+				}).start();
+
+				// It's the end of the run, tidy up any memory we have accumulated this run
+				System.gc();
+
+
 				return emptyReply;
 			}
 
@@ -309,6 +341,24 @@ public class FeatureServerCheck
 
 			private InputStream handleFeatureDebugJson(String uri)
 			{
+
+				// Look for event hints first
+				try
+				{
+					File events = new File("target/events.txt");
+					String eventsString = FileUtils.readFileToString(events);
+					String toRet = "{\n" +
+							"\"toAppend\" : [\n";
+					toRet += eventsString;
+					toRet += "]\n}\n";
+
+					FileUtils.deleteQuietly(events);
+					return new ByteArrayInputStream(toRet.getBytes(StandardCharsets.UTF_8));
+				}
+				catch (Exception e)
+				{
+				}
+
 				// An example of what to do to return runtime generated data
 				File dir = new File("target");
 				FileFilter fileFilter = new WildcardFileFilter("report*.json");
@@ -392,9 +442,7 @@ public class FeatureServerCheck
 									toRet += "\" ,   \"from\" : " + entry.getKey() + " ,    \"to\" : " + entry.getKey() + "}";
 								}
 
-
-								toRet += "\n\t]\n" +
-										"}\n";
+								toRet += "]\n}\n";
 
 								return new ByteArrayInputStream(toRet.getBytes(StandardCharsets.UTF_8));
 							}

@@ -1,4 +1,4 @@
-* Use the Cucumber snippett generator to improve the code hints for the web editor
+* Use the Cucumber snippet generator to improve the code hints for the web editor
 	https://github.com/cucumber/cucumber-jvm/blob/20db608a5535850139ba25fcdb9be3ae46991855/core/src/main/java/cucumber/runtime/snippets/SnippetGenerator.java
 These escape patterns need handling if they don't appear in a capture group: "\\\\" "\\$" "\\(" "\\)" "\\[" "\\]" "\\?" "\\*" "\\+" "\\." "\\^"
 
