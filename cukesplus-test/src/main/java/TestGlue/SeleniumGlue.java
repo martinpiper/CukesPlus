@@ -158,7 +158,13 @@ console.log(eventLog);
 		catch (Exception e)
 		{
 		}
-		driver.quit();
+		try
+		{
+			driver.quit();
+		}
+		catch (Exception e)
+		{
+		}
 		driver = null;
 	}
 
