@@ -16,7 +16,7 @@ public class Main
 {
 	public static void main(String[] argv) throws Throwable
 	{
-		if(FeatureServerCheck.checkForFeatureServer(Main.class, argv))
+		if (FeatureServerCheck.checkForFeatureServer(Main.class, argv))
 		{
 			return;
 		}
@@ -33,7 +33,7 @@ public class Main
 		MultiLoader resourceLoader = new MultiLoader(classLoader);
 		ResourceLoaderClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);
 		cucumber.runtime.Runtime runtime = new Runtime(resourceLoader, classFinder, classLoader, runtimeOptions);
-		GlueProcessor.processGlue(runtime);	// << Hook into Cucumber
+		GlueProcessor.processGlue(runtime);    // << Hook into Cucumber
 		runtime.run();
 		return runtime.exitStatus();
 	}

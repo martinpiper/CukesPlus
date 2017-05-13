@@ -23,8 +23,9 @@ public class FeatureServerCheck
 	public static final String RUN_SUITE = ".run.suite";
 	public static final String CLEAR_RESULTS = ".clear.results";
 	public static final String SERVER_FEATURE_EDITOR = "com.replicanet.cukesplus.server.featureEditor";
+	static volatile boolean doingRun = false;
 
-	public static void getDirectoryContents(Set<String> filesList , File dir)
+	public static void getDirectoryContents(Set<String> filesList, File dir)
 	{
 		File[] files = dir.listFiles();
 		if (null == files)
@@ -44,13 +45,13 @@ public class FeatureServerCheck
 		}
 	}
 
-	private static void addSafePath(Set<String> filesList , String path)
+	private static void addSafePath(Set<String> filesList, String path)
 	{
 		if (path.startsWith("./") || path.startsWith(".\\"))
 		{
 			path = path.substring(2);
 		}
-		if (path.endsWith(".feature"))
+		if (path.toLowerCase().endsWith(".feature") || path.toLowerCase().endsWith(".macrofeature") || path.toLowerCase().endsWith(".macro"))
 		{
 			filesList.add(path);
 		}
@@ -62,7 +63,7 @@ public class FeatureServerCheck
 		for (String arg : argv)
 		{
 			File dir = new File(".");
-			File potential = new File(dir , arg);
+			File potential = new File(dir, arg);
 			if (potential.exists() && potential.isFile())
 			{
 				addSafePath(filesList, potential.getPath());
@@ -77,13 +78,13 @@ public class FeatureServerCheck
 			File[] files = dir.listFiles(fileFilter);
 			for (int i = 0; i < files.length; i++)
 			{
-				getDirectoryContents(filesList,files[i]);
+				getDirectoryContents(filesList, files[i]);
 			}
 		}
 		String htmlFileList = "<html><body bgcolor=\"#E6E6FA\"><table>";
 		for (String path : filesList)
 		{
-			path = path.replace("\\" , "/");
+			path = path.replace("\\", "/");
 			htmlFileList += "<tr><td><a href = \"demo/autocompletion.html?filename=" + path + "\" target='_parent'>" + path + "</a></td></tr>";
 		}
 		htmlFileList += "</table></body></html>";
@@ -96,8 +97,6 @@ public class FeatureServerCheck
 			e.printStackTrace();
 		}
 	}
-
-	static volatile boolean doingRun = false;
 
 	public static boolean checkForFeatureServer(final Class theClass, final String[] argv) throws IOException
 	{
@@ -143,10 +142,10 @@ public class FeatureServerCheck
 			{
 				FileUtils.deleteQuietly(new File("target/events.txt"));
 
-				System.setProperty("com.replicanet.cukesplus.recording.selenium" , "");
+				System.setProperty("com.replicanet.cukesplus.recording.selenium", "");
 
 				int pos = uri.lastIndexOf(RECORD_FILE);
-				String realFile = uri.substring(0,pos);
+				String realFile = uri.substring(0, pos);
 				realFile += RUN_FILE;
 
 				InputStream ret = handleRunFile(realFile);
@@ -158,7 +157,7 @@ public class FeatureServerCheck
 			private InputStream handleRunFile(String uri)
 			{
 				int pos = uri.lastIndexOf(RUN_FILE);
-				String realFile = uri.substring(0,pos);
+				String realFile = uri.substring(0, pos);
 
 				// Remove all passed in feature files then add the single file we want to run
 				List<String> trimmedArgv = new LinkedList<String>();
@@ -189,7 +188,7 @@ public class FeatureServerCheck
 					if (arg.startsWith("--"))
 					{
 						trimmedArgv.add(arg);
-						addNext = true;	// Parameters starting with "--" have a second parameter that we always want to include
+						addNext = true;    // Parameters starting with "--" have a second parameter that we always want to include
 						continue;
 					}
 
@@ -275,39 +274,39 @@ public class FeatureServerCheck
 						try
 						{
 
-						System.out.println("FeatureServer starting run...");
-						ProcessBuilder builder = new ProcessBuilder(newArgs.toArray(new String[newArgs.size()]));
-						builder.redirectErrorStream(true);
-						Process process = builder.start();
+							System.out.println("FeatureServer starting run...");
+							ProcessBuilder builder = new ProcessBuilder(newArgs.toArray(new String[newArgs.size()]));
+							builder.redirectErrorStream(true);
+							Process process = builder.start();
 //					process.getOutputStream().close();
 
-						// Consume and print output until the process finishes
-						try
-						{
-							InputStream input = process.getInputStream();
-							BufferedReader br = null;
+							// Consume and print output until the process finishes
 							try
 							{
-								br = new BufferedReader(new InputStreamReader(input));
-								String line = null;
-								while ((line = br.readLine()) != null)
+								InputStream input = process.getInputStream();
+								BufferedReader br = null;
+								try
 								{
-									System.out.println(line);
+									br = new BufferedReader(new InputStreamReader(input));
+									String line = null;
+									while ((line = br.readLine()) != null)
+									{
+										System.out.println(line);
+									}
+								}
+								finally
+								{
+									br.close();
 								}
 							}
-							finally
+							catch (Exception e2)
 							{
-								br.close();
 							}
-						}
-						catch (Exception e2)
-						{
-						}
 
-						int exitstatus = process.exitValue();
-						System.out.println("FeatureServer run exitstatus = " + exitstatus);
-						process = null;
-						builder = null;
+							int exitstatus = process.exitValue();
+							System.out.println("FeatureServer run exitstatus = " + exitstatus);
+							process = null;
+							builder = null;
 
 						}
 						catch (IOException e)
@@ -380,22 +379,22 @@ public class FeatureServerCheck
 							String reportUri = rootObjs.get(i).getAsJsonObject().get("uri").getAsString();
 
 							// Look for match in the report for the file we are interested in seeing debug information for
-							if (!uri.contains(reportUri.replace("\\" , "/")))
+							if (!uri.contains(reportUri.replace("\\", "/")))
 							{
 								continue;
 							}
 
-							Map<Integer,String> stateByLine = new TreeMap<>();
+							Map<Integer, String> stateByLine = new TreeMap<>();
 							JsonArray elementObjs = rootObjs.get(i).getAsJsonObject().get("elements").getAsJsonArray();
 							int j;
-							for (j = 0; j < elementObjs.size() ; j++)
+							for (j = 0; j < elementObjs.size(); j++)
 							{
 								String keyword = elementObjs.get(j).getAsJsonObject().get("keyword").getAsString();
 								JsonArray stepsObjs = elementObjs.get(j).getAsJsonObject().get("steps").getAsJsonArray();
 								int k;
 								String lastStatus = "skipped";
 								boolean first = true;
-								for (k = 0 ; k < stepsObjs.size() ; k++)
+								for (k = 0; k < stepsObjs.size(); k++)
 								{
 									String status = stepsObjs.get(k).getAsJsonObject().get("result").getAsJsonObject().get("status").getAsString();
 									if (first)
@@ -415,12 +414,12 @@ public class FeatureServerCheck
 										// Preserve any previous state that shows an interesting error for this line
 										continue;
 									}
-									stateByLine.put(line , status);
+									stateByLine.put(line, status);
 								}
 
 								// Emit information for the scenario or the examples table line for the scenario outline
 								int line = elementObjs.get(j).getAsJsonObject().get("line").getAsInt();
-								stateByLine.put(line , lastStatus);
+								stateByLine.put(line, lastStatus);
 							}
 
 							if (!stateByLine.isEmpty())
@@ -430,7 +429,7 @@ public class FeatureServerCheck
 
 								// MPi: TODO: Optimise contiguous ranges of lines
 								boolean first = true;
-								for(Map.Entry<Integer,String> entry : stateByLine.entrySet())
+								for (Map.Entry<Integer, String> entry : stateByLine.entrySet())
 								{
 									if (!first)
 									{

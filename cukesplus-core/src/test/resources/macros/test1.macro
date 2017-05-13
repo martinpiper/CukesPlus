@@ -1,0 +1,6 @@
+# This is a comment
+
+Given this is a step definition
+	Then it does this step
+	And this step
+	* this is a step

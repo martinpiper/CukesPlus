@@ -20,7 +20,7 @@ public class CucumberPlus extends Cucumber
 	protected cucumber.runtime.Runtime createRuntime(cucumber.runtime.io.ResourceLoader resourceLoader, java.lang.ClassLoader classLoader, cucumber.runtime.RuntimeOptions runtimeOptions) throws org.junit.runners.model.InitializationError, java.io.IOException
 	{
 		cucumber.runtime.Runtime runtime = super.createRuntime(resourceLoader, classLoader, runtimeOptions);
-		GlueProcessor.processGlue(runtime);	// << Hook into Cucumber
+		GlueProcessor.processGlue(runtime);    // << Hook into Cucumber
 		return runtime;
 	}
 }

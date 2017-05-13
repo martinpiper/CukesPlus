@@ -31,7 +31,7 @@ public class SeleniumGlue
 
 			// This code sits in the browser and monitors mouse clicks and key presses.
 			// Java Selenium will then grab these events and process them into steps to report back to the ACEServer feature editor.
-
+			// TODO: Load this code from a resource
 			/*
 
 $x = function(xpath, opt_startNode)

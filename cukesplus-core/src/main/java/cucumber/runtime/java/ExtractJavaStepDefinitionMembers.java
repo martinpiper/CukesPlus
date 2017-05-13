@@ -18,11 +18,11 @@ public class ExtractJavaStepDefinitionMembers
 	{
 		try
 		{
-			JavaStepDefinition javaStep = (JavaStepDefinition)step;
+			JavaStepDefinition javaStep = (JavaStepDefinition) step;
 
 			Field f = javaStep.getClass().getDeclaredField("method");
 			f.setAccessible(true);
-			return (Method)f.get(javaStep);
+			return (Method) f.get(javaStep);
 		}
 		catch (Throwable e)
 		{
@@ -34,11 +34,11 @@ public class ExtractJavaStepDefinitionMembers
 	{
 		try
 		{
-			JavaStepDefinition javaStep = (JavaStepDefinition)step;
+			JavaStepDefinition javaStep = (JavaStepDefinition) step;
 
 			Field f = javaStep.getClass().getDeclaredField("parameterInfos");
 			f.setAccessible(true);
-			return (List<ParameterInfo>)f.get(javaStep);
+			return (List<ParameterInfo>) f.get(javaStep);
 		}
 		catch (Throwable e)
 		{

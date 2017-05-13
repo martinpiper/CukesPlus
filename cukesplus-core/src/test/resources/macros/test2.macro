@@ -1,0 +1,12 @@
+# This is a comment
+
+Given this is a step definition
+	Then it does this step
+	And this step
+	* this is a step
+
+
+Given this is a step definition with a simple parameter for * in the middle
+	Then it does this step
+	And this step
+	* this is a step with parameter $1

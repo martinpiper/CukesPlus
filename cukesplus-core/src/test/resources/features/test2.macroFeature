@@ -1,0 +1,3 @@
+Feature: Test 1
+  Scenario: foo
+    Oops this is not a macro

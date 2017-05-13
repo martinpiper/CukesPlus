@@ -1,0 +1,23 @@
+@Given("^this is a step definition with a simple parameter for (.*) in (.*) middle$")
+$Any.firstParam $secondParam
+	Then it does this step
+	And this step
+	* this is a step with parameter $firstParam
+	Then it does this step with an escaped $$name in the step
+
+
+Given I do this thing
+	it does this step:
+	"""
+	With this text block
+	And this line
+	"""
+
+
+
+Given I do this macro
+	Then I do the other macro
+
+
+Then I do the other macro
+	Then this is the real step
