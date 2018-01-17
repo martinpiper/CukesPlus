@@ -71,8 +71,8 @@
     <option name="ADDITIONAL_OPTIONS_STRING" value="-parameters" />
   </component>
   <component name="KotlinCommonCompilerArguments">
-    <option name="languageVersion" value="1.1" />
     <option name="apiVersion" value="1.1" />
+    <option name="languageVersion" value="1.1" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -219,7 +219,7 @@
       <module fileurl="file://$PROJECT_DIR$/cukesplus-test/cukesplus-test.iml" filepath="$PROJECT_DIR$/cukesplus-test/cukesplus-test.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_3" default="false" project-jdk-name="9.0" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="VcsDirectoryMappings">
