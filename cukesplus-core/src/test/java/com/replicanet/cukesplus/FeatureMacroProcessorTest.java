@@ -1,8 +1,8 @@
 package com.replicanet.cukesplus;
 
+import cucumber.api.PendingException;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
-import sun.security.util.PendingException;
 
 import java.io.File;
 

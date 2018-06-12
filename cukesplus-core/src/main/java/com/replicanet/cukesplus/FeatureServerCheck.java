@@ -216,6 +216,16 @@ public class FeatureServerCheck
 				return handleRunSuite(trimmedArgv.toArray(new String[trimmedArgv.size()]));
 			}
 
+			private String makeSafeArg(String arg)
+			{
+				arg = arg.replace("\"" , "");
+//				if(arg.contains(" "))
+//				{
+//					return "\"" + arg + "\"";
+//				}
+				return arg;
+			}
+
 			private InputStream handleRunSuite(String[] thisArgv)
 			{
 				if (doingRun)
@@ -236,7 +246,7 @@ public class FeatureServerCheck
 				{
 					String key = (String) e.nextElement();
 					String r = String.format("-D%s=%s", key, propToEnum.getProperty(key));
-					newArgs.add(r);
+					newArgs.add(makeSafeArg(r));
 				}
 
 /*					String path = FeatureServerCheck.class.getProtectionDomain().getCodeSource().getLocation().getPath();
@@ -263,8 +273,10 @@ public class FeatureServerCheck
 
 				for (String arg : thisArgv)
 				{
-					newArgs.add(arg);
+					newArgs.add(makeSafeArg(arg));
 				}
+
+				System.out.println("The args =" + newArgs.toString());
 
 				new Thread(new Runnable()
 				{
