@@ -3,6 +3,8 @@
 These escape patterns need handling if they don't appear in a capture group: "\\\\" "\\$" "\\(" "\\)" "\\[" "\\]" "\\?" "\\*" "\\+" "\\." "\\^"
 
 
+* Need to add MSVC compatible error output so the IDE can work with F4 to move to the next build/test error in the feature/macro
+
 
 * Add a list of potential values that can be used for regex sections (either paramters/capture groups or other regex areas)
 	Can bew retrieved from the regex itself or comments in the step definition
