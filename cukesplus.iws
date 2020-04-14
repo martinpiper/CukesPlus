@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/cukesplus.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.ipr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus.iws" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iws" afterDir="false" />
-    </list>
+    <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="" />
     <ignored path="cukesplus.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,9 +25,9 @@
     <session id="-153404806">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.1" value="2" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
     </session>
@@ -58,13 +55,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureServerCheck.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="388">
               <caret line="220" column="45" selection-start-line="220" selection-start-column="45" selection-end-line="220" selection-end-column="45" />
               <folding>
-                <element signature="e#4451#4459#0" expanded="true" />
                 <element signature="e#12830#12831#0" expanded="true" />
                 <element signature="e#12860#12861#0" expanded="true" />
               </folding>
@@ -90,11 +86,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cukesplus-test/features/test.feature">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+              <caret line="17" column="2" lean-forward="true" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -294,6 +290,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -336,6 +333,25 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cukesplus" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
+              <item name="cukesplus-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cukesplus" type="462c0819:PsiDirectoryNode" />
+              <item name="junit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
+              <item name="cukesplus-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
@@ -406,7 +422,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -763,8 +778,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11567164" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11673774" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Palette&#9;" order="3" />
@@ -788,7 +804,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Designer" order="4" />
-      <window_info active="true" anchor="right" id="Maven Projects" order="5" visible="true" weight="0.3283582" />
+      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.3283582" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Coverage" order="7" side_tool="true" weight="0.3294621" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -1087,13 +1103,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-test/features/test.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cukesplus-core/src/test/java/com/replicanet/cukesplus/FeatureMacroProcessorTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1126,10 +1135,16 @@
         <state relative-caret-position="388">
           <caret line="220" column="45" selection-start-line="220" selection-start-column="45" selection-end-line="220" selection-end-column="45" />
           <folding>
-            <element signature="e#4451#4459#0" expanded="true" />
             <element signature="e#12830#12831#0" expanded="true" />
             <element signature="e#12860#12861#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cukesplus-test/features/test.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="2" lean-forward="true" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
         </state>
       </provider>
     </entry>
