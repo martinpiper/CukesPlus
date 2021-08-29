@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="" />
-    <ignored path="cukesplus.iws" />
-    <ignored path=".idea/workspace.xml" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <ignored path="$PROJECT_DIR$/cukesplus-core/target/" />
-    <ignored path="$PROJECT_DIR$/cukesplus-test/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/cukesplus.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus.iws" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iws" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,110 +21,6 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="cukesplus" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/SeleniumGlue.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1054">
-              <caret line="38" column="62" lean-forward="true" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor />
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cukesplus-test/features/test.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="2" lean-forward="true" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/Glue.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="24" column="64" lean-forward="true" selection-start-line="24" selection-start-column="64" selection-end-line="24" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/GlueProcessor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1479">
-              <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/TestGlue2/Glue2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cukesplus-core/src/test/java/com/replicanet/cukesplus/FeatureMacroProcessorTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cukesplus-test/src/test/java/RunCukesPlusTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -133,86 +29,17 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>getmachine</find>
-      <find>a</find>
-      <find>Corpor</find>
-      <find>FeatureServer starting run...</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>emitInfo</replace>
-      <replace>processMacroFile</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue2/Glue2.java" />
-        <option value="$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/Glue2.java" />
-        <option value="$PROJECT_DIR$/cukesplus-test/features/test.feature" />
-        <option value="$PROJECT_DIR$/cukesplus-test/target/fileList.html" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/TestGlue2/Glue2.java" />
-        <option value="$PROJECT_DIR$/cukesplus-test/features/subDir/test2.feature" />
-        <option value="$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/Glue.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/cukesplus-test/src/test/java/RunCukesPlusTest.java" />
-        <option value="$PROJECT_DIR$/TODO.txt" />
-        <option value="$PROJECT_DIR$/cukesplus-test/features/WebRecording.feature" />
-        <option value="$PROJECT_DIR$/cukesplus-test/src/test/resources/Selenium.java" />
-        <option value="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/Main.java" />
-        <option value="$PROJECT_DIR$/cukesplus-test/pom.xml" />
-        <option value="$PROJECT_DIR$/Done.txt" />
-        <option value="$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/SeleniumGlue.java" />
-        <option value="$PROJECT_DIR$/cukesplus-core/pom.xml" />
-        <option value="$PROJECT_DIR$/cukesplus-core/src/test/resources/macros/test1.macro" />
-        <option value="$PROJECT_DIR$/cukesplus-core/src/test/resources/macros/test2.macro" />
-        <option value="$PROJECT_DIR$/cukesplus-core/src/test/resources/macros/test3.macro" />
-        <option value="$PROJECT_DIR$/cukesplus-core/src/test/resources/macros/test5.macro" />
-        <option value="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/test1.macroFeature" />
-        <option value="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/test1.feature" />
-        <option value="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/test2.macroFeature" />
-        <option value="$PROJECT_DIR$/cukesplus-core/src/test/resources/macros/test4.macro" />
-        <option value="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java" />
-        <option value="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/GlueProcessor.java" />
-        <option value="$PROJECT_DIR$/cukesplus-core/src/test/java/com/replicanet/cukesplus/FeatureMacroProcessorTest.java" />
-        <option value="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureServerCheck.java" />
-      </list>
-    </option>
-  </component>
   <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.1\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
     </option>
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="cukesplus" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="cukesplus" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Run Configurations" type="21c1f71a:MavenProjectsStructure$RunConfigurationsNode" />
-        </path>
-      </expand>
-      <select />
-    </treeState>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
-  </component>
+  <component name="ProjectId" id="1s3vvwCFwogFf32iqs7HLK9kwJX" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -280,154 +107,9 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus" type="462c0819:PsiDirectoryNode" />
-              <item name="junit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-test" type="462c0819:PsiDirectoryNode" />
-              <item name="features" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="TestGlue" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cukesplus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CukesPlus" type="462c0819:PsiDirectoryNode" />
-              <item name="cukesplus-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="TestGlue" type="462c0819:PsiDirectoryNode" />
-              <item name="TestGlue2" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="FullScreen" value="false" />
@@ -460,18 +142,6 @@
       <recent name="C:\Work\CukesPlus\cukesplus-core\src\test\resources\macros" />
       <recent name="C:\Work\CukesPlus\cukesplus-test\features\subDir" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Maven.cukesplus [package] skip tests">
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -534,6 +204,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.replicanet.cukesplus" />
       <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.FeatureMacroProcessorTest" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -557,6 +228,7 @@
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -567,13 +239,14 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="RunCukesPlusTest" />
       <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <option name="filePath" />
       <option name="vmParameters" />
       <option name="alternativeJrePath" />
@@ -685,7 +358,8 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <properties />
       <listeners />
@@ -693,11 +367,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
+      <predefined_log_file enabled="true" id="idea.log" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -708,9 +382,9 @@
       <item itemvalue="Application.tests many lines" />
       <item itemvalue="Application.feature editor" />
       <item itemvalue="JUnit.tests" />
-      <item itemvalue="Maven.cukesplus [package] skip tests" />
       <item itemvalue="JUnit.FeatureMacroProcessorTest.processMacroSyntaxToGlue" />
       <item itemvalue="JUnit.FeatureMacroProcessorTest" />
+      <item itemvalue="Maven.cukesplus [package] skip tests" />
       <item itemvalue="Maven.cukesplus [verify]" />
       <item itemvalue="Maven.cukesplus [install]" />
     </list>
@@ -723,6 +397,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -736,72 +411,6 @@
     </task>
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="FeatureMacroProcessorTest - 2017.05.13 at 21h 48m 11s.xml">
-      <configuration name="FeatureMacroProcessorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FeatureMacroProcessorTest - 2017.05.13 at 21h 48m 36s.xml">
-      <configuration name="FeatureMacroProcessorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FeatureMacroProcessorTest - 2017.05.13 at 21h 48m 57s.xml">
-      <configuration name="FeatureMacroProcessorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FeatureMacroProcessorTest - 2017.05.13 at 21h 50m 21s.xml">
-      <configuration name="FeatureMacroProcessorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FeatureMacroProcessorTest - 2017.05.13 at 21h 50m 51s.xml">
-      <configuration name="FeatureMacroProcessorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FeatureMacroProcessorTest - 2017.05.13 at 21h 51m 38s.xml">
-      <configuration name="FeatureMacroProcessorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FeatureMacroProcessorTest - 2017.05.13 at 21h 56m 44s.xml">
-      <configuration name="FeatureMacroProcessorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FeatureMacroProcessorTest - 2017.05.13 at 22h 02m 03s.xml">
-      <configuration name="FeatureMacroProcessorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="tests - 2018.02.17 at 21h 56m 14s.xml">
-      <configuration name="tests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="tests - 2018.02.17 at 22h 08m 26s.xml">
-      <configuration name="tests" configurationId="JUnit" />
-    </history-entry>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.117803834" />
-      <window_info id="Structure" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info id="Palette&#9;" order="3" />
-      <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info id="Image Layers" order="5" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32502708" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39595374" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Application Servers" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32980973" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32699084" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Designer" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.3283582" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Coverage" order="7" side_tool="true" weight="0.3294621" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-    </layout>
-  </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
@@ -810,8 +419,15 @@
       <collection />
     </option>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="WindowStateProjectService">
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620114608524">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.-6.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1620114608524" />
+    <state x="666" y="253" width="587" height="534" key="find.popup" timestamp="1620114613972">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="666" y="253" width="587" height="534" key="find.popup/-1920.-6.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1620114613972" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -819,67 +435,56 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureServerCheck.java</url>
           <line>483</line>
-          <properties />
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureServerCheck.java</url>
           <line>477</line>
-          <properties />
           <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/SeleniumGlue.java</url>
           <line>149</line>
-          <properties />
           <option name="timeStamp" value="103" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/SeleniumGlue.java</url>
           <line>124</line>
-          <properties />
           <option name="timeStamp" value="105" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-core/src/test/java/com/replicanet/cukesplus/FeatureMacroProcessorTest.java</url>
           <line>43</line>
-          <properties />
           <option name="timeStamp" value="120" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java</url>
           <line>513</line>
-          <properties />
           <option name="timeStamp" value="122" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java</url>
           <line>621</line>
-          <properties />
           <option name="timeStamp" value="123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java</url>
           <line>646</line>
-          <properties />
           <option name="timeStamp" value="128" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java</url>
           <line>219</line>
-          <properties />
           <option name="timeStamp" value="131" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java</url>
           <line>213</line>
-          <properties />
           <option name="timeStamp" value="133" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureServerCheck.java</url>
           <line>288</line>
-          <properties />
           <option name="timeStamp" value="135" />
         </line-breakpoint>
       </breakpoints>
@@ -894,258 +499,6 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.0/cucumber-core-1.2.0-sources.jar!/cucumber/runtime/RuntimeOptions.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.0/cucumber-core-1.2.0-sources.jar!/cucumber/runtime/Runtime.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/info/cukes/gherkin/2.12.2/gherkin-2.12.2.jar!/gherkin/deps/com/google/gson/JsonArray.class" />
-    <entry file="jar://$MAVEN_REPOSITORY$/info/cukes/gherkin/2.12.2/gherkin-2.12.2.jar!/gherkin/deps/com/google/gson/JsonElement.class" />
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_05/src.zip!/java/util/Properties.java" />
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_05/src.zip!/java/lang/System.java" />
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_05/src.zip!/java/security/ProtectionDomain.java" />
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_05/src.zip!/java/net/URI.java" />
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_05/src.zip!/java/net/URL.java" />
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_05/src.zip!/java/security/CodeSource.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.3/commons-io-2.3.jar!/org/apache/commons/io/IOUtils.class" />
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_05/src.zip!/java/lang/ProcessBuilder.java" />
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_05/src.zip!/java/lang/Process.java" />
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_05/src.zip!/java/io/InputStream.java" />
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_05/src.zip!/java/lang/String.java" />
-    <entry file="file://$PROJECT_DIR$/TODO.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.4/cucumber-core-1.2.4.jar!/cucumber/runtime/Utils.class" />
-    <entry file="file://$PROJECT_DIR$/Done.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-test/features/WebRecording.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-test/features/subDir/test3.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-test/features/subDir/test2.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.3/commons-io-2.3.jar!/org/apache/commons/io/FileUtils.class" />
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_05/src.zip!/java/lang/RuntimeException.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-java/1.2.4/cucumber-java-1.2.4.jar!/cucumber/api/java/en/Given.class" />
-    <entry file="file://$PROJECT_DIR$/cukesplus-test/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.4/cucumber-core-1.2.4.jar!/cucumber/api/StepDefinitionReporter.class" />
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/src/test/resources/macros/test1.macro">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/src/test/resources/macros/test2.macro">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/src/test/resources/macros/test3.macro">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/src/test/resources/macros/test5.macro">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/src/test/resources/features/test1.macroFeature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/target/test1.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/src/test/resources/features/test2.macroFeature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/src/test/resources/features/test1.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1375">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/src/test/resources/macros/test4.macro">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/junit/CucumberPlus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/sun/security/util/PendingException.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/java/lang/Thread.java" />
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8687">
-          <caret line="526" column="36" selection-start-line="526" selection-start-column="36" selection-end-line="526" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1114#1115#0" expanded="true" />
-            <element signature="e#1159#1160#0" expanded="true" />
-            <element signature="e#1205#1206#0" expanded="true" />
-            <element signature="e#1253#1254#0" expanded="true" />
-            <element signature="e#18981#18982#0" expanded="true" />
-            <element signature="e#19038#19039#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureServerCheck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3570">
-          <caret line="220" column="45" selection-start-line="220" selection-start-column="45" selection-end-line="220" selection-end-column="45" />
-          <folding>
-            <element signature="e#12830#12831#0" expanded="true" />
-            <element signature="e#12860#12861#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-test/src/test/java/RunCukesPlusTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-test/features/test.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="2" lean-forward="true" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/GlueProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1479">
-          <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/TestGlue2/Glue2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/Glue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/SeleniumGlue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1054">
-          <caret line="38" column="62" lean-forward="true" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/src/test/java/com/replicanet/cukesplus/FeatureMacroProcessorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="24" column="64" lean-forward="true" selection-start-line="24" selection-start-column="64" selection-end-line="24" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>
