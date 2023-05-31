@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/MyRuntime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/junit/CucumberPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/junit/CucumberPlus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/cucumber/runtime/java/ExtractJavaStepDefinitionMembers.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/cucumber/runtime/java/ExtractJavaStepDefinitionMembers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-test/features/test.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-test/features/test.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus.iws" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,13 +29,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1s3vvwCFwogFf32iqs7HLK9kwJX" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -103,31 +112,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "last_opened_file_path": "C:/Work/CukesPlus"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;last_opened_file_path&quot;: &quot;C:/Work/CukesPlus&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
+    <key name="CreateClassDialog.RecentsKey">
       <recent name="com.replicanet.cukesplus" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Work\CukesPlus\cukesplus-test\src\main\java\TestGlue" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="TestGlue2" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Work\CukesPlus\cukesplus-core\src\test\resources\features" />
       <recent name="C:\Work\CukesPlus\cukesplus-core\src\test\resources\macros" />
       <recent name="C:\Work\CukesPlus\cukesplus-test\features\subDir" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Work\CukesPlus\cukesplus-test\src\main\java\TestGlue" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.replicanet.cukesplus" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="TestGlue2" />
+    </key>
   </component>
-  <component name="RunManager" selected="Maven.cukesplus [package] skip tests">
+  <component name="RunManager" selected="Application.tests">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -139,7 +151,7 @@
       <module name="cukesplus-test" />
       <option name="PROGRAM_PARAMETERS" value="--plugin json:target/report1.json --glue TestGlue features\WebRecording.feature" />
       <option name="VM_PARAMETERS" value="-Dcom.replicanet.cukesplus.recording.selenium= -Dwebdriver.chrome.driver=&quot;C:\Temp\chromedriver.exe&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/cukesplus-test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cukesplus-test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -155,7 +167,7 @@
       <module name="cukesplus-test" />
       <option name="PROGRAM_PARAMETERS" value="--tags ~@ignore --plugin json:target/report1.json --glue TestGlue features features\*.feature" />
       <option name="VM_PARAMETERS" value="-Dcom.replicanet.cukesplus.server.featureEditor= -Dcom.replicanet.ACEServer.debug.requests= -Dwebdriver.chrome.driver=&quot;C:\Temp\chromedriver.exe&quot;" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/cukesplus-test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cukesplus-test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -173,7 +185,7 @@
       <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.Main" />
       <module name="cukesplus-test" />
       <option name="PROGRAM_PARAMETERS" value="--plugin json:target/report1.json --glue TestGlue features\test.feature" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/cukesplus-test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cukesplus-test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -433,12 +445,36 @@
           <line>288</line>
           <option name="timeStamp" value="135" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.4/cucumber-core-1.2.4.jar!/cucumber/runtime/Runtime.class</url>
+          <line>298</line>
+          <option name="timeStamp" value="141" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/cucumber/runtime/java/MacroStepDefinition.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="164" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/MyRuntime.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="165" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-java/1.2.4/cucumber-java-1.2.4.jar!/cucumber/runtime/java/JavaStepDefinition.class</url>
+          <line>39</line>
+          <option name="timeStamp" value="167" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/Main.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="170" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="outputSimple" />
-        <watch expression="outputComplex" />
+        <watch expression="step.name" />
       </configuration>
     </watches-manager>
   </component>

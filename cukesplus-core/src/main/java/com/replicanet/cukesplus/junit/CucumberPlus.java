@@ -1,7 +1,13 @@
 package com.replicanet.cukesplus.junit;
 
 import com.replicanet.cukesplus.GlueProcessor;
+import com.replicanet.cukesplus.MyRuntime;
 import cucumber.api.junit.Cucumber;
+import cucumber.runtime.ClassFinder;
+import cucumber.runtime.Runtime;
+import cucumber.runtime.RuntimeOptions;
+import cucumber.runtime.io.ResourceLoader;
+import cucumber.runtime.io.ResourceLoaderClassFinder;
 import org.junit.runners.model.InitializationError;
 
 import java.io.IOException;
@@ -16,10 +22,16 @@ public class CucumberPlus extends Cucumber
 		super(clazz);
 	}
 
+	protected MyRuntime createMyRuntime(ResourceLoader resourceLoader, ClassLoader classLoader, RuntimeOptions runtimeOptions) throws InitializationError, IOException {
+		ClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);
+		return new MyRuntime(resourceLoader, classFinder, classLoader, runtimeOptions);
+	}
+
 	@Override
 	protected cucumber.runtime.Runtime createRuntime(cucumber.runtime.io.ResourceLoader resourceLoader, java.lang.ClassLoader classLoader, cucumber.runtime.RuntimeOptions runtimeOptions) throws org.junit.runners.model.InitializationError, java.io.IOException
 	{
-		cucumber.runtime.Runtime runtime = super.createRuntime(resourceLoader, classLoader, runtimeOptions);
+//		cucumber.runtime.Runtime runtime = super.createRuntime(resourceLoader, classLoader, runtimeOptions);
+		MyRuntime runtime = createMyRuntime(resourceLoader, classLoader, runtimeOptions);
 		GlueProcessor.processGlue(runtime);    // << Hook into Cucumber
 		return runtime;
 	}

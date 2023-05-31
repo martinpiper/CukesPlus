@@ -1,6 +1,7 @@
 Feature: Testing this CukesPlus
   
   Background:
+#    Given this is a macro test with one parameter "hello"
     Given I run this test
     
   

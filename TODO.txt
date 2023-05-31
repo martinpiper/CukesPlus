@@ -1,3 +1,4 @@
+
 * Use the Cucumber snippet generator to improve the code hints for the web editor
 	https://github.com/cucumber/cucumber-jvm/blob/20db608a5535850139ba25fcdb9be3ae46991855/core/src/main/java/cucumber/runtime/snippets/SnippetGenerator.java
 These escape patterns need handling if they don't appear in a capture group: "\\\\" "\\$" "\\(" "\\)" "\\[" "\\]" "\\?" "\\*" "\\+" "\\." "\\^"
@@ -10,6 +11,25 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 	Can bew retrieved from the regex itself or comments in the step definition
 
 
+
+* Consider updating cucumber, then adding macros
+	When a syntax method is called, check to see if a new syntax method can be called from a text string, or text block for tables, that gets emitted to the scenario report
+	If yes, it might be possible to intercept method search and execution and replace with macro execution, that is recursive
+		Perhaps cucumber.runtime.Runtime.runStep
+			This does get access to all the instances: String featurePath, Step step, Reporter reporter, I18n i18n
+		Or cucumber.runtime.model.StepContainer.runSteps
+		Perhaps add a new cucumber.runtime.StepDefinition derived step execution method...
+			Which is created before "GlueProcessor.processGlue(runtime);" is run
+			Create new step derived class, like cucumber.runtime.java.JavaStepDefinition.JavaStepDefinition
+				pattern = ^I open the web page "([^"]*)"$
+				Or perhaps like: cucumber.runtime.java.JavaBackend.addStepDefinition(java.lang.annotation.Annotation, java.lang.reflect.Method)
+				Which arrives via: cucumber.runtime.java.JavaBackend.loadGlue(cucumber.runtime.Glue, java.util.List<java.lang.String>)
+					Which is Runtime.glue
+		When it is parsing events and adding them before execution: gherkin.formatter.FilterFormatter.replayEvents
+			Step.rows is already parsed as a list of DataTableRow objects
+		This adds a found step to the list to execute: cucumber.runtime.model.StepContainer#step
+	>> See: new MacroStepDefinition
+		Given this is a macro test with one parameter "hello"
 
 * Feature macro processing.
 	For example given the macro feature file:
