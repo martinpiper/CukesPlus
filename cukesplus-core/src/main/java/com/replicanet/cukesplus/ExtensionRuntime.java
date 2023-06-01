@@ -28,7 +28,6 @@ public class ExtensionRuntime extends Runtime {
     int currentPosition = -1;
         @Override
     public void runStep(String featurePath, Step step, Reporter reporter, I18n i18n) {
-        retireMacroSteps();
         // At this point, because we are exposing global static variables, then queue any threads that might happen at this point
         synchronized (ExtensionRuntime.class){
             // Hacky expose of these
