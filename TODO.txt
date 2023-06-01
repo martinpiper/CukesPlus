@@ -38,6 +38,7 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 		Or perhaps alternatively it could just add the Step to a list based on the "macro definition"
 			Then runStep can retire all of those extra calls...?
 				Would also need to be careful with recursion...
+				>> Problem with the retireMacroSteps() approach. The report printers get out of sync when steps are added, which causes issues with definitions and arguments not matching
 
 
 * Feature macro processing.

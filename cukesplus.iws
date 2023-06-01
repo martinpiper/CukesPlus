@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/MyRuntime.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/junit/CucumberPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/junit/CucumberPlus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/cucumber/runtime/java/MacroStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/cucumber/runtime/java/MacroStepDefinition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-test/features/test.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-test/features/test.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/Glue.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/Glue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus.iws" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -447,20 +444,14 @@
           <option name="timeStamp" value="135" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/cucumber/runtime/java/MacroStepDefinition.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="164" />
+          <url>jar://$MAVEN_REPOSITORY$/info/cukes/gherkin/2.12.2/gherkin-2.12.2.jar!/gherkin/formatter/PrettyFormatter.class</url>
+          <line>175</line>
+          <option name="timeStamp" value="191" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/Main.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="170" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="173" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.StringIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="189" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
