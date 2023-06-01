@@ -30,6 +30,15 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 		This adds a found step to the list to execute: cucumber.runtime.model.StepContainer#step
 	>> See: new MacroStepDefinition
 		Given this is a macro test with one parameter "hello"
+	>> Note when there is a string value: gherkin.formatter.model.Step#doc_string
+	>> Note when there is a data table: gherkin.formatter.model.Step#rows
+	>> com.replicanet.cukesplus.ExtensionRuntime.runMacroStep will need to be recursive call aware and duplicate the functionality in cucumber.runtime.Runtime#runStep
+		>> Look for: ExtensionRuntime.runtime.runMacroStep
+		But be careful not to have re-enterant problems with stopWatch etc
+		Or perhaps alternatively it could just add the Step to a list based on the "macro definition"
+			Then runStep can retire all of those extra calls...?
+				Would also need to be careful with recursion...
+
 
 * Feature macro processing.
 	For example given the macro feature file:

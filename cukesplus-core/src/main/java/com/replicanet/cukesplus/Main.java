@@ -1,10 +1,8 @@
 package com.replicanet.cukesplus;
 
-import cucumber.runtime.Runtime;
 import cucumber.runtime.RuntimeOptions;
 import cucumber.runtime.io.MultiLoader;
 import cucumber.runtime.io.ResourceLoaderClassFinder;
-import cucumber.runtime.java.ExtractJavaStepDefinitionMembers;
 import cucumber.runtime.java.MacroStepDefinition;
 
 import java.io.IOException;
@@ -35,9 +33,9 @@ public class Main
 		RuntimeOptions runtimeOptions = new RuntimeOptions(new ArrayList(Arrays.asList(argv)));
 		MultiLoader resourceLoader = new MultiLoader(classLoader);
 		ResourceLoaderClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);
-		cucumber.runtime.Runtime runtime = new MyRuntime(resourceLoader, classFinder, classLoader, runtimeOptions);
+		cucumber.runtime.Runtime runtime = new ExtensionRuntime(resourceLoader, classFinder, classLoader, runtimeOptions);
 
-//		runtime.getGlue().addStepDefinition(new MacroStepDefinition(Pattern.compile("^this is a macro test with one parameter \"([^\"]*)\"$") , 0));
+		runtime.getGlue().addStepDefinition(new MacroStepDefinition(Pattern.compile("^this is a macro test with one parameter \"([^\"]*)\"$") , 0));
 
 		GlueProcessor.processGlue(runtime);    // << Hook into Cucumber
 		runtime.run();
