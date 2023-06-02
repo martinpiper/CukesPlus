@@ -11,8 +11,9 @@
 		<junit.version>4.11</junit.version>
 	</properties>
 	<modules>
+		<module>cukesplus-aspect</module>
 		<module>cukesplus-core</module>
-        <module>cukesplus-test</module>
+		<module>cukesplus-test</module>
     </modules>
 
 	<build>
@@ -25,6 +26,7 @@
 					<compilerVersion>1.8</compilerVersion>
 					<source>1.8</source>
 					<target>1.8</target>
+					<useIncrementalCompilation>false</useIncrementalCompilation>
 					<compilerArgs>
 						<arg>-parameters</arg>
 					</compilerArgs>
