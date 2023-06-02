@@ -56,6 +56,9 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 			The next intercept point is probably at: gherkin.parser.Parser#parse
 		The addition of runtime syntax MacroStepDefinition can still happen, it's just that these steps do nothing except perhaps are useful during reporting of indentation levels?
 			Or other similar debug in the output report...
+			Or... ClassLoader intercept the gherkin.parser.Parser#parse
+				https://www.mojohaus.org/aspectj-maven-plugin/examples/weaveJars.html
+				Or even: gherkin.lexer.I18nLexer#scan
 
 
 
