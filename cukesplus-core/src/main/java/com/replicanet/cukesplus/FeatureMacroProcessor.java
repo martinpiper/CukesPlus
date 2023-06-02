@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  */
 public class FeatureMacroProcessor
 {
-	// MPi: TODO: Pull this list from the loaded Cucumber step keywords by iterating classes annoted with @StepDefAnnotation
+	// MPi: TODO: Pull this list from the loaded Cucumber step keywords by iterating classes annotated with @StepDefAnnotation
 	final List<String> stepKeywords = Arrays.asList("Given", "When", "Then", "And", "But", "*");
 	int errors;
 	Map<String, Macro> macroMap = new HashMap<String, Macro>();

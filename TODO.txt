@@ -60,6 +60,10 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 				https://www.mojohaus.org/aspectj-maven-plugin/examples/weaveJars.html
 				Or even: gherkin.lexer.I18nLexer#scan
 				https://www.baeldung.com/spring-aop-pointcut-tutorial
+		>> #include "../macros/test4.macro"
+			Feature: Test 1
+		>> com.replicanet.cukesplus.FeatureProvider#getFeature
+		>> com.replicanet.cukesplus.FeatureMacroProcessor#processMacroFile
 
 
 
