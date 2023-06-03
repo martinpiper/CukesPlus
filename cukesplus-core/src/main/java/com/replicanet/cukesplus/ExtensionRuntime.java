@@ -7,7 +7,10 @@ import cucumber.runtime.io.ResourceLoader;
 import gherkin.I18n;
 import gherkin.formatter.Reporter;
 import gherkin.formatter.model.Step;
+import org.aspectj.lang.annotation.Aspect;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,6 +28,23 @@ public class ExtensionRuntime extends Runtime {
         macroSteps = new LinkedList<MacroStep>();
     }
 
+    class ExtensionFeatureProvider extends FeatureProvider {
+
+        @Override
+        public String getFeature(String feature) {
+            try {
+                feature = FeatureServerCheck.getFeatureMacroProcessor().processFeatureText(feature);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return feature;
+        }
+
+    }
+
+    ExtensionFeatureProvider extensionFeatureProvider = new ExtensionFeatureProvider();
     int currentPosition = -1;
         @Override
     public void runStep(String featurePath, Step step, Reporter reporter, I18n i18n) {

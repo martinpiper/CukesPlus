@@ -64,7 +64,9 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 			Feature: Test 1
 		>> com.replicanet.cukesplus.FeatureProvider#getFeature
 		>> com.replicanet.cukesplus.FeatureMacroProcessor#processMacroFile
-
+		>> Debug data mapping...
+		>> Initial feature macro enrichment seems to work.
+		* Now need to add: runtime.getGlue().addStepDefinition
 
 
 * Feature macro processing.

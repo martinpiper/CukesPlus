@@ -25,6 +25,12 @@ public class FeatureServerCheck
 	public static final String SERVER_FEATURE_EDITOR = "com.replicanet.cukesplus.server.featureEditor";
 	static volatile boolean doingRun = false;
 
+	static FeatureMacroProcessor featureMacroProcessor = new FeatureMacroProcessor();
+
+	public static FeatureMacroProcessor getFeatureMacroProcessor() {
+		return featureMacroProcessor;
+	}
+
 	public static void getDirectoryContents(Set<String> filesList, File dir)
 	{
 		File[] files = dir.listFiles();
@@ -54,6 +60,14 @@ public class FeatureServerCheck
 		if (path.toLowerCase().endsWith(".feature") || path.toLowerCase().endsWith(".macrofeature") || path.toLowerCase().endsWith(".macro"))
 		{
 			filesList.add(path);
+		}
+
+		if (path.toLowerCase().endsWith(".macro")) {
+			try {
+				featureMacroProcessor.processMacroFile(path);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -100,14 +114,21 @@ public class FeatureServerCheck
 
 	public static boolean checkForFeatureServer(final Class theClass, final String[] argv) throws IOException
 	{
+		buildFileList(argv);
+
+		if (featureMacroProcessor.errors > 0) {
+			System.out.println("Processing macros errors: " + featureMacroProcessor.errors);
+		}
+
 		if (System.getProperty(SERVER_FEATURE_EDITOR) == null)
 		{
+			if (featureMacroProcessor.errors > 0) {
+				System.exit(-1);
+			}
 			return false;
 		}
 
 		System.clearProperty(SERVER_FEATURE_EDITOR);
-
-		buildFileList(argv);
 
 		ACEServer.addCallback(new ACEServerCallback()
 		{

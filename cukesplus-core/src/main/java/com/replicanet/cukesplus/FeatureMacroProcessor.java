@@ -385,6 +385,16 @@ public class FeatureMacroProcessor
 		return fragment;
 	}
 
+	public String processFeatureText(String text) throws IOException, ParseException {
+		FileUtils.writeStringToFile(new File("target/t.macroFeature"), text);
+		int lineCount = processFeatureFile("target/t.macroFeature" , "target/t.feature");
+		if (lineCount <= 0) {
+			return text;
+		}
+		String processed = FileUtils.readFileToString(new File("target/t.feature"));
+		return processed;
+	}
+
 	public int processFeatureFile(String inputFile, String outputFile) throws IOException, ParseException
 	{
 		String tempOutput = outputFile + ".temp";
