@@ -7,12 +7,11 @@
     <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-aspect/src/main/java/com/replicanet/cukesplus/AspectE.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-aspect/src/main/java/com/replicanet/cukesplus/AspectE.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureServerCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureServerCheck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/test/resources/macros/test5.macro" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/test/resources/macros/test5.macro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/test3.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/test3.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-test/features/subDir/test3.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-test/features/subDir/test3.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus.iws" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +117,7 @@
   "keyToString": {
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_directory_selection": "C:/Work/CukesPlus/cukesplus-core/src/main/java/com/replicanet/cukesplus",
-    "last_opened_file_path": "C:/Work/CukesPlus/cukesplus-core/src/test/resources/features",
+    "last_opened_file_path": "C:/Work/CukesPlus/cukesplus-test/features/subDir",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -129,9 +128,9 @@
       <recent name="com.replicanet.cukesplus" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Work\CukesPlus\cukesplus-test\features\subDir" />
       <recent name="C:\Work\CukesPlus\cukesplus-core\src\test\resources\features" />
       <recent name="C:\Work\CukesPlus\cukesplus-core\src\test\resources\macros" />
-      <recent name="C:\Work\CukesPlus\cukesplus-test\features\subDir" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Work\CukesPlus\cukesplus-aspect\src\main\java" />
@@ -150,7 +149,7 @@
       <recent name="TestGlue2" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.tests macros">
+  <component name="RunManager" selected="Application.tests with macros">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -169,6 +168,15 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="core with macros" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.Main" />
+      <module name="cukesplus-test" />
+      <option name="PROGRAM_PARAMETERS" value="--plugin pretty --plugin html:target/cucumber --plugin json:target/report1.json --glue TestGlue src/test/resources/features/test3.feature src/test/resources/macros" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cukesplus-core" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -193,19 +201,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="tests macros" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.Main" />
-      <module name="cukesplus-test" />
-      <option name="PROGRAM_PARAMETERS" value="--plugin pretty --plugin html:target/cucumber --plugin json:target/report1.json --glue TestGlue src/test/resources/features/test3.feature src/test/resources/macros" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cukesplus-core" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="tests many lines" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.Main" />
       <module name="cukesplus-test" />
       <option name="PROGRAM_PARAMETERS" value="--plugin json:target/report1.json --glue TestGlue features\test.feature:4:5:6:7:8:9:10:11:12:13:14:15:16:17" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cukesplus-test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tests with macros" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.Main" />
+      <module name="cukesplus-test" />
+      <option name="PROGRAM_PARAMETERS" value="--plugin pretty --plugin html:target/cucumber --plugin json:target/report1.json --glue TestGlue macros\ features/subDir/test4.feature" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cukesplus-test" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -404,7 +412,8 @@
     </configuration>
     <list>
       <item itemvalue="Application.tests" />
-      <item itemvalue="Application.tests macros" />
+      <item itemvalue="Application.tests with macros" />
+      <item itemvalue="Application.core with macros" />
       <item itemvalue="Application.Recording test" />
       <item itemvalue="Application.tests many lines" />
       <item itemvalue="Application.feature editor" />
@@ -457,17 +466,17 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-aspect/src/main/java/com/replicanet/cukesplus/AspectE.java</url>
-          <line>12</line>
+          <line>13</line>
           <option name="timeStamp" value="213" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-aspect/src/main/java/com/replicanet/cukesplus/AspectE.java</url>
-          <line>17</line>
+          <line>18</line>
           <option name="timeStamp" value="215" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-aspect/src/main/java/com/replicanet/cukesplus/AspectE.java</url>
-          <line>22</line>
+          <line>23</line>
           <option name="timeStamp" value="217" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

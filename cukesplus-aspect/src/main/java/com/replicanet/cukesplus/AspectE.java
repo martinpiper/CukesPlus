@@ -2,6 +2,7 @@ package com.replicanet.cukesplus;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -18,17 +19,17 @@ public class AspectE {
 
 //    @Before("defineEntryPoint()")
 //    @Before("execution(* gherkin.lexer.I18nLexer.scan(..))")
-    @Before("execution(* gherkin.lexer.I18nLexer.scan(java.lang.String))")
-    public void theLexerScan(JoinPoint pjp) throws Throwable {
+    @Around("execution(* gherkin.lexer.I18nLexer.scan(java.lang.String))")
+    public void theLexerScan(ProceedingJoinPoint pjp) throws Throwable {
         Object[] args = pjp.getArgs();
         String originalFeature = (String) args[0];
-        System.out.println("****** HERE original!!! ********\r\n" + originalFeature);
+//        System.out.println("****** HERE original!!! ********\r\n" + originalFeature);
         String newFeature = FeatureProvider.getFeatureWithMacro(originalFeature);
-        System.out.println("****** HERE updated!!! ********\r\n" + newFeature);
+//        System.out.println("****** HERE updated!!! ********\r\n" + newFeature);
         args[0] = newFeature;
 //        MethodSignature signature = (MethodSignature) pjp.getSignature();
 //        String methodName = signature.getMethod().getName();
 //        Class<?>[] parameterTypes = signature.getMethod().getParameterTypes();
-//        pjp.proceed(args);
+        pjp.proceed(args);
     }
 }

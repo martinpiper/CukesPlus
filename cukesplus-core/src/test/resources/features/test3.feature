@@ -1,5 +1,5 @@
 @test
-Feature: Test 1
+Feature: Test 3
 
   This tests in place macro expansion
 

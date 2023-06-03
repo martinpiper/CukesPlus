@@ -66,7 +66,15 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 		>> com.replicanet.cukesplus.FeatureMacroProcessor#processMacroFile
 		>> Debug data mapping...
 		>> Initial feature macro enrichment seems to work.
+		>> https://stackoverflow.com/questions/45673978/aspectj-change-value-of-method-parameter
 		* Now need to add: runtime.getGlue().addStepDefinition
+			I think the code inside: cucumber.runtime.java.ExtractJavaStepDefinitionMembers.extractMethod
+			Specifically: cucumber.runtime.java.MacroStepDefinition.getMethodCopy
+			I don't think it needs to call leafCopy, just update the members with new data
+			This step is empty, of course
+		* Also map back line numbers for executed features to any errors for the web interface
+
+
 
 
 * Feature macro processing.
