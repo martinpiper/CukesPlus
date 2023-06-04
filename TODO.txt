@@ -73,6 +73,7 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 			I don't think it needs to call leafCopy, just update the members with new data
 			This step is empty, of course
 		* Also map back line numbers for executed features to any errors for the web interface
+		* "##__#__## " is used to denote an expanded macro, the last pass just before execution should be to remove that and allow the original macro step (which should do nothing) to be emitted into the report
 
 
 

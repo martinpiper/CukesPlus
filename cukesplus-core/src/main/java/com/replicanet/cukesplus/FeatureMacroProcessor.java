@@ -544,7 +544,7 @@ public class FeatureMacroProcessor
 						{
 							emitLineDebug(firstIteration, inputFile, bw, lineNumber, currentIndent);
 
-							writeComment(bw, trimmed, currentIndent, lineDebug);
+							writeLineWithDebug(bw, "##__#__## " + trimmed, currentIndent, lineDebug);
 
 							ArrayList<String> params = getParams(m);
 
@@ -680,10 +680,10 @@ public class FeatureMacroProcessor
 		return params;
 	}
 
-	private void writeComment(BufferedWriter bw, String trimmed, String currentIndent, String lineDebug) throws IOException
+	private void writeLineWithDebug(BufferedWriter bw, String trimmed, String currentIndent, String lineDebug) throws IOException
 	{
 		// Write out the old line with a comment
-		bw.write(currentIndent + "# " + trimmed);
+		bw.write(currentIndent + trimmed);
 		bw.newLine();
 
 		bw.write(currentIndent + "#>> " + lineDebug);
