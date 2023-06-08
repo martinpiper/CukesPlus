@@ -62,15 +62,8 @@ public class MacroStepDefinition implements StepDefinition {
 
     // Originally from cucumber.runtime.java.JavaStepDefinition
     public void execute(I18n i18n, Object[] args) throws Throwable {
-        // TODO: Implement some execution of this macro based step
+        // TODO: Implement some tracking of this macro based step?
         int i = 0;
-
-        // Test injection of new runtime step
-//        Step step = new Step(null,"Given", "I run this test", 1234,null,null);
-//        ExtensionRuntime.runtime.addMacroStep("path/fakeMacro.macro", step, ExtensionRuntime.reporter, ExtensionRuntime.i18n);
-
-//        step = new Step(null,"Given", "I run this test", 54321,null,null);
-//        ExtensionRuntime.runtime.addMacroStep("path/fakeMacro2.macro", step, ExtensionRuntime.reporter, ExtensionRuntime.i18n);
     }
 
     public List<Argument> matchedArguments(Step step) {
