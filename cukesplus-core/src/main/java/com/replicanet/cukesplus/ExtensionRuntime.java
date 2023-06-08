@@ -38,7 +38,7 @@ public class ExtensionRuntime extends Runtime {
             try {
                 featureURIToOriginalFeature.put(featureURI , feature);
                 feature = FeatureServerCheck.getFeatureMacroProcessor().processFeatureText(feature);
-//                feature = feature.replace("##__#__## " , "");
+                feature = feature.replace("##__#__## " , "");
                 featureURIToProcessedFeature.put(featureURI , feature);
 
             } catch (IOException e) {
@@ -65,17 +65,6 @@ public class ExtensionRuntime extends Runtime {
             this.i18n = i18n;
             super.runStep(featurePath, step, reporter, i18n);
         }
-        retireMacroSteps();
-    }
-
-    private void retireMacroSteps() {
-        currentPosition = -1;
-        while (!macroSteps.isEmpty()) {
-            currentPosition = 0;
-            MacroStep macroStep = macroSteps.remove(0);
-            super.runStep(macroStep.featurePath, macroStep.step, macroStep.reporter, macroStep.i18n);
-        }
-        currentPosition = -1;
     }
 
     class MacroStep {
