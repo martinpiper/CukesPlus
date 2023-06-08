@@ -19,12 +19,14 @@ public class AspectE {
 
 //    @Before("defineEntryPoint()")
 //    @Before("execution(* gherkin.lexer.I18nLexer.scan(..))")
-    @Around("execution(* gherkin.lexer.I18nLexer.scan(java.lang.String))")
+//    @Around("execution(* gherkin.lexer.I18nLexer.scan(java.lang.String))")
+    @Around("execution(* gherkin.parser.Parser.parse(java.lang.String,java.lang.String,..))")
     public void theLexerScan(ProceedingJoinPoint pjp) throws Throwable {
         Object[] args = pjp.getArgs();
         String originalFeature = (String) args[0];
+        String featureURI = (String) args[1];
 //        System.out.println("****** HERE original!!! ********\r\n" + originalFeature);
-        String newFeature = FeatureProvider.getFeatureWithMacro(originalFeature);
+        String newFeature = FeatureProvider.getFeatureWithMacro(originalFeature , featureURI);
 //        System.out.println("****** HERE updated!!! ********\r\n" + newFeature);
         args[0] = newFeature;
 //        MethodSignature signature = (MethodSignature) pjp.getSignature();

@@ -11,6 +11,7 @@ import org.aspectj.lang.annotation.Aspect;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,12 +29,18 @@ public class ExtensionRuntime extends Runtime {
         macroSteps = new LinkedList<MacroStep>();
     }
 
+    HashMap<String , String> featureURIToOriginalFeature = new HashMap<>();
+    HashMap<String , String> featureURIToProcessedFeature = new HashMap<>();
     class ExtensionFeatureProvider extends FeatureProvider {
 
         @Override
-        public String getFeature(String feature) {
+        public String getFeature(String feature , String featureURI) {
             try {
+                featureURIToOriginalFeature.put(featureURI , feature);
                 feature = FeatureServerCheck.getFeatureMacroProcessor().processFeatureText(feature);
+//                feature = feature.replace("##__#__## " , "");
+                featureURIToProcessedFeature.put(featureURI , feature);
+
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ParseException e) {
