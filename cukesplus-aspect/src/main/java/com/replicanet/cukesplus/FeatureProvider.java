@@ -12,10 +12,19 @@ public class FeatureProvider {
         return feature;
     }
 
+    public boolean getAllowRunStep(Object theObject) {return true; }
+
     public static String getFeatureWithMacro(String feature , String featureURI) {
         if (last == null) {
             return feature;
         }
         return last.getFeature(feature , featureURI);
+    }
+
+    public static boolean allowRunStep(Object theObject) {
+        if (last == null) {
+            return true;
+        }
+        return last.getAllowRunStep(theObject);
     }
 }

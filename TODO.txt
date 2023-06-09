@@ -83,6 +83,33 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 			>> Note commented out, will be needed: feature = feature.replace("##__#__## " , "");
 			* Need to escape, make the string literal: https://www.baeldung.com/java-regexp-escape-char
 				Pattern.quote(String S)
+		* Hmm, the syntax report is only showing one (the first) result of: runtime.getGlue().addStepDefinition(new MacroStepDefinition(
+			It seems there is a duplicate check failing somewhere?
+			Although if I add both faker macros and add to the scenario, the feature does execute OK...
+			>> So, perhaps the processed glue can be added to the GlueProcessor.processGlue() report in a different way, without needing to pull from the runtime?
+				** Update: cucumber.runtime.java.ExtractJavaStepDefinitionMembers.extractMethod
+					To get the info it needs from the different class without reflection bodges
+					** Remove section for: MacroStepDefinition macroStep = (MacroStepDefinition) step;
+						Remove reflection access bodges...
+					** Handle returned null in: cucumber.api.StepDefinitionReporter.stepDefinition
+					** Instead add a new way to do: glueMap.put(
+						> Checks what kind of data it adds...
+						> com.replicanet.cukesplus.FeatureMacroProcessor#processMacroFile can then add the extra information
+						> Make sure glueMap.put checks for duplicate entries before adding, we want to prioritise processMacroFile results
+			* Done: Two parameters generates: cucumber.runtime.StepDefinitionMatch.arityMismatch(
+				>> A couple of options.
+					> How does Cucumber handle varargs "..." steps?
+						Trace construction of: cucumber.runtime.java.JavaStepDefinition.JavaStepDefinition
+						Varargs doesn't work...
+					> Or how about matching the number of parameters based on the expectation?
+						Investigate: cucumber.runtime.StepDefinitionMatch#transformedArgs
+							Where it does: Integer parameterCount = this.stepDefinition.getParameterCount();
+							>> I think at this point, we intercept: cucumber.runtime.StepDefinitionMatch#runStep
+								And if this.step == typeof MacroStepDefinition
+									>>> Then just skip the entire method :)
+
+
+
 
 
 

@@ -102,6 +102,10 @@
                             <artifactId>gherkin</artifactId>
                         </weaveDependency>
                         <weaveDependency>
+                            <groupId>info.cukes</groupId>
+                            <artifactId>cucumber-core</artifactId>
+                        </weaveDependency>
+                        <weaveDependency>
                             <groupId>com.replicanet</groupId>
                             <artifactId>cukesplus-aspect</artifactId>
                         </weaveDependency>

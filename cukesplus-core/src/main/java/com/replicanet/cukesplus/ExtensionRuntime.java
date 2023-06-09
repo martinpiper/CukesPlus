@@ -1,15 +1,17 @@
 package com.replicanet.cukesplus;
 
-import cucumber.runtime.ClassFinder;
+import cucumber.runtime.*;
 import cucumber.runtime.Runtime;
-import cucumber.runtime.RuntimeOptions;
 import cucumber.runtime.io.ResourceLoader;
+import cucumber.runtime.java.MacroStepDefinition;
 import gherkin.I18n;
 import gherkin.formatter.Reporter;
 import gherkin.formatter.model.Step;
 import org.aspectj.lang.annotation.Aspect;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -39,6 +41,7 @@ public class ExtensionRuntime extends Runtime {
                 featureURIToOriginalFeature.put(featureURI , feature);
                 feature = FeatureServerCheck.getFeatureMacroProcessor().processFeatureText(feature);
                 feature = feature.replace("##__#__## " , "");
+                feature = feature.replace("target/t.macroFeature", featureURI);
                 featureURIToProcessedFeature.put(featureURI , feature);
 
             } catch (IOException e) {
@@ -47,6 +50,26 @@ public class ExtensionRuntime extends Runtime {
                 e.printStackTrace();
             }
             return feature;
+        }
+
+        @Override
+        public boolean getAllowRunStep(Object theObject) {
+            StepDefinitionMatch realObject = (StepDefinitionMatch) theObject;
+
+            // Test to see if we should just allow this step to proceed without executing anything
+            try {
+                Field f = null;
+                f = realObject.getClass().getDeclaredField("stepDefinition");
+                f.setAccessible(true);
+                StepDefinition step = (StepDefinition) f.get(realObject);
+                if (step instanceof MacroStepDefinition) {
+                    return false;
+                }
+            } catch (Exception e) {
+
+            }
+
+            return true;
         }
 
     }
