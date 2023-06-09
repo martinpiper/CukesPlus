@@ -79,11 +79,11 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 			* Need to hook earlier than gherkin.lexer.I18nLexer.scan to get the filename, then create mapping from filename to debug info
 				>> gherkin.parser.Parser#parse would be a good candidate since it includes featureURI
 				>> Now have com.replicanet.cukesplus.ExtensionRuntime.featureURIToProcessedFeature
-		* "##__#__## " is used to denote an expanded macro, the last pass just before execution should be to remove that and allow the original macro step (which should do nothing) to be emitted into the report
+		* Done: "##__#__## " is used to denote an expanded macro, the last pass just before execution should be to remove that and allow the original macro step (which should do nothing) to be emitted into the report
 			>> Note commented out, will be needed: feature = feature.replace("##__#__## " , "");
 			* Need to escape, make the string literal: https://www.baeldung.com/java-regexp-escape-char
 				Pattern.quote(String S)
-		* Hmm, the syntax report is only showing one (the first) result of: runtime.getGlue().addStepDefinition(new MacroStepDefinition(
+		* Done: Hmm, the syntax report is only showing one (the first) result of: runtime.getGlue().addStepDefinition(new MacroStepDefinition(
 			It seems there is a duplicate check failing somewhere?
 			Although if I add both faker macros and add to the scenario, the feature does execute OK...
 			>> So, perhaps the processed glue can be added to the GlueProcessor.processGlue() report in a different way, without needing to pull from the runtime?
@@ -96,6 +96,7 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 						> Checks what kind of data it adds...
 						> com.replicanet.cukesplus.FeatureMacroProcessor#processMacroFile can then add the extra information
 						> Make sure glueMap.put checks for duplicate entries before adding, we want to prioritise processMacroFile results
+							processMacroSyntaxToGlue
 			* Done: Two parameters generates: cucumber.runtime.StepDefinitionMatch.arityMismatch(
 				>> A couple of options.
 					> How does Cucumber handle varargs "..." steps?
@@ -110,6 +111,8 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 
 
 
+
+* Bug: Syntax report missing "Given" for test1.macro: * this is a step definition with a simple parameter for * in * middle
 
 
 

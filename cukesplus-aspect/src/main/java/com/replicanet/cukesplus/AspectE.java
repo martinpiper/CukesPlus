@@ -37,13 +37,13 @@ public class AspectE {
 
     @Around("execution(* cucumber.runtime.StepDefinitionMatch.runStep(gherkin.I18n))")
     public void theRunStep(ProceedingJoinPoint pjp) throws Throwable {
-        System.out.println("****** HERE theRunStep!!! ********\r\n");
+//        System.out.println("****** HERE theRunStep!!! ********\r\n");
         Object[] args = pjp.getArgs();
         boolean allow = FeatureProvider.allowRunStep(pjp.getThis());
         if (!allow) {
             return;
         }
-        System.out.println("****** HERE theRunStep!!! proceed ********\r\n");
+//        System.out.println("****** HERE theRunStep!!! proceed ********\r\n");
 
         pjp.proceed(args);
     }
