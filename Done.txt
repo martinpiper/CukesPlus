@@ -59,3 +59,10 @@ Create CukesPlus project structure.
 
 
 * Added a quick demonstration of using JavaScript injected into the web page under test to record mouse/key events and then adding those steps to the feature file being edited.
+
+
+
+
+* Bug: Feature editor target/fileList.html should only really be updated by the main process, probably when fetching the file list html
+	It shouldn't be updated when running the tests as the file list is then reduced to only that file being executed
+	>> buildFileList(argv); should have only been in the feature server start

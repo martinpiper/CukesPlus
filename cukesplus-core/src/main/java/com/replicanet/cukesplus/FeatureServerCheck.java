@@ -71,30 +71,29 @@ public class FeatureServerCheck
 		}
 	}
 
-	public static void buildFileList(String[] argv)
-	{
+	public static Set<String> buildFileList(String[] argv) {
 		Set<String> filesList = new TreeSet<>();
-		for (String arg : argv)
-		{
+		for (String arg : argv) {
 			File dir = new File(".");
 			File potential = new File(dir, arg);
-			if (potential.exists() && potential.isFile())
-			{
+			if (potential.exists() && potential.isFile()) {
 				addSafePath(filesList, potential.getPath());
 				continue;
 			}
-			if (potential.exists() && potential.isDirectory())
-			{
+			if (potential.exists() && potential.isDirectory()) {
 				getDirectoryContents(filesList, potential);
 				continue;
 			}
 			FileFilter fileFilter = new WildcardFileFilter(arg);
 			File[] files = dir.listFiles(fileFilter);
-			for (int i = 0; i < files.length; i++)
-			{
+			for (int i = 0; i < files.length; i++) {
 				getDirectoryContents(filesList, files[i]);
 			}
 		}
+		return filesList;
+	}
+
+	public static void writeFileList(Set<String> filesList) {
 		String htmlFileList = "<html><body bgcolor=\"#E6E6FA\"><table>";
 		for (String path : filesList)
 		{
@@ -114,19 +113,19 @@ public class FeatureServerCheck
 
 	public static boolean checkForFeatureServer(final Class theClass, final String[] argv) throws IOException
 	{
-		buildFileList(argv);
-
-		if (featureMacroProcessor.errors > 0) {
-			System.out.println("Processing macros errors: " + featureMacroProcessor.errors);
-		}
-
 		if (System.getProperty(SERVER_FEATURE_EDITOR) == null)
 		{
+			buildFileList(argv);
+
 			if (featureMacroProcessor.errors > 0) {
+				System.out.println("Processing macros errors: " + featureMacroProcessor.errors);
+
 				System.exit(-1);
 			}
 			return false;
 		}
+
+		writeFileList(buildFileList(argv));
 
 		System.clearProperty(SERVER_FEATURE_EDITOR);
 
@@ -502,7 +501,7 @@ public class FeatureServerCheck
 			@Override
 			public void afterPut(String s)
 			{
-				buildFileList(argv);
+				writeFileList(buildFileList(argv));
 			}
 		});
 		// http://127.0.0.1:8001/ace-builds-master/demo/autocompletion.html?filename=features/test.feature
