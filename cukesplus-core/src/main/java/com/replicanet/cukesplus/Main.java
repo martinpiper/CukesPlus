@@ -4,6 +4,10 @@ import cucumber.runtime.RuntimeOptions;
 import cucumber.runtime.io.MultiLoader;
 import cucumber.runtime.io.ResourceLoaderClassFinder;
 import cucumber.runtime.java.MacroStepDefinition;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,8 +38,6 @@ public class Main
 		MultiLoader resourceLoader = new MultiLoader(classLoader);
 		ResourceLoaderClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);
 		cucumber.runtime.Runtime runtime = new ExtensionRuntime(resourceLoader, classFinder, classLoader, runtimeOptions);
-
-//		runtime.getGlue().addStepDefinition(new MacroStepDefinition(Pattern.compile("^this is a macro test with one parameter \"([^\"]*)\"$") , 0));
 
 		GlueProcessor.processGlue(runtime);    // << Hook into Cucumber
 		runtime.run();

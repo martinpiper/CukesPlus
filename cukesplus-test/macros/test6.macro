@@ -1,0 +1,9 @@
+Given this is a macro test with one parameter "*"
+	Then it does this step
+
+
+Given this is a macro test with two parameters "*" and "*"
+	Then it does this step
+
+
+* it does this step

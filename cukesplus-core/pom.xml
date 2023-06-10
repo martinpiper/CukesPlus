@@ -20,6 +20,21 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.9.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.replicanet</groupId>
+            <artifactId>cukesplus-aspect</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
@@ -40,11 +55,6 @@
             <version>1.3</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.3.2</version>
-        </dependency>
-        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.3</version>
@@ -63,6 +73,70 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.14.0</version>
+                <configuration>
+                    <complianceLevel>${java.version}</complianceLevel>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <showWeaveInfo>true</showWeaveInfo>
+                    <outxml>true</outxml>
+                    <verbose>true</verbose>
+<!--                    <Xlint>ignore</Xlint> -->
+                    <encoding>UTF-8 </encoding>
+                    <aspectLibraries>
+                        <aspectLibrary>
+                            <groupId>com.replicanet</groupId>
+                            <artifactId>cukesplus-aspect</artifactId>
+                        </aspectLibrary>
+                    </aspectLibraries>
+                    <weaveDependencies>
+                        <weaveDependency>
+                            <groupId>info.cukes</groupId>
+                            <artifactId>cucumber-java</artifactId>
+                        </weaveDependency>
+                        <weaveDependency>
+                            <groupId>info.cukes</groupId>
+                            <artifactId>gherkin</artifactId>
+                        </weaveDependency>
+                        <weaveDependency>
+                            <groupId>info.cukes</groupId>
+                            <artifactId>cucumber-core</artifactId>
+                        </weaveDependency>
+                        <weaveDependency>
+                            <groupId>com.replicanet</groupId>
+                            <artifactId>cukesplus-aspect</artifactId>
+                        </weaveDependency>
+                    </weaveDependencies>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.replicanet</groupId>
+                        <artifactId>cukesplus-aspect</artifactId>
+                        <version>0.0.2-SNAPSHOT</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjtools</artifactId>
+                        <version>1.9.7</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>info.cukes</groupId>
+                        <artifactId>cucumber-java</artifactId>
+                        <version>${cucumber.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>

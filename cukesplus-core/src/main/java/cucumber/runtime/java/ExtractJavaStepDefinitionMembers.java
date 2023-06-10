@@ -26,14 +26,8 @@ public class ExtractJavaStepDefinitionMembers
 		}
 		catch (Throwable e)
 		{
-			try
-			{
-				MacroStepDefinition macroStep = (MacroStepDefinition) step;
-				return macroStep.getMethod();
-			}
-			catch (Throwable f) {
-				int i = 0;
-			}
+			// Ignore these
+//				MacroStepDefinition macroStep = (MacroStepDefinition) step;
 		}
 		return null;
 	}

@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  */
 public class FeatureMacroProcessor
 {
-	// MPi: TODO: Pull this list from the loaded Cucumber step keywords by iterating classes annoted with @StepDefAnnotation
+	// MPi: TODO: Pull this list from the loaded Cucumber step keywords by iterating classes annotated with @StepDefAnnotation
 	final List<String> stepKeywords = Arrays.asList("Given", "When", "Then", "And", "But", "*");
 	int errors;
 	Map<String, Macro> macroMap = new HashMap<String, Macro>();
@@ -270,6 +270,7 @@ public class FeatureMacroProcessor
 
 				// Now we have a trimmed string in like the standard java step definition...
 				// @When("^I process the feature file \"([^\"]*)\" and the macro file \"([^\"]*)\"$")
+				macro.keyword = trimmed.split("[@(]")[1];
 				trimmed = trimRegex(trimmed);
 
 				macro.regexDefinition = trimmed;
@@ -385,7 +386,20 @@ public class FeatureMacroProcessor
 		return fragment;
 	}
 
-	public int processFeatureFile(String inputFile, String outputFile) throws IOException, ParseException
+	public String processFeatureText(String text, String featureURI) throws IOException, ParseException {
+		FileUtils.writeStringToFile(new File("target/t.macroFeature"), text);
+		int lineCount = processFeatureFile("target/t.macroFeature" , "target/t.feature", featureURI);
+		if (lineCount <= 0) {
+			return text;
+		}
+		String processed = FileUtils.readFileToString(new File("target/t.feature"));
+		return processed;
+	}
+
+	public int processFeatureFile(String inputFile, String outputFile) throws IOException, ParseException {
+		return processFeatureFile(inputFile , outputFile , inputFile);
+	}
+	public int processFeatureFile(String inputFile, String outputFile, String featureURI) throws IOException, ParseException
 	{
 		String tempOutput = outputFile + ".temp";
 
@@ -400,20 +414,20 @@ public class FeatureMacroProcessor
 		{
 			processingDepth++;
 			FileUtils.deleteQuietly(new File(outputFile));
-			thisLineCount = internalProcessFeatureFile(firstIteration, inputFile, outputFile);
+			thisLineCount = internalProcessFeatureFile(firstIteration, inputFile, outputFile, featureURI);
 			if (thisLineCount > 0 && processingDepth < maxProcessingDepth)
 			{
 				inputFile = flipFile(outputFile, tempOutput);
 			}
 			realLineCount += thisLineCount;
-			emitInfo("Feature macro processing '" + inputFile + "' depth " + processingDepth + " new lines " + thisLineCount + " total lines " + realLineCount);
+			emitInfo("Feature macro processing '" + featureURI + "' depth " + processingDepth + " new lines " + thisLineCount + " total lines " + realLineCount);
 			firstIteration = false;
 		} while (thisLineCount > 0 && processingDepth < maxProcessingDepth);
 
 		if (processingDepth == maxProcessingDepth)
 		{
 			// MPi: TODO: Flag potentially recursive macros by examining the output and flagging these problems earlier
-			emitWarning("Macro feature file '" + inputFile + "' reached the maximum processing depth. There might be a recursive macro.");
+			emitWarning("Macro feature file '" + featureURI + "' reached the maximum processing depth. There might be a recursive macro.");
 		}
 
 		FileUtils.deleteQuietly(new File(tempOutput));
@@ -435,7 +449,7 @@ public class FeatureMacroProcessor
 		return inputFile;
 	}
 
-	private int internalProcessFeatureFile(boolean firstIteration, String inputFile, String outputFile) throws IOException, ParseException
+	private int internalProcessFeatureFile(boolean firstIteration, String inputFile, String outputFile, String featureURI) throws IOException, ParseException
 	{
 		errors = 0;
 		if (null == sortedDefinitions)
@@ -447,7 +461,7 @@ public class FeatureMacroProcessor
 
 		int linesChanged = 0;
 
-		emitInfo("Processing " + inputFile);
+		emitInfo("Processing " + featureURI);
 		BufferedReader br = new BufferedReader(new FileReader(inputFile));
 		BufferedWriter bw = new BufferedWriter(new FileWriter(outputFile));
 		String line;
@@ -497,7 +511,7 @@ public class FeatureMacroProcessor
 			}
 			if (workLower.startsWith("examples:"))
 			{
-				emitLineDebug(firstIteration, inputFile, bw, lineNumber, currentIndent);
+				emitLineDebug(firstIteration, featureURI, bw, lineNumber, currentIndent);
 				inScenario = false;
 				bw.write(line);
 				bw.newLine();
@@ -511,7 +525,7 @@ public class FeatureMacroProcessor
 
 			if (!trimmed.startsWith("|") && !insideTextBlock && !stepKeywords.contains(tokens[0]))
 			{
-				emitError("Syntax error parsing " + inputFile + " line " + lineNumber + " the line '" + trimmed + "' does not resemble a step line but I'm expecting a step line");
+				emitError("Syntax error parsing " + featureURI + " line " + lineNumber + " the line '" + trimmed + "' does not resemble a step line but I'm expecting a step line");
 				continue;
 			}
 
@@ -532,9 +546,9 @@ public class FeatureMacroProcessor
 						// Only process the first match
 						if (matchedLines.size() == 1)
 						{
-							emitLineDebug(firstIteration, inputFile, bw, lineNumber, currentIndent);
+							emitLineDebug(firstIteration, featureURI, bw, lineNumber, currentIndent);
 
-							writeComment(bw, trimmed, currentIndent, lineDebug);
+							writeLineWithDebug(bw, "##__#__## " + trimmed, currentIndent, lineDebug);
 
 							ArrayList<String> params = getParams(m);
 
@@ -580,7 +594,7 @@ public class FeatureMacroProcessor
 									if (tokPos == -1)
 									{
 										newStep += "<<Not found " + paramTokens[1] + ">>";
-										emitError("Parameter '" + paramTokens[1] + "' not found error parsing " + inputFile + " line " + lineNumber + " macro file " + macro.sourceFile + " line " + macro.stepLineNumbers.get(lineIndex) + " the line '" + trimmed + "'");
+										emitError("Parameter '" + paramTokens[1] + "' not found error parsing " + featureURI + " line " + lineNumber + " macro file " + macro.sourceFile + " line " + macro.stepLineNumbers.get(lineIndex) + " the line '" + trimmed + "'");
 									}
 									else
 									{
@@ -608,7 +622,7 @@ public class FeatureMacroProcessor
 			{
 				if (!trimmed.startsWith("|"))
 				{
-					emitLineDebug(firstIteration, inputFile, bw, lineNumber, currentIndent);
+					emitLineDebug(firstIteration, featureURI, bw, lineNumber, currentIndent);
 				}
 				bw.write(line);
 				bw.newLine();
@@ -670,10 +684,10 @@ public class FeatureMacroProcessor
 		return params;
 	}
 
-	private void writeComment(BufferedWriter bw, String trimmed, String currentIndent, String lineDebug) throws IOException
+	private void writeLineWithDebug(BufferedWriter bw, String trimmed, String currentIndent, String lineDebug) throws IOException
 	{
 		// Write out the old line with a comment
-		bw.write(currentIndent + "# " + trimmed);
+		bw.write(currentIndent + trimmed);
 		bw.newLine();
 
 		bw.write(currentIndent + "#>> " + lineDebug);

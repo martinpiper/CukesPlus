@@ -25,6 +25,12 @@ public class FeatureServerCheck
 	public static final String SERVER_FEATURE_EDITOR = "com.replicanet.cukesplus.server.featureEditor";
 	static volatile boolean doingRun = false;
 
+	static FeatureMacroProcessor featureMacroProcessor = new FeatureMacroProcessor();
+
+	public static FeatureMacroProcessor getFeatureMacroProcessor() {
+		return featureMacroProcessor;
+	}
+
 	public static void getDirectoryContents(Set<String> filesList, File dir)
 	{
 		File[] files = dir.listFiles();
@@ -55,32 +61,39 @@ public class FeatureServerCheck
 		{
 			filesList.add(path);
 		}
+
+		if (path.toLowerCase().endsWith(".macro")) {
+			try {
+				featureMacroProcessor.processMacroFile(path);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
-	public static void buildFileList(String[] argv)
-	{
+	public static Set<String> buildFileList(String[] argv) {
 		Set<String> filesList = new TreeSet<>();
-		for (String arg : argv)
-		{
+		for (String arg : argv) {
 			File dir = new File(".");
 			File potential = new File(dir, arg);
-			if (potential.exists() && potential.isFile())
-			{
+			if (potential.exists() && potential.isFile()) {
 				addSafePath(filesList, potential.getPath());
 				continue;
 			}
-			if (potential.exists() && potential.isDirectory())
-			{
+			if (potential.exists() && potential.isDirectory()) {
 				getDirectoryContents(filesList, potential);
 				continue;
 			}
 			FileFilter fileFilter = new WildcardFileFilter(arg);
 			File[] files = dir.listFiles(fileFilter);
-			for (int i = 0; i < files.length; i++)
-			{
+			for (int i = 0; i < files.length; i++) {
 				getDirectoryContents(filesList, files[i]);
 			}
 		}
+		return filesList;
+	}
+
+	public static void writeFileList(Set<String> filesList) {
 		String htmlFileList = "<html><body bgcolor=\"#E6E6FA\"><table>";
 		for (String path : filesList)
 		{
@@ -102,12 +115,19 @@ public class FeatureServerCheck
 	{
 		if (System.getProperty(SERVER_FEATURE_EDITOR) == null)
 		{
+			buildFileList(argv);
+
+			if (featureMacroProcessor.errors > 0) {
+				System.out.println("Processing macros errors: " + featureMacroProcessor.errors);
+
+				System.exit(-1);
+			}
 			return false;
 		}
 
-		System.clearProperty(SERVER_FEATURE_EDITOR);
+		writeFileList(buildFileList(argv));
 
-		buildFileList(argv);
+		System.clearProperty(SERVER_FEATURE_EDITOR);
 
 		ACEServer.addCallback(new ACEServerCallback()
 		{
@@ -352,6 +372,7 @@ public class FeatureServerCheck
 
 			private InputStream handleFeatureDebugJson(String uri)
 			{
+				List<String> originalFeature = null;
 
 				// Look for event hints first
 				try
@@ -388,12 +409,20 @@ public class FeatureServerCheck
 						int i;
 						for (i = 0; i < rootObjs.size(); i++)
 						{
+							originalFeature = null;
 							String reportUri = rootObjs.get(i).getAsJsonObject().get("uri").getAsString();
 
 							// Look for match in the report for the file we are interested in seeing debug information for
 							if (!uri.contains(reportUri.replace("\\", "/")))
 							{
 								continue;
+							}
+
+							if (originalFeature == null) {
+								try {
+									originalFeature = FileUtils.readLines(new File(ExtensionRuntime.makeSafeName(reportUri)));
+								} catch (Exception e) {
+								}
 							}
 
 							Map<Integer, String> stateByLine = new TreeMap<>();
@@ -420,6 +449,26 @@ public class FeatureServerCheck
 										lastStatus = status;
 									}
 									int line = stepsObjs.get(k).getAsJsonObject().get("line").getAsInt();
+									// Remap the line from any processed feature back to the original line...
+									if (originalFeature != null && line < originalFeature.size()) {
+										int debugLine = line - 1;
+										while (debugLine > 0) {
+											String debugLineContents = originalFeature.get(debugLine).trim();
+											if (debugLineContents.startsWith("#> ")) {
+												String[] splits = debugLineContents.split(" ", 3);
+												int replacementLine = -1;
+												try {
+													replacementLine = Integer.parseInt(splits[1]);
+												} catch (Exception e) {
+												}
+												if (replacementLine >= 0) {
+													line = replacementLine;
+												}
+												break;
+											}
+											debugLine--;
+										}
+									}
 									String anyOtherStates = stateByLine.get(line);
 									if (null != anyOtherStates && (anyOtherStates.equals("failed") || anyOtherStates.equals("pending")))
 									{
@@ -481,7 +530,7 @@ public class FeatureServerCheck
 			@Override
 			public void afterPut(String s)
 			{
-				buildFileList(argv);
+				writeFileList(buildFileList(argv));
 			}
 		});
 		// http://127.0.0.1:8001/ace-builds-master/demo/autocompletion.html?filename=features/test.feature

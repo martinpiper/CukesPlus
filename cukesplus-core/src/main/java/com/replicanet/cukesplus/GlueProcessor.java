@@ -6,6 +6,7 @@ import cucumber.runtime.Glue;
 import cucumber.runtime.ParameterInfo;
 import cucumber.runtime.Runtime;
 import cucumber.runtime.StepDefinition;
+import cucumber.runtime.java.MacroStepDefinition;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.regex.Pattern;
 
 import static cucumber.runtime.java.ExtractJavaStepDefinitionMembers.extractMethod;
 import static cucumber.runtime.java.ExtractJavaStepDefinitionMembers.extractParameterInfos;
@@ -83,6 +85,11 @@ public class GlueProcessor
 
 	public static void processGlue(Runtime runtime)
 	{
+		FeatureServerCheck.getFeatureMacroProcessor().processMacroSyntaxToGlue();
+		for (StepInformation stepInfo : glueMap.values()) {
+			runtime.getGlue().addStepDefinition(new MacroStepDefinition(Pattern.compile(stepInfo.pattern), 0));
+		}
+
 		Glue glue = runtime.getGlue();
 
 		glue.reportStepDefinitions(new StepDefinitionReporter()
@@ -94,6 +101,9 @@ public class GlueProcessor
 				StepInformation stepInformation = new StepInformation();
 				stepInformation.pattern = stepDefinition.getPattern();
 				Method method = extractMethod(stepDefinition);
+				if (method == null) {
+					return;
+				}
 				stepInformation.simpleName = method.getDeclaringClass().getSimpleName();
 
 				if (null != method.getDeclaredAnnotation(Given.class))
@@ -142,7 +152,9 @@ public class GlueProcessor
 					// Unable to get any parameter names, don't worry about it.
 				}
 
-				glueMap.put(stepDefinition.getLocation(true), stepInformation);
+				String theKey = stepDefinition.getLocation(true);
+
+				glueMap.put(theKey, stepInformation);
 			}
 		});
 

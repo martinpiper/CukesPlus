@@ -1,5 +1,6 @@
 package com.replicanet.cukesplus.junit;
 
+import com.replicanet.cukesplus.FeatureServerCheck;
 import com.replicanet.cukesplus.GlueProcessor;
 import com.replicanet.cukesplus.ExtensionRuntime;
 import cucumber.api.junit.Cucumber;

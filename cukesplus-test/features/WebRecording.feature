@@ -1,3 +1,4 @@
+@noerrors
 Feature: Demonstrate web recording
   Scenario: A web test
     Given I open the web page "http://www.rnlobby.com/test/Login.asp"
