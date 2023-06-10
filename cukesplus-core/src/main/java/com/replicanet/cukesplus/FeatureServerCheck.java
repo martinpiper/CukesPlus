@@ -372,6 +372,7 @@ public class FeatureServerCheck
 
 			private InputStream handleFeatureDebugJson(String uri)
 			{
+				List<String> originalFeature = null;
 
 				// Look for event hints first
 				try
@@ -408,12 +409,20 @@ public class FeatureServerCheck
 						int i;
 						for (i = 0; i < rootObjs.size(); i++)
 						{
+							originalFeature = null;
 							String reportUri = rootObjs.get(i).getAsJsonObject().get("uri").getAsString();
 
 							// Look for match in the report for the file we are interested in seeing debug information for
 							if (!uri.contains(reportUri.replace("\\", "/")))
 							{
 								continue;
+							}
+
+							if (originalFeature == null) {
+								try {
+									originalFeature = FileUtils.readLines(new File(ExtensionRuntime.makeSafeName(reportUri)));
+								} catch (Exception e) {
+								}
 							}
 
 							Map<Integer, String> stateByLine = new TreeMap<>();
@@ -440,6 +449,26 @@ public class FeatureServerCheck
 										lastStatus = status;
 									}
 									int line = stepsObjs.get(k).getAsJsonObject().get("line").getAsInt();
+									// Remap the line from any processed feature back to the original line...
+									if (originalFeature != null && line < originalFeature.size()) {
+										int debugLine = line - 1;
+										while (debugLine > 0) {
+											String debugLineContents = originalFeature.get(debugLine).trim();
+											if (debugLineContents.startsWith("#> ")) {
+												String[] splits = debugLineContents.split(" ", 3);
+												int replacementLine = -1;
+												try {
+													replacementLine = Integer.parseInt(splits[1]);
+												} catch (Exception e) {
+												}
+												if (replacementLine >= 0) {
+													line = replacementLine;
+												}
+												break;
+											}
+											debugLine--;
+										}
+									}
 									String anyOtherStates = stateByLine.get(line);
 									if (null != anyOtherStates && (anyOtherStates.equals("failed") || anyOtherStates.equals("pending")))
 									{

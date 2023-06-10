@@ -7,8 +7,11 @@ import cucumber.runtime.java.MacroStepDefinition;
 import gherkin.I18n;
 import gherkin.formatter.Reporter;
 import gherkin.formatter.model.Step;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.annotation.Aspect;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -33,6 +36,23 @@ public class ExtensionRuntime extends Runtime {
 
     HashMap<String , String> featureURIToOriginalFeature = new HashMap<>();
     HashMap<String , String> featureURIToProcessedFeature = new HashMap<>();
+
+    public static String makeSafeName(String name) {
+        String ret = "target/tm.";
+
+
+        for (int i = 0; i < name.length(); i++)
+        {
+            char theChar = name.charAt(i);
+            if (Character.isLetterOrDigit(theChar)) {
+                ret += theChar;
+            } else {
+                ret += "_";
+            }
+        }
+
+        return ret;
+    }
     class ExtensionFeatureProvider extends FeatureProvider {
 
         @Override
@@ -43,6 +63,7 @@ public class ExtensionRuntime extends Runtime {
                 feature = feature.replace("##__#__## " , "");
                 feature = feature.replace("target/t.macroFeature", featureURI);
                 featureURIToProcessedFeature.put(featureURI , feature);
+                FileUtils.writeStringToFile(new File(makeSafeName(featureURI)), feature);
 
             } catch (IOException e) {
                 e.printStackTrace();
