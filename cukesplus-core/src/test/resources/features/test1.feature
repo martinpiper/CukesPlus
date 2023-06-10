@@ -24,16 +24,7 @@ Feature: Test 1
     #> 7 : src/test/resources/features/test1.macroFeature
     And this is the last step
     #> 8 : src/test/resources/features/test1.macroFeature
-    ##__#__## Given this is a step definition with a simple parameter for FOO in the middle
-    #>> 1 : src/test/resources/macros/test4.macro
-    #>>> 3
-    Then it does this step
-    #>>> 4
-    And this step
-    #>>> 5
-    * this is a step with parameter FOO
-    #>>> 6
-    Then it does this step with an escaped $name in the step
+    Given this is a step definition with a simple parameter for FOO in the middle
     #> 9 : src/test/resources/features/test1.macroFeature
     And this thing <a> and <b>
 
