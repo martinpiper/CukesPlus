@@ -169,3 +169,9 @@ Create CukesPlus project structure.
 							>> I think at this point, we intercept: cucumber.runtime.StepDefinitionMatch#runStep
 								And if this.step == typeof MacroStepDefinition
 									>>> Then just skip the entire method :)
+
+
+
+
+* Bug: Syntax report missing "Given" for test1.macro: * this is a step definition with a simple parameter for * in * middle
+	macro.keyword wasn't being initialised is all flows

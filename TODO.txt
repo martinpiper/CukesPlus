@@ -12,10 +12,6 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 
 
 
-* Bug: Syntax report missing "Given" for test1.macro: * this is a step definition with a simple parameter for * in * middle
-
-
-
 * Feature macro processing.
 	For example given the macro feature file:
 		Feature: foo

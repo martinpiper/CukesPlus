@@ -270,6 +270,7 @@ public class FeatureMacroProcessor
 
 				// Now we have a trimmed string in like the standard java step definition...
 				// @When("^I process the feature file \"([^\"]*)\" and the macro file \"([^\"]*)\"$")
+				macro.keyword = trimmed.split("[@(]")[1];
 				trimmed = trimRegex(trimmed);
 
 				macro.regexDefinition = trimmed;

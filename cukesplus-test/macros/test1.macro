@@ -4,7 +4,7 @@ Given this is a macro definition with "*" in the middle
 
 
 
-@Given("^this is a step definition with a simple parameter for (.*) in (.*) middle$")
+@Given("^this is a step definition with a very simple second parameter for (.*) in (.*) middle$")
 $Any.firstParam $secondParam
 	Then it does this step
 	And this step
