@@ -80,6 +80,7 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 			* Need to hook earlier than gherkin.lexer.I18nLexer.scan to get the filename, then create mapping from filename to debug info
 				>> gherkin.parser.Parser#parse would be a good candidate since it includes featureURI
 				>> Now have com.replicanet.cukesplus.ExtensionRuntime.featureURIToProcessedFeature
+				>> Inside handleFeatureDebugJson
 		* Done: "##__#__## " is used to denote an expanded macro, the last pass just before execution should be to remove that and allow the original macro step (which should do nothing) to be emitted into the report
 			>> Note commented out, will be needed: feature = feature.replace("##__#__## " , "");
 			* Need to escape, make the string literal: https://www.baeldung.com/java-regexp-escape-char
