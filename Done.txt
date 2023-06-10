@@ -66,3 +66,106 @@ Create CukesPlus project structure.
 * Bug: Feature editor target/fileList.html should only really be updated by the main process, probably when fetching the file list html
 	It shouldn't be updated when running the tests as the file list is then reduced to only that file being executed
 	>> buildFileList(argv); should have only been in the feature server start
+
+
+
+* Consider updating cucumber, then adding macros
+	When a syntax method is called, check to see if a new syntax method can be called from a text string, or text block for tables, that gets emitted to the scenario report
+	If yes, it might be possible to intercept method search and execution and replace with macro execution, that is recursive
+		Perhaps cucumber.runtime.Runtime.runStep
+			This does get access to all the instances: String featurePath, Step step, Reporter reporter, I18n i18n
+		Or cucumber.runtime.model.StepContainer.runSteps
+		Perhaps add a new cucumber.runtime.StepDefinition derived step execution method...
+			Which is created before "GlueProcessor.processGlue(runtime);" is run
+			Create new step derived class, like cucumber.runtime.java.JavaStepDefinition.JavaStepDefinition
+				pattern = ^I open the web page "([^"]*)"$
+				Or perhaps like: cucumber.runtime.java.JavaBackend.addStepDefinition(java.lang.annotation.Annotation, java.lang.reflect.Method)
+				Which arrives via: cucumber.runtime.java.JavaBackend.loadGlue(cucumber.runtime.Glue, java.util.List<java.lang.String>)
+					Which is Runtime.glue
+		When it is parsing events and adding them before execution: gherkin.formatter.FilterFormatter.replayEvents
+			Step.rows is already parsed as a list of DataTableRow objects
+		This adds a found step to the list to execute: cucumber.runtime.model.StepContainer#step
+	>> See: new MacroStepDefinition
+		Given this is a macro test with one parameter "hello"
+	>> Note when there is a string value: gherkin.formatter.model.Step#doc_string
+	>> Note when there is a data table: gherkin.formatter.model.Step#rows
+	>> com.replicanet.cukesplus.ExtensionRuntime.runMacroStep will need to be recursive call aware and duplicate the functionality in cucumber.runtime.Runtime#runStep
+		>> Look for: ExtensionRuntime.runtime.runMacroStep
+		But be careful not to have re-enterant problems with stopWatch etc
+		Or perhaps alternatively it could just add the Step to a list based on the "macro definition"
+			Then runStep can retire all of those extra calls...?
+				Would also need to be careful with recursion...
+				>> Problem with the retireMacroSteps() approach. The report printers get out of sync when steps are added, which causes issues with definitions and arguments not matching
+	>> I think macros are going to have to be expanded earlier, during parsing of feature files for example...
+		During? new Step.Builder(this.stash.comments, keyword, name, line);
+		gherkin.parser.FormatterListener
+		gherkin.formatter.model.Step.Builder#replay
+		gherkin.parser.FormatterListener.replayStepsOrExamples
+		>> Perhaps the whole gherkin file data can be intercepted at or before:
+			gherkin.parser.Parser#parse
+				this.lexer.scan(gherkin)
+			cucumber.runtime.FeatureBuilder.parse
+	>> Trying to avoid AspectJ, but it might be needed
+		First call to: gherkin.lexer.En#scan
+			Contains syntax data
+		Next call(s) to: gherkin.lexer.En#scan
+			Contains Feature file data
+			The next intercept point is probably at: gherkin.parser.Parser#parse
+		The addition of runtime syntax MacroStepDefinition can still happen, it's just that these steps do nothing except perhaps are useful during reporting of indentation levels?
+			Or other similar debug in the output report...
+			Or... ClassLoader intercept the gherkin.parser.Parser#parse
+				https://www.mojohaus.org/aspectj-maven-plugin/examples/weaveJars.html
+				Or even: gherkin.lexer.I18nLexer#scan
+				https://www.baeldung.com/spring-aop-pointcut-tutorial
+		>> #include "../macros/test4.macro"
+			Feature: Test 1
+		>> com.replicanet.cukesplus.FeatureProvider#getFeature
+		>> com.replicanet.cukesplus.FeatureMacroProcessor#processMacroFile
+		>> Debug data mapping...
+		>> Initial feature macro enrichment seems to work.
+		>> https://stackoverflow.com/questions/45673978/aspectj-change-value-of-method-parameter
+		* Done: Need --glue by for macro paths so the command line parameters don't get lost in the feature server
+			>> --glue macros
+		* Now need to add: runtime.getGlue().addStepDefinition
+			I think the code inside: cucumber.runtime.java.ExtractJavaStepDefinitionMembers.extractMethod
+			Specifically: cucumber.runtime.java.MacroStepDefinition.getMethodCopy
+			I don't think it needs to call leafCopy, just update the members with new data
+			This step is empty, of course
+		* Done: Also map back line numbers for executed features to any errors for the web interface
+			* // Look for match in the report for the file we are interested in seeing debug information for
+				reportUri=features/subDir/test4.feature
+			* Need to hook earlier than gherkin.lexer.I18nLexer.scan to get the filename, then create mapping from filename to debug info
+				>> gherkin.parser.Parser#parse would be a good candidate since it includes featureURI
+				>> Now have com.replicanet.cukesplus.ExtensionRuntime.featureURIToProcessedFeature
+				>> Inside handleFeatureDebugJson
+					Needs: FileUtils.writeStringToFile(new File(makeSafeName(featureURI)), feature);
+						Because the feature is really processed in the separate process
+		* Done: "##__#__## " is used to denote an expanded macro, the last pass just before execution should be to remove that and allow the original macro step (which should do nothing) to be emitted into the report
+			>> Note commented out, will be needed: feature = feature.replace("##__#__## " , "");
+			* Need to escape, make the string literal: https://www.baeldung.com/java-regexp-escape-char
+				Pattern.quote(String S)
+		* Done: Hmm, the syntax report is only showing one (the first) result of: runtime.getGlue().addStepDefinition(new MacroStepDefinition(
+			It seems there is a duplicate check failing somewhere?
+			Although if I add both faker macros and add to the scenario, the feature does execute OK...
+			>> So, perhaps the processed glue can be added to the GlueProcessor.processGlue() report in a different way, without needing to pull from the runtime?
+				** Update: cucumber.runtime.java.ExtractJavaStepDefinitionMembers.extractMethod
+					To get the info it needs from the different class without reflection bodges
+					** Remove section for: MacroStepDefinition macroStep = (MacroStepDefinition) step;
+						Remove reflection access bodges...
+					** Handle returned null in: cucumber.api.StepDefinitionReporter.stepDefinition
+					** Instead add a new way to do: glueMap.put(
+						> Checks what kind of data it adds...
+						> com.replicanet.cukesplus.FeatureMacroProcessor#processMacroFile can then add the extra information
+						> Make sure glueMap.put checks for duplicate entries before adding, we want to prioritise processMacroFile results
+							processMacroSyntaxToGlue
+			* Done: Two parameters generates: cucumber.runtime.StepDefinitionMatch.arityMismatch(
+				>> A couple of options.
+					> How does Cucumber handle varargs "..." steps?
+						Trace construction of: cucumber.runtime.java.JavaStepDefinition.JavaStepDefinition
+						Varargs doesn't work...
+					> Or how about matching the number of parameters based on the expectation?
+						Investigate: cucumber.runtime.StepDefinitionMatch#transformedArgs
+							Where it does: Integer parameterCount = this.stepDefinition.getParameterCount();
+							>> I think at this point, we intercept: cucumber.runtime.StepDefinitionMatch#runStep
+								And if this.step == typeof MacroStepDefinition
+									>>> Then just skip the entire method :)

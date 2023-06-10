@@ -39,10 +39,6 @@ public class Main
 		ResourceLoaderClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);
 		cucumber.runtime.Runtime runtime = new ExtensionRuntime(resourceLoader, classFinder, classLoader, runtimeOptions);
 
-//		runtime.getGlue().addStepDefinition(new MacroStepDefinition(Pattern.compile("^this is a macro test with one parameter \"([^\"]*)\"$") , 0));
-//		runtime.getGlue().addStepDefinition(new MacroStepDefinition(Pattern.compile("^this is a macro test with two parameters \"([^\"]*)\" and \"([^\"]*)\"$") , 0));
-//		runtime.getGlue().addStepDefinition(new MacroStepDefinition(Pattern.compile("^this is a macro definition with \"([^\"]*)\" in the middle$") , 0));
-
 		GlueProcessor.processGlue(runtime);    // << Hook into Cucumber
 		runtime.run();
 		return runtime.exitStatus();

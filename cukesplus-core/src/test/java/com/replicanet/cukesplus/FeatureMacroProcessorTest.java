@@ -75,7 +75,7 @@ public class FeatureMacroProcessorTest
 		{
 			gotException = true;
 		}
-		assertThat(gotException , is(true));
+		assertThat(gotException , is(false));
 	}
 
 	@Test

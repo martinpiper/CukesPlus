@@ -59,9 +59,9 @@ public class ExtensionRuntime extends Runtime {
         public String getFeature(String feature , String featureURI) {
             try {
                 featureURIToOriginalFeature.put(featureURI , feature);
-                feature = FeatureServerCheck.getFeatureMacroProcessor().processFeatureText(feature);
+                feature = FeatureServerCheck.getFeatureMacroProcessor().processFeatureText(feature, featureURI);
                 feature = feature.replace("##__#__## " , "");
-                feature = feature.replace("target/t.macroFeature", featureURI);
+//                feature = feature.replace("target/t.macroFeature", featureURI);
                 featureURIToProcessedFeature.put(featureURI , feature);
                 FileUtils.writeStringToFile(new File(makeSafeName(featureURI)), feature);
 
