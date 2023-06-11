@@ -32,6 +32,8 @@ public class ExtensionRuntime extends Runtime {
         super(resourceLoader,classFinder,classLoader,runtimeOptions);
 
         macroSteps = new LinkedList<MacroStep>();
+
+
     }
 
     HashMap<String , String> featureURIToOriginalFeature = new HashMap<>();

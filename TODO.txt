@@ -1,3 +1,14 @@
+* TODO items :)
+
+* When a feature has lots of macros and there is an option to execute a feature file with line numbers, then those line numbers will need mapping forward to the resultant processed feature file...
+
+
+
+* Editor: When reporting test run errors, it should be possible to open the macro file and see which lines were reported red
+	Because the execution report includes macro file line references
+
+
+
 
 * Use the Cucumber snippet generator to improve the code hints for the web editor
 	https://github.com/cucumber/cucumber-jvm/blob/20db608a5535850139ba25fcdb9be3ae46991855/core/src/main/java/cucumber/runtime/snippets/SnippetGenerator.java
@@ -9,47 +20,6 @@ These escape patterns need handling if they don't appear in a capture group: "\\
 
 * Add a list of potential values that can be used for regex sections (either paramters/capture groups or other regex areas)
 	Can bew retrieved from the regex itself or comments in the step definition
-
-
-
-* Feature macro processing.
-	For example given the macro feature file:
-		Feature: foo
-			Scenario: foo2
-				Given I do this 4 times for *
-				Given I do this 4 times for * again
-				And I do that 8 times
-				And I wibble 2 this 3 times
-
-	And the macro file:
-		# A comment, with a simple macro definition just using stars as replacements for (.*) regex
-		# $1 $2 etc are numbered parameters for the * parameters defined in the macro
-		# Note the double \* will escape the * so that it isn't treated as a parameter
-		Given I do this * times for \*
-			* it expands to this
-			* also expands to $1
-
-		# A variant on the above is to supply named parameters, note the named paramters starts with '$'
-		Given I do this * times for \* again
-		$first
-			* it expands to this
-			* also expands to $first
-
-		# A variant on the above where it uses java syntax for the step definition and regex
-		@Given("^I do that (.*) times$")
-			# Any line without a Given, When, Then, And or * step keyword will be output with * automatically
-			does this and $1 that
-			* also uses this $ parameter
-
-		# Another variant on the above is to specify named parameters, also like the simple named paramaters example above
-		# The parameter is referenced by adding the name to the $ in the step
-		@Given("^I wibble (.*) this (.*) times (.*)$")
-		$first $second
-		# Note the third named parameter is on a new line without indentation
-		$third
-			* also uses this $first parameter
-			# Numbers can still be used to index the parameters
-			* also uses this $2 parameter
 
 
 

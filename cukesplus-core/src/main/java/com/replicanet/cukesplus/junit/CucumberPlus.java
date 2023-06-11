@@ -1,5 +1,6 @@
 package com.replicanet.cukesplus.junit;
 
+import com.replicanet.cukesplus.FeatureMacroProcessor;
 import com.replicanet.cukesplus.FeatureServerCheck;
 import com.replicanet.cukesplus.GlueProcessor;
 import com.replicanet.cukesplus.ExtensionRuntime;
@@ -11,6 +12,7 @@ import cucumber.runtime.io.ResourceLoaderClassFinder;
 import org.junit.runners.model.InitializationError;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Proxy the normal Cucumber JUnit
@@ -24,6 +26,8 @@ public class CucumberPlus extends Cucumber
 
 	protected ExtensionRuntime createExtensionRuntime(ResourceLoader resourceLoader, ClassLoader classLoader, RuntimeOptions runtimeOptions) throws InitializationError, IOException {
 		ClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);
+		List<String> glue = runtimeOptions.getGlue();
+		FeatureServerCheck.buildFileList(glue.toArray(new String[0]));
 		return new ExtensionRuntime(resourceLoader, classFinder, classLoader, runtimeOptions);
 	}
 
