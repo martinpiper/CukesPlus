@@ -221,3 +221,13 @@ Create CukesPlus project structure.
 
 
 * Check that JUnit execution with CucumberPlus is able to process macros "as glue"
+
+
+
+
+* When a feature has lots of macros and there is an option to execute a feature file with line numbers, then those line numbers will need mapping forward to the resultant processed feature file...
+	Processing seems to be done in: cucumber.runtime.model.CucumberFeature#loadFromFeaturePath
+	Probably best here: PathWithLines pathWithLines = new PathWithLines(featurePath);
+	Constructor: cucumber.runtime.model.PathWithLines
+	>> AspectJ hook: thePathWithLines
+		>> com.replicanet.cukesplus.ExtensionRuntime.ExtensionFeatureProvider#doProcessPathWithLines

@@ -100,15 +100,55 @@ public class ExtensionRuntime extends Runtime {
         @Override
         public Object doProcessPathWithLines(Object theObject) {
             PathWithLines realObject = (PathWithLines) theObject;
-            try {
-                Field field = PathWithLines.class.getDeclaredField("lines");
-                field.setAccessible(true);
-//                field.set(realObject, new ArrayList<Long>());
-            } catch (NoSuchFieldException e) {
-                int i=0;
-            } /*catch (IllegalAccessException e) {
-                int i=0;
-            }*/
+            if (realObject.lines != null && realObject.lines.size() > 0) {
+                try {
+                    System.out.println("Info: Processing line filter for file: " + realObject.path);
+                    String theFeature = FileUtils.readFileToString(new File(realObject.path));
+                    // Now remap using the macros
+                    theFeature = getFeature(theFeature , realObject.path);
+                    if (theFeature.contains("#> ")) {
+                        System.out.println("Info: Detected macro expansion(s)");
+                        String[] featureLines = theFeature.split("\\R");
+                        ArrayList<Long> replacementList = new ArrayList<Long>();
+                        for (Long index : realObject.lines) {
+                            try {
+                                // Increase replacementLine until currentLine >= index
+                                int replacementLine = 0;
+                                int currentLine = 0;
+                                boolean autoIncrement = true;
+                                for (String theLine : featureLines) {
+                                    theLine = theLine.trim();
+                                    if (theLine.startsWith("#> ")) {
+                                        String theLineSplits[] = theLine.split(" ", 3);
+                                        currentLine = Integer.parseInt(theLineSplits[1]);
+                                        autoIncrement = false;
+                                    }
+                                    if (autoIncrement) {
+                                        currentLine++;
+                                    }
+                                    replacementLine++;
+                                    if (currentLine >= index) {
+                                        break;
+                                    }
+                                }
+
+                                System.out.println("Info: " + index + " remaps to " + replacementLine);
+                                replacementList.add(new Long(replacementLine));
+                            } catch (Exception e) {
+                                // Any problem, just add the old index
+                                System.out.println("Info: No remap for " + index);
+                                replacementList.add(new Long(index));
+                            }
+                        }
+
+                        Field field = PathWithLines.class.getDeclaredField("lines");
+                        field.setAccessible(true);
+                        field.set(realObject, replacementList);
+                    }
+                } catch (Exception e) {
+                    int i = 0;
+                }
+            }
             return realObject;
         }
     }

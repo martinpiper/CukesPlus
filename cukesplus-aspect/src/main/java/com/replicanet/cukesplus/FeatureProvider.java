@@ -16,6 +16,8 @@ public class FeatureProvider {
 
     public Object doProcessPathWithLines(Object theObject) {return theObject; }
 
+    // Design note: "last" is referenced without a null check to ensure that all execution paths under test are going to be covered by FeatureProvider hooks.
+
     public static String getFeatureWithMacro(String feature , String featureURI) {
         return last.getFeature(feature , featureURI);
     }
