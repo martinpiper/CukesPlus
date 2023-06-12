@@ -2,11 +2,10 @@ package com.replicanet.cukesplus;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -46,5 +45,13 @@ public class AspectE {
 //        System.out.println("****** HERE theRunStep!!! proceed ********\r\n");
 
         pjp.proceed(args);
+    }
+
+    @AfterReturning("initialization(cucumber.runtime.model.PathWithLines.new(java.lang.String))")
+    public void thePathWithLines(JoinPoint jp) throws Throwable {
+        Object[] args = jp.getArgs();
+        Object object = jp.getThis();
+
+        FeatureProvider.processPathWithLines(object);
     }
 }

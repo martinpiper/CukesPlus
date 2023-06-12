@@ -14,17 +14,17 @@ public class FeatureProvider {
 
     public boolean getAllowRunStep(Object theObject) {return true; }
 
+    public Object doProcessPathWithLines(Object theObject) {return theObject; }
+
     public static String getFeatureWithMacro(String feature , String featureURI) {
-        if (last == null) {
-            return feature;
-        }
         return last.getFeature(feature , featureURI);
     }
 
     public static boolean allowRunStep(Object theObject) {
-        if (last == null) {
-            return true;
-        }
         return last.getAllowRunStep(theObject);
+    }
+
+    public static Object processPathWithLines(Object theObject) {
+        return last.doProcessPathWithLines(theObject);
     }
 }

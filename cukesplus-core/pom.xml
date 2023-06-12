@@ -99,11 +99,11 @@
                         </weaveDependency>
                         <weaveDependency>
                             <groupId>info.cukes</groupId>
-                            <artifactId>gherkin</artifactId>
+                            <artifactId>cucumber-core</artifactId>
                         </weaveDependency>
                         <weaveDependency>
                             <groupId>info.cukes</groupId>
-                            <artifactId>cucumber-core</artifactId>
+                            <artifactId>gherkin</artifactId>
                         </weaveDependency>
                         <weaveDependency>
                             <groupId>com.replicanet</groupId>

@@ -4,6 +4,7 @@ import cucumber.runtime.*;
 import cucumber.runtime.Runtime;
 import cucumber.runtime.io.ResourceLoader;
 import cucumber.runtime.java.MacroStepDefinition;
+import cucumber.runtime.model.PathWithLines;
 import gherkin.I18n;
 import gherkin.formatter.Reporter;
 import gherkin.formatter.model.Step;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -95,6 +97,20 @@ public class ExtensionRuntime extends Runtime {
             return true;
         }
 
+        @Override
+        public Object doProcessPathWithLines(Object theObject) {
+            PathWithLines realObject = (PathWithLines) theObject;
+            try {
+                Field field = PathWithLines.class.getDeclaredField("lines");
+                field.setAccessible(true);
+//                field.set(realObject, new ArrayList<Long>());
+            } catch (NoSuchFieldException e) {
+                int i=0;
+            } /*catch (IllegalAccessException e) {
+                int i=0;
+            }*/
+            return realObject;
+        }
     }
 
     ExtensionFeatureProvider extensionFeatureProvider = new ExtensionFeatureProvider();
