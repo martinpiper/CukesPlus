@@ -470,7 +470,7 @@ public class FeatureServerCheck
 										}
 									}
 									String anyOtherStates = stateByLine.get(line);
-									if (null != anyOtherStates && (anyOtherStates.equals("failed") || anyOtherStates.equals("pending")))
+									if (null != anyOtherStates && (anyOtherStates.equals("failed") || anyOtherStates.equals("pending") || anyOtherStates.equals("undefined")))
 									{
 										// Preserve any previous state that shows an interesting error for this line
 										continue;

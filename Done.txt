@@ -231,3 +231,7 @@ Create CukesPlus project structure.
 	Constructor: cucumber.runtime.model.PathWithLines
 	>> AspectJ hook: thePathWithLines
 		>> com.replicanet.cukesplus.ExtensionRuntime.ExtensionFeatureProvider#doProcessPathWithLines
+
+
+
+* Also preserve "undefined" to show undefined steps within a macro on the correct feature file line.
