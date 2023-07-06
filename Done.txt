@@ -235,3 +235,37 @@ Create CukesPlus project structure.
 
 
 * Also preserve "undefined" to show undefined steps within a macro on the correct feature file line.
+
+
+
+
+* Indentation of macros in final report...
+	* The macro processing needs to add macro depth to the debug. Just after lines like this: #>>> 13
+		>> internalProcessFeatureFile
+			Perhaps maintain a depth in this method and output that for every macro expansion?
+			>> Now this comment outputs depth: "#>>> macro file line , depth"
+	* Need to add indentation to the report json
+		>> gherkin.formatter.Reporter
+		>> Could this indentation be hacked into the reported step by the caller to the report class?
+			Perhaps the Match
+		>> When processing, if a comment is "#>> " or "#> " then reset the depth, only use the depth when "#>>> xx , depth" is encountered
+		>> In the output json look for: MacroStepDefinition.fake which is output by cucumber.runtime.java.MacroStepDefinition.getLocation
+			> Unfortunately this is not used during the report generation, it is used during test execution
+		>> Note:
+			gherkin.formatter.JSONFormatter
+			cucumber.runtime.formatter.HTMLFormatter
+		>> It seems that gherkin.formatter.model.BasicStatement.keyword could be indented...
+			Where is it creating that? Does it have access to the feature debug at that point?
+				Yes it does!
+				Unfortunately using the debugger to prefix the keyword with whitespace does not result in indented display in the HTML, but the json does contain indentation
+				Using non-whitespace ">>" does show in the HTML report however...
+				The HTML report does contain the keyword text verbatim, including the whitespace...
+				However the span style seems to discard prefix whitespace, ignore horizontal margins basically: https://stackoverflow.com/questions/11685897/how-to-apply-space-in-span-element
+				This fixes the style in the browser debugger: white-space: pre;
+					In: .cucumber-report .keyword in style.css
+				Also cucumber.runtime.formatter.HTMLFormatter.step seems to be escaping "&nbsp;" in the output HTML
+				>> Although using "\u00A0" in the debugger for "keyword" seems to work!
+				>> So create something that alters the parameters for BasicStatement()
+					Actually gherkin.formatter.model.Step would be better...
+		>> AspectJ interception theBasicStatementNew adds "\u00A0" indentation to the step keyword
+		* TODO: Reusing the <details> optional expansion seems like a good style choice in the report, but it seems to be quite finicky to use...
