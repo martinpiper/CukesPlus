@@ -2,6 +2,20 @@
 
 * Editor: When reporting test run errors, it should be possible to open the macro file and see which lines were reported red
 	Because the execution report includes macro file line references
+	Also featureURIToProcessedFeature files contain lines that flag where the macro file and line is. e.g. "#>> 12 : macros\test6.macro"
+		Also #>>> is the line in the macro file previously flagged by #>>
+
+
+
+
+* Indentation of macros in final report...
+	* The macro processing needs to add macro depth to the debug. Just after lines like this: #>>> 13
+		>> internalProcessFeatureFile
+			Perhaps maintain a depth in this method and output that for every macro expansion?
+	* Need to add indentation to the report json
+		>> gherkin.formatter.Reporter
+		>> Could this indentation be hacked into the reported step by the caller to the report class?
+			Perhaps the Match
 
 
 
