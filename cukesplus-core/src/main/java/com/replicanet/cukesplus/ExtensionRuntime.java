@@ -7,6 +7,7 @@ import cucumber.runtime.java.MacroStepDefinition;
 import cucumber.runtime.model.PathWithLines;
 import gherkin.I18n;
 import gherkin.formatter.Reporter;
+import gherkin.formatter.model.Comment;
 import gherkin.formatter.model.Step;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -147,7 +148,41 @@ public class ExtensionRuntime extends Runtime {
             }
             return realObject;
         }
+
+        @Override
+        public Object[] doProcessTheBasicStatementNew(Object realThis, Object[] args) {
+            try {
+                if (realThis instanceof Step && args.length >= 4) {
+                    if (args[0] instanceof ArrayList && args[1] instanceof String) {
+                        ArrayList comments = (ArrayList) args[0];
+                        String prefix = "";
+                        for (int i = 0; i < comments.size(); i++) {
+                            Object comment = comments.get(i);
+                            if (comment instanceof Comment) {
+                                Comment realComment = (Comment) comment;
+                                String commentText = realComment.getValue();
+                                if (commentText.startsWith("#>>> ")) {
+                                    String[] splits = commentText.split(",", 3);
+                                    if (splits.length >= 2) {
+                                        int depth = Integer.parseInt(splits[1].trim());
+                                        while (depth > 0) {
+                                            // Add some non-breaking spaces for report indentation...
+                                            prefix += "\u00A0\u00A0";
+                                            depth--;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        String newKeyword = prefix + (String) args[1];
+                        args[1] = newKeyword;
+                    }
+                }
+            } catch (Exception e) {}
+            return args;
+        }
     }
+
 
     ExtensionFeatureProvider extensionFeatureProvider = new ExtensionFeatureProvider();
     int currentPosition = -1;

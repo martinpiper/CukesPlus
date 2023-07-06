@@ -54,4 +54,14 @@ public class AspectE {
 
         FeatureProvider.processPathWithLines(object);
     }
+
+
+    @Around("execution(gherkin.formatter.model.BasicStatement.new(..))")
+    public void theBasicStatementNew(ProceedingJoinPoint pjp) throws Throwable {
+//        System.out.println("****** HERE theBasicStatementNew!!! ********\r\n");
+        Object[] args = FeatureProvider.processTheBasicStatementNew(pjp.getThis(), pjp.getArgs());
+//        System.out.println("****** HERE theBasicStatementNew!!! proceed ********\r\n");
+
+        pjp.proceed(args);
+    }
 }

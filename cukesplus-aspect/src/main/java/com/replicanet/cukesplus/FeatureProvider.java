@@ -16,6 +16,8 @@ public class FeatureProvider {
 
     public Object doProcessPathWithLines(Object theObject) {return theObject; }
 
+    public Object[] doProcessTheBasicStatementNew(Object realThis, Object[] args) {return args; }
+
     // Design note: "last" is referenced without a null check to ensure that all execution paths under test are going to be covered by FeatureProvider hooks.
 
     public static String getFeatureWithMacro(String feature , String featureURI) {
@@ -28,5 +30,9 @@ public class FeatureProvider {
 
     public static Object processPathWithLines(Object theObject) {
         return last.doProcessPathWithLines(theObject);
+    }
+
+    public static Object[] processTheBasicStatementNew(Object realThis, Object[] args) {
+        return last.doProcessTheBasicStatementNew(realThis, args);
     }
 }
