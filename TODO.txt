@@ -4,11 +4,19 @@
 	Because the execution report includes macro file line references
 	Also featureURIToProcessedFeature files contain lines that flag where the macro file and line is. e.g. "#>> 12 : macros\test6.macro"
 		Also #>>> is the line in the macro file previously flagged by #>>
+	Similar to: handleFeatureDebugJson
+	>> TODO: Needs implementation for handleMacroDebugJson
+	> Needs to find and parse json for: "steps"
+		Note: "status", especially
+		And any containing: "comments"
+
+		"value": "#\u003e\u003e 5 : macros\\test6.macro"
+		This is: #>>
+		>> Note line number
+			Then note any following line number: "value": "#\u003e\u003e\u003e
+			This is: #>>>
 
 
-
-
-* Where MacroStepDefinition is created, add the corresponding glueMap key value as a value retuend by MacroStepDefinition.getLocation()
 
 
 

@@ -15,10 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.regex.Pattern;
 
 import static cucumber.runtime.java.ExtractJavaStepDefinitionMembers.extractMethod;
@@ -86,8 +83,9 @@ public class GlueProcessor
 	public static void processGlue(Runtime runtime)
 	{
 		FeatureServerCheck.getFeatureMacroProcessor().processMacroSyntaxToGlue();
-		for (StepInformation stepInfo : glueMap.values()) {
-			runtime.getGlue().addStepDefinition(new MacroStepDefinition(Pattern.compile(stepInfo.pattern), 0));
+		for (Map.Entry<String , StepInformation> entry : glueMap.entrySet()) {
+			StepInformation stepInfo = entry.getValue();
+			runtime.getGlue().addStepDefinition(new MacroStepDefinition(entry.getKey() , Pattern.compile(stepInfo.pattern), 0));
 		}
 
 		Glue glue = runtime.getGlue();

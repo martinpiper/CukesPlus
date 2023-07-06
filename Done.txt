@@ -269,3 +269,10 @@ Create CukesPlus project structure.
 					Actually gherkin.formatter.model.Step would be better...
 		>> AspectJ interception theBasicStatementNew adds "\u00A0" indentation to the step keyword
 		* TODO: Reusing the <details> optional expansion seems like a good style choice in the report, but it seems to be quite finicky to use...
+
+
+
+
+* Where MacroStepDefinition is created, add the corresponding glueMap key value as a value returned by MacroStepDefinition.getLocation()
+	e.g.
+	"location": "MacroStepDefinition.Macro.test6._this_is_a_macro_test_with_two_parameters__________and__________() in file:macros\\test6.macro"

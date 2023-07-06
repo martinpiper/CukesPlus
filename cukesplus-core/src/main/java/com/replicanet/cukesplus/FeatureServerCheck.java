@@ -20,6 +20,8 @@ public class FeatureServerCheck
 	public static final String RECORD_FILE = ".record.file";
 	public static final String RUN_FILE = ".run.file";
 	public static final String FEATURE_DEBUG_JSON = ".feature.debug.json";
+	public static final String MACRO_DEBUG_JSON = ".macro.debug.json";
+	public static final String DEBUG_JSON = ".debug.json";
 	public static final String RUN_SUITE = ".run.suite";
 	public static final String CLEAR_RESULTS = ".clear.results";
 	public static final String SERVER_FEATURE_EDITOR = "com.replicanet.cukesplus.server.featureEditor";
@@ -138,6 +140,10 @@ public class FeatureServerCheck
 				if (uri.endsWith(FEATURE_DEBUG_JSON))
 				{
 					return handleFeatureDebugJson(uri);
+				}
+				else if (uri.endsWith(MACRO_DEBUG_JSON))
+				{
+					return handleMacroDebugJson(uri.replace(DEBUG_JSON, ""));
 				}
 				else if (uri.endsWith(RECORD_FILE))
 				{
@@ -485,24 +491,7 @@ public class FeatureServerCheck
 
 							if (!stateByLine.isEmpty())
 							{
-								String toRet = "{\n" +
-										"\"lines\" : [\n";
-
-								// MPi: TODO: Optimise contiguous ranges of lines
-								boolean first = true;
-								for (Map.Entry<Integer, String> entry : stateByLine.entrySet())
-								{
-									if (!first)
-									{
-										toRet += " ,\n";
-									}
-									first = false;
-									toRet += "\t{ \"type\" : \"";
-									toRet += entry.getValue() + "_step_line";
-									toRet += "\" ,   \"from\" : " + entry.getKey() + " ,    \"to\" : " + entry.getKey() + "}";
-								}
-
-								toRet += "]\n}\n";
+								String toRet = getLineStateResponse(stateByLine);
 
 								return new ByteArrayInputStream(toRet.getBytes(StandardCharsets.UTF_8));
 							}
@@ -520,6 +509,108 @@ public class FeatureServerCheck
 				}
 
 				return emptyReply;
+			}
+
+			private InputStream handleMacroDebugJson(String uri)
+			{
+				Map<Integer, String> stateByLine = new TreeMap<>();
+
+				// An example of what to do to return runtime generated data
+				File dir = new File("target");
+				FileFilter fileFilter = new WildcardFileFilter("report*.json");
+				File[] files = dir.listFiles(fileFilter);
+
+				for (File file : files)
+				{
+					try
+					{
+						BufferedReader br = new BufferedReader(new FileReader(file));
+
+						JsonParser parser = new JsonParser();
+						JsonArray rootObjs = parser.parse(br).getAsJsonArray();
+						br.close();
+
+						int i;
+						for (i = 0; i < rootObjs.size(); i++)
+						{
+							JsonArray elementObjs = rootObjs.get(i).getAsJsonObject().get("elements").getAsJsonArray();
+							int j;
+							for (j = 0; j < elementObjs.size(); j++)
+							{
+								JsonArray stepsObjs = elementObjs.get(j).getAsJsonObject().get("steps").getAsJsonArray();
+								int k;
+								String lastStatus = "skipped";
+								boolean first = true;
+								for (k = 0; k < stepsObjs.size(); k++)
+								{
+									String status = stepsObjs.get(k).getAsJsonObject().get("result").getAsJsonObject().get("status").getAsString();
+									if (first)
+									{
+										first = false;
+										lastStatus = status;
+									}
+									else if (!status.equals("skipped"))
+									{
+										// Only use the last good status from the steps, not skipped status from the steps
+										lastStatus = status;
+									}
+									int line = 0;
+									String anyOtherStates = stateByLine.get(line);
+									if (null != anyOtherStates && (anyOtherStates.equals("failed") || anyOtherStates.equals("pending") || anyOtherStates.equals("undefined")))
+									{
+										// Preserve any previous state that shows an interesting error for this line
+										continue;
+									}
+									stateByLine.put(line, status);
+								}
+
+								// Emit information for the scenario or the examples table line for the scenario outline
+								int line = elementObjs.get(j).getAsJsonObject().get("line").getAsInt();
+								stateByLine.put(line, lastStatus);
+							}
+
+							if (!stateByLine.isEmpty())
+							{
+								String toRet = getLineStateResponse(stateByLine);
+
+								return new ByteArrayInputStream(toRet.getBytes(StandardCharsets.UTF_8));
+							}
+						}
+					}
+					catch (FileNotFoundException e)
+					{
+						e.printStackTrace();
+					}
+					catch (IOException e)
+					{
+						e.printStackTrace();
+					}
+
+				}
+
+				return emptyReply;
+			}
+
+			private String getLineStateResponse(Map<Integer, String> stateByLine) {
+				String toRet = "{\n" +
+						"\"lines\" : [\n";
+
+				// MPi: TODO: Optimise contiguous ranges of lines
+				boolean first = true;
+				for (Map.Entry<Integer, String> entry : stateByLine.entrySet())
+				{
+					if (!first)
+					{
+						toRet += " ,\n";
+					}
+					first = false;
+					toRet += "\t{ \"type\" : \"";
+					toRet += entry.getValue() + "_step_line";
+					toRet += "\" ,   \"from\" : " + entry.getKey() + " ,    \"to\" : " + entry.getKey() + "}";
+				}
+
+				toRet += "]\n}\n";
+				return toRet;
 			}
 
 			@Override

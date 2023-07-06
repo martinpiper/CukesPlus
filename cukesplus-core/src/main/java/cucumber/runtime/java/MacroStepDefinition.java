@@ -17,8 +17,10 @@ public class MacroStepDefinition implements StepDefinition {
     private long timeoutMillis;
     private JdkPatternArgumentMatcher argumentMatcher;
     private List<ParameterInfo> parameterInfos;
+    private String location;
 
-    public MacroStepDefinition(Pattern pattern, long timeoutMillis) {
+    public MacroStepDefinition(String location, Pattern pattern, long timeoutMillis) {
+        this.location = location;
         this.pattern = pattern;
         this.timeoutMillis = timeoutMillis;
         this.argumentMatcher = new JdkPatternArgumentMatcher(pattern);
@@ -37,7 +39,7 @@ public class MacroStepDefinition implements StepDefinition {
     public String getLocation(boolean detail) {
 //        MethodFormat format = detail ? MethodFormat.FULL : MethodFormat.SHORT;
 //        return format.format(this.method);
-        return "MacroStepDefinition.fake";
+        return "MacroStepDefinition." + location;
     }
 
     public Integer getParameterCount() {

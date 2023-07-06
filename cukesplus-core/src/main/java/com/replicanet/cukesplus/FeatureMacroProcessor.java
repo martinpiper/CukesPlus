@@ -73,7 +73,7 @@ public class FeatureMacroProcessor
 			{
 				params = appendParameter(theStep, params, macro.namedParameters.get(i) , macro.namedParametersTypes.get(i));
 			}
-			theStepKey += params + ") in file:/foo";
+			theStepKey += params + ") in file:" + macro.sourceFile;
 
 			theStep.pattern = StringEscapeUtils.unescapeJava(macro.regexDefinition);
 			theStep.declaredAnnotationType = macro.keyword;
