@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/cucumber/runtime/java/MacroStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/cucumber/runtime/java/MacroStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/test1.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/test1.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-test/macros/test6.macro" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-test/macros/test6.macro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus.iws" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +149,7 @@
       <recent name="TestGlue2" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.feature editor test">
+  <component name="RunManager" selected="Application.test with macros">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -452,9 +456,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FeatureMacroProcessorTest" />
         <item itemvalue="Maven.cukesplus [install]" />
         <item itemvalue="JUnit.FeatureMacroProcessorTest.processFeatureFile1" />
-        <item itemvalue="JUnit.FeatureMacroProcessorTest" />
         <item itemvalue="JUnit.FeatureMacroProcessorTest.processMacroSyntaxToGlue" />
         <item itemvalue="Maven.cukesplus [verify]" />
       </list>
@@ -490,89 +494,9 @@
           <option name="timeStamp" value="189" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-aspect/src/main/java/com/replicanet/cukesplus/AspectE.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="213" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-aspect/src/main/java/com/replicanet/cukesplus/AspectE.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="215" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-aspect/src/main/java/com/replicanet/cukesplus/AspectE.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="217" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureServerCheck.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="219" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java</url>
-          <line>181</line>
-          <option name="timeStamp" value="234" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/cucumber/runtime/java/MacroStepDefinition.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="238" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.4/cucumber-core-1.2.4.jar!/cucumber/runtime/StepDefinitionMatch.class</url>
-          <line>99</line>
-          <option name="timeStamp" value="241" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-java/1.2.4/cucumber-java-1.2.4.jar!/cucumber/runtime/java/Java8StepDefinition.class</url>
-          <line>64</line>
-          <option name="timeStamp" value="243" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-java/1.2.4/cucumber-java-1.2.4.jar!/cucumber/runtime/java/Java8StepDefinition.class</url>
-          <line>31</line>
-          <option name="timeStamp" value="245" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/cucumber/runtime/java/MacroStepDefinition.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="248" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/test/java/com/replicanet/cukesplus/FeatureMacroProcessorTest.java</url>
-          <line>91</line>
-          <option name="timeStamp" value="252" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java</url>
-          <line>403</line>
-          <option name="timeStamp" value="256" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.4/cucumber-core-1.2.4.jar!/cucumber/runtime/Runtime.class</url>
-          <line>98</line>
-          <option name="timeStamp" value="257" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-aspect/src/main/java/com/replicanet/cukesplus/AspectE.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="263" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java</url>
-          <line>101</line>
-          <option name="timeStamp" value="266" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java</url>
-          <line>130</line>
-          <option name="timeStamp" value="267" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java</url>
-          <line>115</line>
-          <option name="timeStamp" value="268" />
+          <line>39</line>
+          <option name="timeStamp" value="277" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

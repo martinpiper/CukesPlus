@@ -11,3 +11,4 @@ Given this is a macro test with two parameters "*" and "*"
 
 * it does this step
     Given I am passing
+

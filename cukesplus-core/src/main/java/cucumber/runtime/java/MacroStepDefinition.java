@@ -13,51 +13,15 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class MacroStepDefinition implements StepDefinition {
-    private Method method;
     Pattern pattern;
     private long timeoutMillis;
     private JdkPatternArgumentMatcher argumentMatcher;
     private List<ParameterInfo> parameterInfos;
 
     public MacroStepDefinition(Pattern pattern, long timeoutMillis) {
-//        method = getMethodCopy("NewNameHere");
         this.pattern = pattern;
         this.timeoutMillis = timeoutMillis;
         this.argumentMatcher = new JdkPatternArgumentMatcher(pattern);
-//        this.parameterInfos = ParameterInfo.fromMethod(method);
-    }
-
-    java.lang.reflect.Method getMethod() {
-        return method;
-    }
-
-    public Method getMethodCopy(String newName) {
-
-        // This uses a very hacky way to get a new Method and alter its contents
-        Method method = null;
-        try {
-            method = this.getClass().getDeclaredMethod("getMethodCopy", String.class);
-        } catch (NoSuchMethodException e) {
-        }
-
-        try {
-            Method methodCopy = Method.class.getDeclaredMethod("leafCopy");
-            methodCopy.setAccessible(true);
-            Object obj = methodCopy.invoke(method);
-            method = (Method) obj;
-        } catch (Exception e) {
-        }
-
-        method.setAccessible(true);
-
-        try {
-            Field f = method.getClass().getDeclaredField("name");
-            f.setAccessible(true);
-            f.set(method, new String(newName));
-        } catch (Exception e) {
-        }
-
-        return method;
     }
 
     // Originally from cucumber.runtime.java.JavaStepDefinition
@@ -85,7 +49,7 @@ public class MacroStepDefinition implements StepDefinition {
     }
 
     public boolean isDefinedAt(StackTraceElement e) {
-        return e.getClassName().equals(this.method.getDeclaringClass().getName()) && e.getMethodName().equals(this.method.getName());
+        return false;
     }
 
     public String getPattern() {

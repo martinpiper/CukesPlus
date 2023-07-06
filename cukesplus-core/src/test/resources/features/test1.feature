@@ -6,7 +6,7 @@ Feature: Test 1
     #> 5 : src/test/resources/features/test1.macroFeature
     ##__#__## Given I do this thing
     #>> 9 : src/test/resources/macros/test4.macro
-    #>>> 10
+    #>>> 10 , 1
     * it does this step:
       """
       With this text block
@@ -15,7 +15,7 @@ Feature: Test 1
     #> 6 : src/test/resources/features/test1.macroFeature
     ##__#__## And I do this thing
     #>> 9 : src/test/resources/macros/test4.macro
-    #>>> 10
+    #>>> 10 , 1
     * it does this step:
       """
       With this text block
@@ -39,8 +39,8 @@ Feature: Test 1
     #> 18 : src/test/resources/features/test1.macroFeature
     ##__#__## Given I do this macro
     #>> 18 : src/test/resources/macros/test4.macro
-    #>>> 19
+    #>>> 19 , 1
     ##__#__## Then I do the other macro
     #>> 22 : src/test/resources/macros/test4.macro
-    #>>> 23
+    #>>> 23 , 2
     Then this is the real step

@@ -409,12 +409,13 @@ public class FeatureMacroProcessor
 
 		int thisLineCount;
 		boolean firstIteration = true;
+		int depth = 1;
 		// Keep on processing until there are no more updated lines or until the processing depth is reached
 		do
 		{
 			processingDepth++;
 			FileUtils.deleteQuietly(new File(outputFile));
-			thisLineCount = internalProcessFeatureFile(firstIteration, inputFile, outputFile, featureURI);
+			thisLineCount = internalProcessFeatureFile(firstIteration, inputFile, outputFile, featureURI, depth);
 			if (thisLineCount > 0 && processingDepth < maxProcessingDepth)
 			{
 				inputFile = flipFile(outputFile, tempOutput);
@@ -422,6 +423,7 @@ public class FeatureMacroProcessor
 			realLineCount += thisLineCount;
 			emitInfo("Feature macro processing '" + featureURI + "' depth " + processingDepth + " new lines " + thisLineCount + " total lines " + realLineCount);
 			firstIteration = false;
+			depth++;
 		} while (thisLineCount > 0 && processingDepth < maxProcessingDepth);
 
 		if (processingDepth == maxProcessingDepth)
@@ -449,7 +451,7 @@ public class FeatureMacroProcessor
 		return inputFile;
 	}
 
-	private int internalProcessFeatureFile(boolean firstIteration, String inputFile, String outputFile, String featureURI) throws IOException, ParseException
+	private int internalProcessFeatureFile(boolean firstIteration, String inputFile, String outputFile, String featureURI, int depth) throws IOException, ParseException
 	{
 		errors = 0;
 		if (null == sortedDefinitions)
@@ -561,7 +563,7 @@ public class FeatureMacroProcessor
 								// This avoids problems with non-step lines (tables and text blocks) getting comments inserted into them.
 								if (macro.stepLineNumbers.get(lineIndex) >= 0)
 								{
-									writeLineComment(bw, currentIndent, macro, lineIndex);
+									writeLineDebugComment(bw, currentIndent, macro, lineIndex, depth);
 								}
 
 								String newStep = currentIndent;
@@ -667,9 +669,9 @@ public class FeatureMacroProcessor
 		return tokPos;
 	}
 
-	private void writeLineComment(BufferedWriter bw, String currentIndent, Macro macro, int lineIndex) throws IOException
+	private void writeLineDebugComment(BufferedWriter bw, String currentIndent, Macro macro, int lineIndex, int level) throws IOException
 	{
-		bw.write(currentIndent + "#>>> " + macro.stepLineNumbers.get(lineIndex));
+		bw.write(currentIndent + "#>>> " + macro.stepLineNumbers.get(lineIndex) + " , " + level);
 		bw.newLine();
 	}
 

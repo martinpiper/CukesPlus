@@ -12,10 +12,20 @@
 	* The macro processing needs to add macro depth to the debug. Just after lines like this: #>>> 13
 		>> internalProcessFeatureFile
 			Perhaps maintain a depth in this method and output that for every macro expansion?
+			>> Now this comment outputs depth: "#>>> macro file line , depth"
 	* Need to add indentation to the report json
 		>> gherkin.formatter.Reporter
 		>> Could this indentation be hacked into the reported step by the caller to the report class?
 			Perhaps the Match
+		>> When processing, if a comment is "#>> " or "#> " then reset the depth, only use the depth when "#>>> xx , depth" is encountered
+		>> In the output json look for: MacroStepDefinition.fake which is output by cucumber.runtime.java.MacroStepDefinition.getLocation
+			> Unfortunately this is not used during the report generation, it is used during test execution
+
+
+
+
+
+* Where MacroStepDefinition is created, add the corresponding glueMap key value as a value retuend by MacroStepDefinition.getLocation()
 
 
 
