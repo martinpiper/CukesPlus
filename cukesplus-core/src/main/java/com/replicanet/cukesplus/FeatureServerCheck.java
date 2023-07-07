@@ -3,6 +3,7 @@ package com.replicanet.cukesplus;
 import com.replicanet.ACEServer;
 import com.replicanet.ACEServerCallback;
 import gherkin.deps.com.google.gson.JsonArray;
+import gherkin.deps.com.google.gson.JsonElement;
 import gherkin.deps.com.google.gson.JsonParser;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
@@ -455,26 +456,7 @@ public class FeatureServerCheck
 										lastStatus = status;
 									}
 									int line = stepsObjs.get(k).getAsJsonObject().get("line").getAsInt();
-									// Remap the line from any processed feature back to the original line...
-									if (originalFeature != null && line < originalFeature.size()) {
-										int debugLine = line - 1;
-										while (debugLine > 0) {
-											String debugLineContents = originalFeature.get(debugLine).trim();
-											if (debugLineContents.startsWith("#> ")) {
-												String[] splits = debugLineContents.split(" ", 3);
-												int replacementLine = -1;
-												try {
-													replacementLine = Integer.parseInt(splits[1]);
-												} catch (Exception e) {
-												}
-												if (replacementLine >= 0) {
-													line = replacementLine;
-												}
-												break;
-											}
-											debugLine--;
-										}
-									}
+									line = remapFeatureLineUsingAnyDebug(originalFeature, line);
 									String anyOtherStates = stateByLine.get(line);
 									if (null != anyOtherStates && (anyOtherStates.equals("failed") || anyOtherStates.equals("pending") || anyOtherStates.equals("undefined")))
 									{
@@ -486,6 +468,7 @@ public class FeatureServerCheck
 
 								// Emit information for the scenario or the examples table line for the scenario outline
 								int line = elementObjs.get(j).getAsJsonObject().get("line").getAsInt();
+								line = remapFeatureLineUsingAnyDebug(originalFeature, line);
 								stateByLine.put(line, lastStatus);
 							}
 
@@ -511,8 +494,35 @@ public class FeatureServerCheck
 				return emptyReply;
 			}
 
+			private int remapFeatureLineUsingAnyDebug(List<String> originalFeature, int line) {
+				// Line numbers from the debug are 1 based but the array access is 0 based...
+				int debugLine = line - 1;
+				// Remap the line from any processed feature back to the original line...
+				if (originalFeature != null && debugLine < originalFeature.size()) {
+					while (debugLine >= 0) {
+						String debugLineContents = originalFeature.get(debugLine).trim();
+						if (debugLineContents.startsWith("#> ")) {
+							String[] splits = debugLineContents.split(" ", 3);
+							int replacementLine = -1;
+							try {
+								replacementLine = Integer.parseInt(splits[1]);
+							} catch (Exception e) {
+							}
+							if (replacementLine >= 0) {
+								line = replacementLine;
+							}
+							break;
+						}
+						debugLine--;
+					}
+				}
+				return line;
+			}
+
 			private InputStream handleMacroDebugJson(String uri)
 			{
+				uri = uri.replace("\\", "/").toLowerCase();
+
 				Map<Integer, String> stateByLine = new TreeMap<>();
 
 				// An example of what to do to return runtime generated data
@@ -530,43 +540,60 @@ public class FeatureServerCheck
 						JsonArray rootObjs = parser.parse(br).getAsJsonArray();
 						br.close();
 
-						int i;
-						for (i = 0; i < rootObjs.size(); i++)
+						for (int i = 0; i < rootObjs.size(); i++)
 						{
 							JsonArray elementObjs = rootObjs.get(i).getAsJsonObject().get("elements").getAsJsonArray();
-							int j;
-							for (j = 0; j < elementObjs.size(); j++)
+							for (int j = 0; j < elementObjs.size(); j++)
 							{
 								JsonArray stepsObjs = elementObjs.get(j).getAsJsonObject().get("steps").getAsJsonArray();
-								int k;
-								String lastStatus = "skipped";
-								boolean first = true;
-								for (k = 0; k < stepsObjs.size(); k++)
+
+								int bestLine = 0;
+								boolean macroFileMatchNow = false;
+								boolean macroFileMatchWas = false;
+
+								for (int k = 0; k < stepsObjs.size(); k++)
 								{
 									String status = stepsObjs.get(k).getAsJsonObject().get("result").getAsJsonObject().get("status").getAsString();
-									if (first)
-									{
-										first = false;
-										lastStatus = status;
-									}
-									else if (!status.equals("skipped"))
-									{
-										// Only use the last good status from the steps, not skipped status from the steps
-										lastStatus = status;
-									}
-									int line = 0;
-									String anyOtherStates = stateByLine.get(line);
-									if (null != anyOtherStates && (anyOtherStates.equals("failed") || anyOtherStates.equals("pending") || anyOtherStates.equals("undefined")))
-									{
-										// Preserve any previous state that shows an interesting error for this line
-										continue;
-									}
-									stateByLine.put(line, status);
-								}
 
-								// Emit information for the scenario or the examples table line for the scenario outline
-								int line = elementObjs.get(j).getAsJsonObject().get("line").getAsInt();
-								stateByLine.put(line, lastStatus);
+									JsonElement commentElement = stepsObjs.get(k).getAsJsonObject().get("comments");
+									if (null != commentElement) {
+										JsonArray commentObjs = commentElement.getAsJsonArray();
+										for (int l = 0; l < commentObjs.size(); l++) {
+											String detectedMacroFile = commentObjs.get(l).getAsJsonObject().get("value").getAsString();
+											detectedMacroFile = detectedMacroFile.replace("\\", "/").toLowerCase();
+											if (detectedMacroFile.contains("#>> ")) {
+												if (detectedMacroFile.contains(uri)) {
+													macroFileMatchWas = true;
+													macroFileMatchNow = true;
+
+													String lineNumberSplits[] = detectedMacroFile.split(" ", 3);
+													bestLine = Integer.parseInt(lineNumberSplits[1]);
+												} else {
+													macroFileMatchNow = false;
+												}
+											}
+
+											if (macroFileMatchNow && detectedMacroFile.contains("#>>> ")) {
+												String lineNumberSplits[] = detectedMacroFile.split(" ", 3);
+												bestLine = Integer.parseInt(lineNumberSplits[1]);
+											}
+
+											// Accumulate the most interesting line states for this matching macro file
+											if (macroFileMatchWas && bestLine > 0) {
+												String anyOtherStates = stateByLine.get(bestLine);
+												if (null != anyOtherStates && (anyOtherStates.equals("failed") || anyOtherStates.equals("pending") || anyOtherStates.equals("undefined"))) {
+													// Preserve any previous state that shows an interesting error for this line
+													// i.e. Do nothing here
+												} else {
+													stateByLine.put(bestLine, status);
+												}
+												bestLine = 0;
+											}
+
+										}
+
+									}
+								}
 							}
 
 							if (!stateByLine.isEmpty())

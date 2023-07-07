@@ -30,3 +30,15 @@ Feature: Testing this CukesPlus2
     Given I run this test
     Given I throw an exception
     Given I throw an exception
+
+
+
+  Scenario: Using macros 2
+    Given Different errors two
+
+  Scenario: Using macros 3
+    Given Different errors three
+
+  Scenario: Using macros 4
+    Given Different errors four
+

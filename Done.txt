@@ -276,3 +276,24 @@ Create CukesPlus project structure.
 * Where MacroStepDefinition is created, add the corresponding glueMap key value as a value returned by MacroStepDefinition.getLocation()
 	e.g.
 	"location": "MacroStepDefinition.Macro.test6._this_is_a_macro_test_with_two_parameters__________and__________() in file:macros\\test6.macro"
+
+
+
+
+* Editor: When reporting test run errors, it should be possible to open the macro file and see which lines were reported red
+	Because the execution report includes macro file line references
+	Also featureURIToProcessedFeature files contain lines that flag where the macro file and line is. e.g. "#>> 12 : macros\test6.macro"
+		Also #>>> is the line in the macro file previously flagged by #>>
+	Similar to: handleFeatureDebugJson
+	>> TODO: Needs implementation for handleMacroDebugJson
+	> Needs to find and parse json for: "steps"
+		Note: "status", giving priority to: "failed" "pending" "undefined".
+			There may be more than one status for a line in a macro file, due to macros being used more than once in scenarios.
+		And any containing: "comments"
+		Match requesting url with path in the debug, make \ and / consistent...
+			"value": "#\u003e\u003e 5 : macros\\test6.macro"
+			This is: #>>
+			>> Note line number
+				Then note any following line number: "value": "#\u003e\u003e\u003e
+				This is: #>>>
+

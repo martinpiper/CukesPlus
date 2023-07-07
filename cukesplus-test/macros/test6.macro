@@ -1,14 +1,32 @@
 Given this is a macro test with one parameter "*"
-	Then it does this step
+  Then it does this step
+#  Given I am unimplemented
 
 
 Given this is a macro test with two parameters "*" and "*"
-	Then it does this step
-	Then it does this step
-	Then it does this step
-	Then it does this step
+  Then it does this step
+  Then it does this step
+  Then it does this step
+  Then it does this step
 
 
 * it does this step
-    Given I am passing
+  Given I am passing
+#  Given I throw an exception
+
+
+
+
+Given Different errors two
+  Given I am pending
+
+
+
+Given Different errors three
+  Given I am unimplemented
+
+
+
+Given Different errors four
+  Given I throw an exception
 

@@ -500,6 +500,7 @@ public class FeatureMacroProcessor
 
 			if (workLower.startsWith("background:") || workLower.startsWith("scenario:") || workLower.startsWith("scenario outline:"))
 			{
+				emitLineDebug(firstIteration, featureURI, bw, lineNumber, currentIndent);
 				inScenario = true;
 				bw.write(line);
 				bw.newLine();
