@@ -7,7 +7,7 @@
 
 
 
-* Property (variables) expansion, call explicit paramter parsing method
+* Property (variables) expansion, call explicit parameter parsing method
 
 
 
