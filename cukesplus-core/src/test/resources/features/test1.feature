@@ -1,5 +1,6 @@
 #include "../macros/test4.macro"
 Feature: Test 1
+  #> 3 : src/test/resources/features/test1.macroFeature
   Scenario Outline: Scenario 1
     #> 4 : src/test/resources/features/test1.macroFeature
     Given this is not a macro
@@ -35,6 +36,7 @@ Feature: Test 1
       | 3 | 4 |
 
 
+  #> 17 : src/test/resources/features/test1.macroFeature
   Scenario:
     #> 18 : src/test/resources/features/test1.macroFeature
     ##__#__## Given I do this macro

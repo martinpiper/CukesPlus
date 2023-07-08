@@ -1,5 +1,38 @@
 * TODO items :)
 
+
+* Macro feature processing uses a temporary file. Use memory based processing to make it faster
+
+
+
+
+* Editor needs test to create new suite from scratch
+	Can be used for other editor tests without altering the main code tests
+
+
+
+
+* Web editor needs tests for line colour highlighting
+	Passing
+	Unimplemented
+	Error
+	Skipped
+
+
+
+* Editor needs tests for line number execution
+* Editor needs tests for file execution
+* Editor needs tests for suite execution
+
+
+
+* Needs test for adding macro syntax
+	* Check adding macro syntax results in new drop down hint
+	* Test syntax report generation
+
+
+
+
 * Conditional syntax.
 	> Allows the execution state to be set. To allow expansion of conditional syntax.
 		See: getAllowRunStep
