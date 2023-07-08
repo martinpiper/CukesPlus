@@ -1,7 +1,7 @@
 * TODO items :)
 
 * Conditional syntax.
-	> Allows the execution state to be set. To allow expansion conditional syntax.
+	> Allows the execution state to be set. To allow expansion of conditional syntax.
 		See: getAllowRunStep
 	> Can output "Skipped"
 
@@ -13,6 +13,7 @@
 
 
 * Macro expansion, loop
+	Can expand properties available at the start of execution
 
 
 
@@ -69,3 +70,16 @@ This is to enable the ACE browser editor to pickup changing regex for feature fi
 
 
 * Generate syntax hints or at the very least if they don't exist return back syntax hints with a message telling the user to run once and refresh the page.
+
+
+
+
+* Find a better default report:
+	** HTML
+	** Trend report
+	** Elastic search data submission
+	>> https://cucumber.io/docs/cucumber/reporting/?lang=java
+		Elastic search : https://github.com/AshisRaj/cucelastic-maven-plugin
+		HTML : https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting
+		HTML : https://github.com/damianszczepanik/cucumber-reporting/tree/master
+			http://damianszczepanik.github.io/cucumber-html-reports/overview-features.html
