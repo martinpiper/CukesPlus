@@ -1,15 +1,14 @@
 package TestGlue;
 
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
@@ -21,10 +20,21 @@ import java.util.ArrayList;
 public class SeleniumGlue
 {
 	static WebDriver driver = null;
+	Scenario scenario;
+
+	@Before
+	public void beforeHook(Scenario scenario) {
+		this.scenario = scenario;
+	}
+
 
 	@After
-	public void afterHook()
+	public void afterHook(Scenario scenario)
 	{
+		if (scenario.isFailed())
+		{
+			screenshotToReport(scenario);
+		}
 		if (System.getProperty("com.replicanet.cukesplus.recording.selenium") != null)
 		{
 			JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -168,6 +178,13 @@ console.log(eventLog);
 		driver = null;
 	}
 
+	private static void screenshotToReport(Scenario scenario) {
+		TakesScreenshot ts = (TakesScreenshot) driver;
+
+		byte[] src = ts.getScreenshotAs(OutputType.BYTES);
+		scenario.embed(src, "image/png");
+	}
+
 	@Given("^open the web page \"([^\"]*)\"$")
 	public void iOpenTheWebPage(String url) throws Throwable
 	{
@@ -187,5 +204,11 @@ console.log(eventLog);
 	{
 		WebElement webElement = driver.findElement(By.xpath(locator));
 		webElement.sendKeys(text);
+	}
+
+	@When("^take web browser screenshot$")
+	public void takeWebBrowserScreenshot() throws Throwable
+	{
+		screenshotToReport(scenario);
 	}
 }

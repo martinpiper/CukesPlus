@@ -297,3 +297,7 @@ Create CukesPlus project structure.
 				Then note any following line number: "value": "#\u003e\u003e\u003e
 				This is: #>>>
 
+
+
+
+* Move selenium glue into core and rename the syntax to be more sensible

@@ -40,7 +40,18 @@ To enable parameter names in IntelliJ:
 
 
 
-If using Selenium and ChromeDriver other than in a default place in the path, remember these extra java options:
+If using Selenium and ChromeDriver other than in a default place in the path, remember this extra java option:
 
     -Dwebdriver.chrome.driver="C:\Temp\chromedriver.exe"
 
+
+
+To generate html reports using the default Cucumber html report generator, use command line option: 
+
+    --plugin html:target/cucumber
+
+
+
+To generate a json report file, which can be used by the web editor or report generators, use this extra command line option:
+
+    --plugin json:target/report1.json
