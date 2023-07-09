@@ -471,6 +471,7 @@ public class FeatureMacroProcessor
 		boolean inScenario = false;
 		boolean insideTextBlock = false;
 		boolean encounteredTags = false;
+		boolean encounteredFeature = false;
 
 		while ((line = br.readLine()) != null)
 		{
@@ -480,7 +481,7 @@ public class FeatureMacroProcessor
 			if (trimmed.isEmpty() || trimmed.startsWith("@") || trimmed.startsWith("#") || trimmed.startsWith("\"\"\"") || insideTextBlock)
 			{
 				if (trimmed.startsWith("@")) {
-					if (!inScenario && !encounteredTags) {
+					if (!inScenario && !encounteredTags && encounteredFeature) {
 						emitLineDebug(firstIteration, featureURI, bw, lineNumber, "  ");
 					}
 					encounteredTags = true;
@@ -505,6 +506,10 @@ public class FeatureMacroProcessor
 			}
 
 			String workLower = trimmed.toLowerCase();
+
+			if (workLower.startsWith("feature:")) {
+				encounteredFeature = true;
+			}
 
 			if (workLower.startsWith("background:") || workLower.startsWith("scenario:") || workLower.startsWith("scenario outline:"))
 			{
