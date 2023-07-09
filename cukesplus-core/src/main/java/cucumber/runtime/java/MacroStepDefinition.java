@@ -16,7 +16,6 @@ public class MacroStepDefinition implements StepDefinition {
     Pattern pattern;
     private long timeoutMillis;
     private JdkPatternArgumentMatcher argumentMatcher;
-    private List<ParameterInfo> parameterInfos;
     private String location;
 
     public MacroStepDefinition(String location, Pattern pattern, long timeoutMillis) {
@@ -28,8 +27,11 @@ public class MacroStepDefinition implements StepDefinition {
 
     // Originally from cucumber.runtime.java.JavaStepDefinition
     public void execute(I18n i18n, Object[] args) throws Throwable {
-        // TODO: Implement some tracking of this macro based step?
-        int i = 0;
+        throw getRuntimeException();
+    }
+
+    private static RuntimeException getRuntimeException() {
+        return new RuntimeException("This should never execute. If this tries to execute the AspectJ weaving failed for com.replicanet.cukesplus.AspectE.theRunStep. Try rebuilding the entire maven pom and reloading the project in IntelliJ to pickup the AspectJ woven classes.");
     }
 
     public List<Argument> matchedArguments(Step step) {
@@ -37,17 +39,15 @@ public class MacroStepDefinition implements StepDefinition {
     }
 
     public String getLocation(boolean detail) {
-//        MethodFormat format = detail ? MethodFormat.FULL : MethodFormat.SHORT;
-//        return format.format(this.method);
         return "MacroStepDefinition." + location;
     }
 
     public Integer getParameterCount() {
-        return this.parameterInfos.size();
+        throw getRuntimeException();
     }
 
     public ParameterInfo getParameterType(int n, Type argumentType) {
-        return (ParameterInfo)this.parameterInfos.get(n);
+        throw getRuntimeException();
     }
 
     public boolean isDefinedAt(StackTraceElement e) {
