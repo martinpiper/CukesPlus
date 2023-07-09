@@ -1,5 +1,8 @@
 * TODO items :)
 
+* Move selenium glue into core and rename the syntax to be more sensible
+
+
 
 * Macro feature processing uses a temporary file. Use memory based processing to make it faster
 

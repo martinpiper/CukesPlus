@@ -37,3 +37,10 @@ To enable parameter names in IntelliJ:
 	* File->Settings (Ctrl+Alt+S)
 	* Build, Execution, Deployment -> Compiler -> Java Compiler
 	* Additional command line parameters: -parameters
+
+
+
+If using Selenium and ChromeDriver other than in a default place in the path, remember these extra java options:
+
+    -Dwebdriver.chrome.driver="C:\Temp\chromedriver.exe"
+

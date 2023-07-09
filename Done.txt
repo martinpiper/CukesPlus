@@ -78,7 +78,7 @@ Create CukesPlus project structure.
 		Perhaps add a new cucumber.runtime.StepDefinition derived step execution method...
 			Which is created before "GlueProcessor.processGlue(runtime);" is run
 			Create new step derived class, like cucumber.runtime.java.JavaStepDefinition.JavaStepDefinition
-				pattern = ^I open the web page "([^"]*)"$
+				pattern = ^open the web page "([^"]*)"$
 				Or perhaps like: cucumber.runtime.java.JavaBackend.addStepDefinition(java.lang.annotation.Annotation, java.lang.reflect.Method)
 				Which arrives via: cucumber.runtime.java.JavaBackend.loadGlue(cucumber.runtime.Glue, java.util.List<java.lang.String>)
 					Which is Runtime.glue

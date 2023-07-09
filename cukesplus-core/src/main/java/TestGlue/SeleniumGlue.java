@@ -168,21 +168,21 @@ console.log(eventLog);
 		driver = null;
 	}
 
-	@Given("^I open the web page \"([^\"]*)\"$")
+	@Given("^open the web page \"([^\"]*)\"$")
 	public void iOpenTheWebPage(String url) throws Throwable
 	{
 		driver = new ChromeDriver();
 		driver.get(url);
 	}
 
-	@When("^I click on the web element \"([^\"]*)\"$")
+	@When("^click on the web element \"([^\"]*)\"$")
 	public void iClickOnTheWebElementLayout(String locator) throws Throwable
 	{
 		WebElement webElement = driver.findElement(By.xpath(locator));
 		webElement.click();
 	}
 
-	@When("^I enter text \"([^\"]*)\" into web element \"([^\"]*)\"$")
+	@When("^enter text \"([^\"]*)\" into web element \"([^\"]*)\"$")
 	public void iEnterTextIntoWebElement(String text, String locator) throws Throwable
 	{
 		WebElement webElement = driver.findElement(By.xpath(locator));

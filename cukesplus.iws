@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Done.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Done.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/cucumber/runtime/java/MacroStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/cucumber/runtime/java/MacroStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/cukesplus-core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/cukesplus-core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-test/features/WebRecording.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-test/features/WebRecording.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-test/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-test/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-test/src/main/java/TestGlue/SeleniumGlue.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/SeleniumGlue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus.iws" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,16 +117,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Work/CukesPlus/cukesplus-core/src/main/java/com/replicanet/cukesplus&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Work/CukesPlus/cukesplus-test/features/subDir&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_directory_selection": "C:/Work/CukesPlus/cukesplus-core/src/main/java/com/replicanet/cukesplus",
+    "last_opened_file_path": "C:/Work/CukesPlus/cukesplus-test/features/subDir",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.replicanet.cukesplus" />
@@ -147,18 +155,28 @@
       <recent name="TestGlue2" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.test with macros">
+  <component name="RunManager" selected="Application.Selenium test">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Recording test" type="Application" factoryName="Application">
+    <configuration name="Recording test which waits for events" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.Main" />
       <module name="cukesplus-test" />
       <option name="PROGRAM_PARAMETERS" value="--plugin json:target/report1.json --glue TestGlue features\WebRecording.feature" />
       <option name="VM_PARAMETERS" value="-Dcom.replicanet.cukesplus.recording.selenium= -Dwebdriver.chrome.driver=&quot;C:\Temp\chromedriver.exe&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cukesplus-test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Selenium test" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.Main" />
+      <module name="cukesplus-test" />
+      <option name="PROGRAM_PARAMETERS" value="--plugin json:target/report1.json --glue TestGlue features\WebRecording.feature" />
+      <option name="VM_PARAMETERS" value="-Dwebdriver.chrome.driver=&quot;C:\Temp\chromedriver.exe&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cukesplus-test" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -441,7 +459,8 @@
       <item itemvalue="Application.test with macros with line number" />
       <item itemvalue="Application.feature editor base" />
       <item itemvalue="Application.feature editor test" />
-      <item itemvalue="Application.Recording test" />
+      <item itemvalue="Application.Recording test which waits for events" />
+      <item itemvalue="Application.Selenium test" />
       <item itemvalue="Application.tests many lines" />
       <item itemvalue="JUnit.tests" />
       <item itemvalue="JUnit.FeatureMacroProcessorTest.processFeatureFile1" />
