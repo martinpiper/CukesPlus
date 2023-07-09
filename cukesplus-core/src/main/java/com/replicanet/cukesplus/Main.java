@@ -3,16 +3,10 @@ package com.replicanet.cukesplus;
 import cucumber.runtime.RuntimeOptions;
 import cucumber.runtime.io.MultiLoader;
 import cucumber.runtime.io.ResourceLoaderClassFinder;
-import cucumber.runtime.java.MacroStepDefinition;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.regex.Pattern;
 
 /**
  *
@@ -39,7 +33,7 @@ public class Main
 		ResourceLoaderClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);
 		cucumber.runtime.Runtime runtime = new ExtensionRuntime(resourceLoader, classFinder, classLoader, runtimeOptions);
 
-		GlueProcessor.processGlue(runtime);    // << Hook into Cucumber
+		GlueProcessor.hookIntoCucumberBeforeExecution(runtime);    // << Hook into Cucumber
 		runtime.run();
 		return runtime.exitStatus();
 	}

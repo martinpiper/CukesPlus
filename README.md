@@ -1,57 +1,93 @@
 CukesPlus
 =========
 
-If the java compiler has the additional command line option "-parameters" this will allow the parameter name to be used in addition to the type when producing auto complete hints.
-This option is included in the root pom.xml
+Adds lots of useful functionality to Java Cucumber. This is accomplished by hooking into Cucumber before and while it runs, along with some AspectJ compile time weaving to intercept and change Cucumber behaviour.
 
-Adds functionality to Cucumber. This is accomplished by hooking into Cucumber before and while it runs.
+* Macros allow reusable blocks of new syntax to be created without changing java code
+  * Provides abstraction of reusable behaviour using familiar step based syntax
+  * Are much easier to understand and can be written by non-developers
+  * Transparently reported behaviour instead of opaque java based steps
+* Web based editor integrated into the framework
+  * Provides code colouring
+  * Test execution status
+  * Step code completion hints
+* Properties remapping for step parameters
+* Syntax reporting provides reference documentation of steps and macros
 
-- Main CLI entry point is now com.replicanet.cukesplus.Main (instead of cucumber.api.cli.Main)
-- JUnit RunWith class is now com.replicanet.cukesplus.junit.CucumberPlus (instead of cucumber.api.junit.Cucumber)
+Using
+-----
+
+* Test execution entry points:
+  * Main CLI entry point is now com.replicanet.cukesplus.Main (instead of cucumber.api.cli.Main)
+  * JUnit RunWith class is now com.replicanet.cukesplus.junit.CucumberPlus (instead of cucumber.api.junit.Cucumber)
+
+
+* If the java compiler has the additional command line option "-parameters" this will allow the parameter name to be used in addition to the type when producing auto complete hints.
+  * This option is included in the root pom.xml
+
 
 * Extracts glue regex and methods before execution.
 
+
 * Set system property "com.replicanet.cukesplus.server.featureEditor" to start the web based feature file editor.
 
-To enable parameter names in the pom.xml file:
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
-				<configuration>
-					<compilerArgs>
-						<arg>-parameters</arg>
-					</compilerArgs>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+* By default, the properties file "CukesPlus.properties" is loaded at runtime from the current execution directory.
+  * The default properties file name can be set by the property: com.replicanet.cukesplus.default.properties
 
 
-To enable parameter names in IntelliJ:
+* Property (variables) expansion, call explicit parameter parsing method
+  * A parameter of "${test.url}" will be replaced using the value of the current System property "test.url"
+  * Multiple property expansions can be in each paramter and interleaved with plain text
+  * A good example is used in SeleniumGlue step methods:
 
-	* Select the module in the project tree view
-	* File->Settings (Ctrl+Alt+S)
-	* Build, Execution, Deployment -> Compiler -> Java Compiler
-	* Additional command line parameters: -parameters
-
-
-
-If using Selenium and ChromeDriver other than in a default place in the path, remember this extra java option:
-
-    -Dwebdriver.chrome.driver="C:\Temp\chromedriver.exe"
+        import com.replicanet.cukesplus.PropertiesResolution;
+        text = PropertiesResolution.resolveInput(scenario, text);
 
 
+* To enable parameter names in the pom.xml file:
 
-To generate html reports using the default Cucumber html report generator, use command line option: 
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.3</version>
+                    <configuration>
+                        <compilerArgs>
+                            <arg>-parameters</arg>
+                        </compilerArgs>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
 
-    --plugin html:target/cucumber
+
+* To enable parameter names in IntelliJ:
+  * Select the module in the project tree view
+  * File->Settings (Ctrl+Alt+S)
+  * Build, Execution, Deployment -> Compiler -> Java Compiler
+  * Additional command line parameters: -parameters
+    
+
+
+* If using Selenium and ChromeDriver other than in a default place in the path, remember this extra **java** command line option. i.e. Before any -jar/-cp option:
+
+        -Dwebdriver.chrome.driver="C:\Temp\chromedriver.exe"
 
 
 
-To generate a json report file, which can be used by the web editor or report generators, use this extra command line option:
+* To generate html reports using the default Cucumber html report generator, use this command line option: 
 
-    --plugin json:target/report1.json
+        --plugin html:target/cucumber
+
+
+* To generate a json report file, which can be used by the web editor or report generators, use this command line option:
+
+        --plugin json:target/report1.json
+
+
+* To enable pretty debug printing, use this command line option:
+
+        --plugin pretty 
+

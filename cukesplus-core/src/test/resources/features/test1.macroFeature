@@ -1,5 +1,6 @@
 #include "../macros/test4.macro"
 Feature: Test 1
+  @Demo1
   Scenario Outline: Scenario 1
     Given this is not a macro
     Given I do this thing

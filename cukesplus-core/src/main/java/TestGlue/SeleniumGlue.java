@@ -1,5 +1,6 @@
 package TestGlue;
 
+import com.replicanet.cukesplus.PropertiesResolution;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -188,6 +189,8 @@ console.log(eventLog);
 	@Given("^open the web page \"([^\"]*)\"$")
 	public void iOpenTheWebPage(String url) throws Throwable
 	{
+		url = PropertiesResolution.resolveInput(scenario, url);
+
 		driver = new ChromeDriver();
 		driver.get(url);
 	}
@@ -195,6 +198,8 @@ console.log(eventLog);
 	@When("^click on the web element \"([^\"]*)\"$")
 	public void iClickOnTheWebElementLayout(String locator) throws Throwable
 	{
+		locator = PropertiesResolution.resolveInput(scenario, locator);
+
 		WebElement webElement = driver.findElement(By.xpath(locator));
 		webElement.click();
 	}
@@ -202,6 +207,9 @@ console.log(eventLog);
 	@When("^enter text \"([^\"]*)\" into web element \"([^\"]*)\"$")
 	public void iEnterTextIntoWebElement(String text, String locator) throws Throwable
 	{
+		text = PropertiesResolution.resolveInput(scenario, text);
+		locator = PropertiesResolution.resolveInput(scenario, locator);
+
 		WebElement webElement = driver.findElement(By.xpath(locator));
 		webElement.sendKeys(text);
 	}

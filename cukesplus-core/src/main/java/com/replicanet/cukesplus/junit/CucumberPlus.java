@@ -1,6 +1,5 @@
 package com.replicanet.cukesplus.junit;
 
-import com.replicanet.cukesplus.FeatureMacroProcessor;
 import com.replicanet.cukesplus.FeatureServerCheck;
 import com.replicanet.cukesplus.GlueProcessor;
 import com.replicanet.cukesplus.ExtensionRuntime;
@@ -36,7 +35,7 @@ public class CucumberPlus extends Cucumber
 	{
 //		cucumber.runtime.Runtime runtime = super.createRuntime(resourceLoader, classLoader, runtimeOptions);
 		ExtensionRuntime runtime = createExtensionRuntime(resourceLoader, classLoader, runtimeOptions);
-		GlueProcessor.processGlue(runtime);    // << Hook into Cucumber
+		GlueProcessor.hookIntoCucumberBeforeExecution(runtime);    // << Hook into Cucumber
 		return runtime;
 	}
 }

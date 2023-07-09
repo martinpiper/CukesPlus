@@ -470,6 +470,7 @@ public class FeatureMacroProcessor
 		int lineNumber = 0;
 		boolean inScenario = false;
 		boolean insideTextBlock = false;
+		boolean encounteredTags = false;
 
 		while ((line = br.readLine()) != null)
 		{
@@ -478,6 +479,13 @@ public class FeatureMacroProcessor
 			// Output these lines without translation
 			if (trimmed.isEmpty() || trimmed.startsWith("@") || trimmed.startsWith("#") || trimmed.startsWith("\"\"\"") || insideTextBlock)
 			{
+				if (trimmed.startsWith("@")) {
+					if (!inScenario && !encounteredTags) {
+						emitLineDebug(firstIteration, featureURI, bw, lineNumber, "  ");
+					}
+					encounteredTags = true;
+				}
+
 				bw.write(line);
 				bw.newLine();
 
@@ -500,7 +508,9 @@ public class FeatureMacroProcessor
 
 			if (workLower.startsWith("background:") || workLower.startsWith("scenario:") || workLower.startsWith("scenario outline:"))
 			{
-				emitLineDebug(firstIteration, featureURI, bw, lineNumber, currentIndent);
+				if (!encounteredTags) {
+					emitLineDebug(firstIteration, featureURI, bw, lineNumber, currentIndent);
+				}
 				inScenario = true;
 				bw.write(line);
 				bw.newLine();
@@ -508,6 +518,13 @@ public class FeatureMacroProcessor
 			}
 			if (!inScenario)
 			{
+				if (workLower.startsWith("@")) {
+					if (!encounteredTags) {
+						emitLineDebug(firstIteration, featureURI, bw, lineNumber, currentIndent);
+					}
+					encounteredTags = true;
+				}
+
 				bw.write(line);
 				bw.newLine();
 				continue;
@@ -516,6 +533,7 @@ public class FeatureMacroProcessor
 			{
 				emitLineDebug(firstIteration, featureURI, bw, lineNumber, currentIndent);
 				inScenario = false;
+				encounteredTags = false;
 				bw.write(line);
 				bw.newLine();
 				continue;
@@ -530,6 +548,12 @@ public class FeatureMacroProcessor
 			{
 				emitError("Syntax error parsing " + featureURI + " line " + lineNumber + " the line '" + trimmed + "' does not resemble a step line but I'm expecting a step line");
 				continue;
+			}
+
+			if (inScenario) {
+				if (workLower.startsWith("@")) {
+					encounteredTags = true;
+				}
 			}
 
 			// Now we should be processing step lines

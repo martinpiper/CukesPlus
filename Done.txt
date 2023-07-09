@@ -301,3 +301,12 @@ Create CukesPlus project structure.
 
 
 * Move selenium glue into core and rename the syntax to be more sensible
+
+
+
+
+* Property (variables) expansion, call explicit parameter parsing method
+	PropertiesResolution and PropertiesResolutionTest
+	>> e.g. used by SeleniumGlue step methods:
+		import com.replicanet.cukesplus.PropertiesResolution;
+		text = PropertiesResolution.resolveInput(scenario, text);

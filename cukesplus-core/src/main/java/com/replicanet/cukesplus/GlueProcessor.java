@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
@@ -80,8 +81,16 @@ public class GlueProcessor
 		return parameterNames;
 	}
 
-	public static void processGlue(Runtime runtime)
+	public static void hookIntoCucumberBeforeExecution(Runtime runtime)
 	{
+		System.out.println("CukesPlus starting : (C) 2015 Replica Software : www.replicasoftware.com");
+		String defaultPropertiesFile = System.getProperty("com.replicanet.cukesplus.default.properties", "CukesPlus.properties");
+		try {
+			System.getProperties().load(new FileInputStream(defaultPropertiesFile));
+		} catch (Exception e) {
+			System.out.println("Default properties file was not loaded: " + defaultPropertiesFile);
+			System.out.println(e.getMessage());
+		}
 		FeatureServerCheck.getFeatureMacroProcessor().processMacroSyntaxToGlue();
 		for (Map.Entry<String , StepInformation> entry : glueMap.entrySet()) {
 			StepInformation stepInfo = entry.getValue();
