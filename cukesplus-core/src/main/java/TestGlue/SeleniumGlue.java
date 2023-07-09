@@ -206,7 +206,7 @@ console.log(eventLog);
 		webElement.sendKeys(text);
 	}
 
-	@When("^take web browser screenshot$")
+	@When("^take web page screenshot$")
 	public void takeWebBrowserScreenshot() throws Throwable
 	{
 		screenshotToReport(scenario);
