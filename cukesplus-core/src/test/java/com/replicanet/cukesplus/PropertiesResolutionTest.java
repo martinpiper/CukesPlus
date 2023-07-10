@@ -70,14 +70,15 @@ public class PropertiesResolutionTest extends TestCase {
         assertThat(gotScenarioText,comparesEqualTo(""));
     }
 
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
+
     @Test
-    public void testResolveInputWithMismatchedBraces() {
+    public void testResolveInputWithMismatchedBraces() throws ParseException {
         System.getProperties().setProperty("test.input", "432");
-        try {
-            String result = PropertiesResolution.resolveInput(scenario, "${test.input");
-        } catch (Exception e) {
-            assertThat(e.toString(), containsString("java.lang.IllegalArgumentException: Opening ${ was not matched with a closing } at 0"));
-        }
+        exceptionRule.expect(java.lang.IllegalArgumentException.class);
+        exceptionRule.expectMessage("Opening ${ was not matched with a closing } at 0");
+        String result = PropertiesResolution.resolveInput(scenario, "${test.input");
         assertThat(gotScenarioText,comparesEqualTo(""));
     }
 
