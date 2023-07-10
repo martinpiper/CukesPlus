@@ -276,23 +276,6 @@ public class FeatureServerCheck
 					newArgs.add(makeSafeArg(r));
 				}
 
-/*					String path = FeatureServerCheck.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-				File f = new File(path);
-				path = f.getCanonicalPath();
-				System.out.println("Current path: " + path);
-				if (path.endsWith(".jar"))
-				{
-					newArgs.add("-jar");
-					newArgs.add(path);
-				}
-				else
-				{
-					newArgs.add("-cp");
-					newArgs.add(path);
-					newArgs.add(Main.class.getCanonicalName());
-				}
-*/
-
 				System.out.println("Current path: " + System.getProperty("java.class.path"));
 				newArgs.add("-cp");
 				newArgs.add(System.getProperty("java.class.path"));
