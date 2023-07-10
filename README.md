@@ -34,11 +34,12 @@ Using
 
 * By default, the properties file "CukesPlus.properties" is loaded at runtime from the current execution directory.
   * The default properties file name can be set by the property: com.replicanet.cukesplus.default.properties
+  * JUnit test runner classes can use the com.replicanet.cukesplus.junit.CucumberPlusOptions annotation to define properties files to load
 
 
 * Property (variables) expansion, call explicit parameter parsing method
   * A parameter of "${test.url}" will be replaced using the value of the current System property "test.url"
-  * Multiple property expansions can be in each paramter and interleaved with plain text
+  * Multiple property expansions can be in each parameter and interleaved with plain text
   * A good example is used in SeleniumGlue step methods:
 
         import com.replicanet.cukesplus.PropertiesResolution;

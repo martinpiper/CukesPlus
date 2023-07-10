@@ -310,3 +310,8 @@ Create CukesPlus project structure.
 	>> e.g. used by SeleniumGlue step methods:
 		import com.replicanet.cukesplus.PropertiesResolution;
 		text = PropertiesResolution.resolveInput(scenario, text);
+
+
+
+
+* Created the annotation class CucumberPlusOptions for JUnit test runner class options

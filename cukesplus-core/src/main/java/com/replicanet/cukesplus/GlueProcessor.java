@@ -88,7 +88,7 @@ public class GlueProcessor
 		try {
 			System.getProperties().load(new FileInputStream(defaultPropertiesFile));
 		} catch (Exception e) {
-			System.out.println("Default properties file was not loaded: " + defaultPropertiesFile);
+//			System.out.println("Default properties file was not loaded: " + defaultPropertiesFile);
 			System.out.println(e.getMessage());
 		}
 		FeatureServerCheck.getFeatureMacroProcessor().processMacroSyntaxToGlue();
