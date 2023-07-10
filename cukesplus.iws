@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/test1.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/test1.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/test1.macroFeature" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/test1.macroFeature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/test/java/com/replicanet/cukesplus/PropertiesResolutionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/test/java/com/replicanet/cukesplus/PropertiesResolutionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus.iws" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -522,11 +517,6 @@
           <properties class="java.lang.StringIndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="189" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/test/java/com/replicanet/cukesplus/PropertiesResolutionTest.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="190" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cukesplus-core/src/test/java/com/replicanet/cukesplus/PropertiesResolutionTest.java</url>
           <line>24</line>
