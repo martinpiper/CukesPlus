@@ -9,6 +9,17 @@
 
 
 
+* To run editor test will need:
+	* Enhancements to handleRunSuite to add java command line options after the initial properties are passed in
+	* To run without waiting for the exit status
+	* To add the ability to trap the new task output
+	* Syntax to create a new directory or empty an existing directory
+	* Syntax to wait for certain task output
+	* Syntax to read CSS style for certain elements (located by text in the xpath by provided by a property remapping) to a property
+	* Syntax to validate the equality/inequality of values, which obviously could use properties
+
+
+
 
 * Editor needs test to create new suite from scratch
 	Can be used for other editor tests without altering the main code tests
