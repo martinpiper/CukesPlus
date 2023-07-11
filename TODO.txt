@@ -1,6 +1,11 @@
 * TODO items :)
 
-* Macro feature processing, should not add a comment before "Scenario:" if there are @tags
+* Debug printing for macro file parsing is displayed before the copyright banner...
+	Info: Processing macros\test1.macro
+	Info: Processing macros\test6.macro
+	CukesPlus starting : (C) 2015 Replica Software : www.replicasoftware.com
+	JUnit and Main entry point behave the same. Add an early check to display the banner once at init...
+		There may or may not be macros to be parsed, for example.
 
 
 
@@ -11,13 +16,16 @@
 
 * To run editor test will need:
 	* Enhancements to handleRunSuite to add java command line options after the initial properties are passed in
+		* To start the web editor, perhaps with a different port number or let it choose and report the port...
+		* Then use the port in the URL to open
+		* This would need the ability to extract the port info from the process output
 	* To run without waiting for the exit status
 	* To add the ability to trap the new task output
 	* Syntax to create a new directory or empty an existing directory
 	* Syntax to wait for certain task output
 	* Syntax to read CSS style for certain elements (located by text in the xpath by provided by a property remapping) to a property
 	* Syntax to validate the equality/inequality of values, which obviously could use properties
-
+	>> C:\Work\CukesPlus\cukesplus-core\src\test\resources\features\Editor.feature
 
 
 

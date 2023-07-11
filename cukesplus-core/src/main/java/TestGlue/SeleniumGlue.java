@@ -32,6 +32,9 @@ public class SeleniumGlue
 	@After
 	public void afterHook(Scenario scenario)
 	{
+		if (null == driver) {
+			return;
+		}
 		if (scenario.isFailed())
 		{
 			screenshotToReport(scenario);
@@ -180,10 +183,13 @@ console.log(eventLog);
 	}
 
 	private static void screenshotToReport(Scenario scenario) {
-		TakesScreenshot ts = (TakesScreenshot) driver;
+		try {
+			TakesScreenshot ts = (TakesScreenshot) driver;
 
-		byte[] src = ts.getScreenshotAs(OutputType.BYTES);
-		scenario.embed(src, "image/png");
+			byte[] src = ts.getScreenshotAs(OutputType.BYTES);
+			scenario.embed(src, "image/png");
+		} catch (Exception e) {
+		}
 	}
 
 	@Given("^open the web page \"([^\"]*)\"$")

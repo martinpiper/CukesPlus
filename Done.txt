@@ -315,3 +315,8 @@ Create CukesPlus project structure.
 
 
 * Created the annotation class CucumberPlusOptions for JUnit test runner class options
+
+
+
+
+* Macro feature processing, should not add a comment before "Scenario:" if there are @tags
