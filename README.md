@@ -45,8 +45,10 @@ Using
         import com.replicanet.cukesplus.PropertiesResolution;
         text = PropertiesResolution.resolveInput(scenario, text);
 
+  * See test cases: com.replicanet.cukesplus.PropertiesResolutionTest
 
-* To enable parameter names in the pom.xml file:
+
+* To enable parameter names in the pom.xml file, useful for the syntax report and code hints:
 
         <build>
             <plugins>
@@ -91,4 +93,14 @@ Using
 * To enable pretty debug printing, use this command line option:
 
         --plugin pretty 
+
+
+
+Building
+--------
+
+Maven should work without any issues. You'll need to build/install this first: https://github.com/martinpiper/ACEServer
+
+* mvn clean install
+* mvn -DskipTests=true clean package
 

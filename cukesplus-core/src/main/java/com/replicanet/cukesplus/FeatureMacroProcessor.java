@@ -323,6 +323,10 @@ public class FeatureMacroProcessor
 				macro.stepLines.add(trimmed);
 				macro.stepLineNumbers.add(lineNumber);
 			}
+			else if (trimmed.startsWith("<<<")) {
+				macro.stepLines.add(trimmed);
+				macro.stepLineNumbers.add(lineNumber);
+			}
 			else
 			{
 				macro.stepLines.add("* " + trimmed);
@@ -466,16 +470,19 @@ public class FeatureMacroProcessor
 		emitInfo("Processing " + featureURI);
 		BufferedReader br = new BufferedReader(new FileReader(inputFile));
 		BufferedWriter bw = new BufferedWriter(new FileWriter(outputFile));
-		String line;
+		String line = "";
 		int lineNumber = 0;
 		boolean inScenario = false;
 		boolean insideTextBlock = false;
 		boolean encounteredTags = false;
 		boolean encounteredFeature = false;
-
-		while ((line = br.readLine()) != null)
+		boolean reuseSourceLine = false;
+		while (reuseSourceLine || (line = br.readLine()) != null)
 		{
-			lineNumber++;
+			if (!reuseSourceLine) {
+				lineNumber++;
+			}
+			reuseSourceLine = false;
 			String trimmed = line.trim();
 			// Output these lines without translation
 			if (trimmed.isEmpty() || trimmed.startsWith("@") || trimmed.startsWith("#") || trimmed.startsWith("\"\"\"") || insideTextBlock)
@@ -589,6 +596,68 @@ public class FeatureMacroProcessor
 							{
 								lineIndex++;
 
+								if (step.startsWith("<<<"))
+								{
+									bw.write(currentIndent + "## " + step);
+									bw.newLine();
+									linesChanged++;
+
+									String[] anyRowsCount = step.split("\\s", 2);
+									int numRows = -1;
+									try
+									{
+										numRows = Integer.parseInt(PropertiesResolution.resolveInput(anyRowsCount[1]));
+									}
+									catch(Exception e) {}
+									if (numRows < 0)
+									{
+										boolean isTextBlock = false;
+										// Insert all text block of table rows from the parent file
+										line = br.readLine();
+										lineNumber++;
+										if (line.trim().startsWith("\"\"\""))
+										{
+											isTextBlock = true;
+											bw.write(line);
+											bw.newLine();
+											linesChanged++;
+											line = br.readLine();
+											lineNumber++;
+										}
+										while (line.startsWith("|") || (isTextBlock && !line.trim().startsWith("\"\"\"")))
+										{
+											bw.write(line);
+											bw.newLine();
+											linesChanged++;
+											line = br.readLine();
+											lineNumber++;
+										}
+										if (isTextBlock)
+										{
+											bw.write(line);
+											bw.newLine();
+											linesChanged++;
+										}
+										else
+										{
+											reuseSourceLine = true;
+										}
+									}
+									else
+									{
+										// Literal line insertion without checks
+										while (numRows > 0)
+										{
+											line = br.readLine();
+											lineNumber++;
+											bw.write(line);
+											bw.newLine();
+											numRows--;
+										}
+									}
+									continue;
+								}
+
 								// Only write line number debug information when the line number is valid
 								// This avoids problems with non-step lines (tables and text blocks) getting comments inserted into them.
 								if (macro.stepLineNumbers.get(lineIndex) >= 0)
@@ -646,6 +715,7 @@ public class FeatureMacroProcessor
 				}
 			}
 
+			// We want all lines that match, to help spot issues with locating many matching macro definitions
 			if (matchedLines.size() > 1)
 			{
 				emitInfo("The macro line '" + trimmed + "' was matched " + Arrays.toString(matchedLines.toArray()));

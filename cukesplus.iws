@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Done.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Done.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/test/java/com/replicanet/cukesplus/FeatureMacroProcessorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/test/java/com/replicanet/cukesplus/FeatureMacroProcessorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus.iws" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,29 +116,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit3&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3&quot;: &quot;junit.framework.TestCase&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Work/CukesPlus/cukesplus-core/src/main/java/com/replicanet/cukesplus&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Work/CukesPlus/cukesplus-core&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit3",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
+    "last_directory_selection": "C:/Work/CukesPlus/cukesplus-core/src/main/java/com/replicanet/cukesplus",
+    "last_opened_file_path": "C:/Work/CukesPlus/cukesplus-core/src/test/resources/features",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.fileTypes"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.replicanet.cukesplus" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Work\CukesPlus\cukesplus-test\features\subDir" />
       <recent name="C:\Work\CukesPlus\cukesplus-core\src\test\resources\features" />
+      <recent name="C:\Work\CukesPlus\cukesplus-test\features\subDir" />
       <recent name="C:\Work\CukesPlus\cukesplus-core\src\test\resources\macros" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Work\CukesPlus\cukesplus-core\src\test\resources\features" />
       <recent name="C:\Work\CukesPlus\cukesplus-test\macros" />
       <recent name="C:\Work\CukesPlus\cukesplus-aspect\src\main\java" />
       <recent name="C:\Work\CukesPlus\cukesplus-test\src\main\java\TestGlue" />
@@ -150,7 +158,7 @@
       <recent name="TestGlue2" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FeatureMacroProcessorTest">
+  <component name="RunManager" selected="Application.test with macros">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -294,6 +302,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FeatureMacroProcessorTest.processFeatureFile6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cukesplus-core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.replicanet.cukesplus.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.replicanet.cukesplus" />
+      <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.FeatureMacroProcessorTest" />
+      <option name="METHOD_NAME" value="processFeatureFile6" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FeatureMacroProcessorTest.processMacroSyntaxToGlue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cukesplus-core" />
       <extension name="coverage">
@@ -417,31 +442,6 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
-    <configuration name="cukesplus [verify]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="verify" />
-              </list>
-            </option>
-            <option name="pomFileName" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -472,21 +472,21 @@
       <item itemvalue="Application.tests many lines" />
       <item itemvalue="JUnit.All in core" />
       <item itemvalue="JUnit.tests" />
+      <item itemvalue="JUnit.FeatureMacroProcessorTest.processFeatureFile6" />
       <item itemvalue="JUnit.FeatureMacroProcessorTest.processFeatureFile1" />
       <item itemvalue="JUnit.FeatureMacroProcessorTest.processMacroSyntaxToGlue" />
       <item itemvalue="JUnit.FeatureMacroProcessorTest" />
       <item itemvalue="Maven.cukesplus [package] skip tests" />
       <item itemvalue="Maven.cukesplus [package] skip tests (1)" />
-      <item itemvalue="Maven.cukesplus [verify]" />
       <item itemvalue="Maven.cukesplus [install]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FeatureMacroProcessorTest" />
         <item itemvalue="Maven.cukesplus [install]" />
+        <item itemvalue="JUnit.FeatureMacroProcessorTest.processFeatureFile6" />
+        <item itemvalue="JUnit.FeatureMacroProcessorTest" />
         <item itemvalue="JUnit.FeatureMacroProcessorTest.processFeatureFile1" />
         <item itemvalue="JUnit.FeatureMacroProcessorTest.processMacroSyntaxToGlue" />
-        <item itemvalue="Maven.cukesplus [verify]" />
       </list>
     </recent_temporary>
   </component>
@@ -520,30 +520,21 @@
           <option name="timeStamp" value="189" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/test/java/com/replicanet/cukesplus/PropertiesResolutionTest.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="191" />
+          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/test/java/com/replicanet/cukesplus/PropertiesResolutionTest.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="192" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/junit/CucumberPlus.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="195" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/SeleniumGlue.java</url>
-          <line>186</line>
-          <option name="timeStamp" value="197" />
+          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java</url>
+          <line>657</line>
+          <option name="timeStamp" value="215" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
-        <watch expression="clazz" />
+        <watch expression="step" language="JAVA" />
+        <watch expression="line" />
       </configuration>
       <configuration name="Application">
         <watch expression="uri" language="JAVA" />

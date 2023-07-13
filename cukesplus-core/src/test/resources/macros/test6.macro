@@ -1,0 +1,29 @@
+Given this is a macro with an inline table or text block
+	Given this is the first step
+	When this step should see the table or text block
+	<<<
+	Then this is the last step
+
+
+Given this is a macro with an inline table or text block that ony inserts the first two rows
+	Given this is the first step
+	When this step should see the table or text block
+	<<< 2
+	Then this is the last step
+
+
+Given this is a macro with an inline table or text block that inserts the first two rows then the rest of the rows
+	Given this is the first step
+	When this step should see the table or text block
+	<<< ${test.insert.rows}
+	Then this is the penultimate step
+	<<<
+	Then this is the last step
+
+
+Given this is a macro with an inline table or text block that inserts the first two rows then the rest of the table is used in the feature file
+	Given this is the first step
+	When this step should see the table or text block
+	<<< ${test.insert.rows}
+	Then this is the last step
+

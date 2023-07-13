@@ -1,0 +1,38 @@
+Feature: A new feature 6
+
+
+  Scenario: Using a macro with text block or table 1
+    Given something here
+    Given this is a macro with an inline table or text block
+      """
+      This is a text block
+      It has multiple lines
+      """
+    Given other thing
+
+
+  Scenario: Using a macro with text block or table 2
+    Given something here
+    Given this is a macro with an inline table or text block that ony inserts the first two rows
+      | column1        | column2   |
+      | something here | not here  |
+      | and here       | not there |
+    Given other thing
+
+
+  Scenario: Using a macro with text block or table 3
+    Given something here
+    Given this is a macro with an inline table or text block that inserts the first two rows then the rest of the rows
+      | column1        | column2   |
+      | something here | not here  |
+      | and here       | not there |
+    Given other thing
+
+
+  Scenario: Using a macro with text block or table 4
+    Given something here
+    Given this is a macro with an inline table or text block that inserts the first two rows then the rest of the table is used in the feature file
+      | column1        | column2   |
+      | something here | not here  |
+      | and here       | not there |
+    Given other thing

@@ -5,6 +5,7 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -79,17 +80,29 @@ public class FeatureMacroProcessorTest
 	}
 
 	@Test
+	public void processMacroFileTest6() throws Exception
+	{
+		// https://github.com/martinpiper/BDD6502/issues/16
+		FeatureMacroProcessor processor = new FeatureMacroProcessor();
+		processor.processMacroFile("src/test/resources/macros/test6.macro");
+		assertThat(processor.macroMap.values().iterator().next().stepLines.get(2) , containsString("<<<"));
+	}
+	@Test
 	public void processFeatureFile1() throws Exception
 	{
 		FeatureMacroProcessor processor = new FeatureMacroProcessor();
 		processor.processMacroFile("src/test/resources/macros/test4.macro");
 		processor.processFeatureFile("src/test/resources/features/test1.macroFeature" , "target/test1.feature");
 
-		String expected = FileUtils.readFileToString(new File("src/test/resources/features/test1.feature"));
-		expected = expected.replaceAll("\\s","");
-		String output = FileUtils.readFileToString(new File("target/test1.feature"));
-		output = output.replaceAll("\\s","");
-		assertThat(expected , is(equalTo(output)));
+		ensureFilesAreTheSame("target/test1.feature" , "src/test/resources/features/test1.feature");
+	}
+
+	private static void ensureFilesAreTheSame(String output, String expected) throws IOException {
+		String expectedText = FileUtils.readFileToString(new File(expected));
+		expectedText = expectedText.replaceAll("\\s","");
+		String outputText = FileUtils.readFileToString(new File(output));
+		outputText = outputText.replaceAll("\\s","");
+		assertThat(expectedText , is(equalTo(outputText)));
 	}
 
 	@Test
@@ -107,5 +120,18 @@ public class FeatureMacroProcessorTest
 			gotException = true;
 		}
 		assertThat(gotException , is(true));
+	}
+
+	@Test
+	public void processFeatureFile6() throws Exception
+	{
+		// https://github.com/martinpiper/BDD6502/issues/16
+		FeatureMacroProcessor processor = new FeatureMacroProcessor();
+
+		System.setProperty("test.insert.rows", "2");
+		processor.processMacroFile("src/test/resources/macros/test6.macro");
+		processor.processFeatureFile("src/test/resources/features/test6.macroFeature" , "target/test6.feature");
+
+		ensureFilesAreTheSame("target/test6.feature" , "src/test/resources/features/test6.feature");
 	}
 }
