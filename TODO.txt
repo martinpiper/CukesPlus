@@ -1,5 +1,15 @@
 * TODO items :)
 
+* https://github.com/martinpiper/BDD6502/issues/16
+	Can macros accept raw strings as parameters?
+	As a test author, I would like to use a multi-line string block ("""<lines of stuff>""") or multi-line table (| table of foo |) as a parameter into a macro.
+	* Currently macros just expand (or insert depending on your point of view) steps into a feature file to be executed.
+	* The last step in a macro will see the text block or table inserted after it.
+	** Text block and table insertion into a specific point can be implemented by having a macro directive such as "<<<" or "<<< number of rows"
+
+
+
+
 * Debug printing for macro file parsing is displayed before the copyright banner...
 	Info: Processing macros\test1.macro
 	Info: Processing macros\test6.macro
