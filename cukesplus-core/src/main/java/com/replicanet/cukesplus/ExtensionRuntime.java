@@ -1,8 +1,11 @@
 package com.replicanet.cukesplus;
 
+import TestGlue.Conditional;
 import cucumber.runtime.*;
 import cucumber.runtime.Runtime;
 import cucumber.runtime.io.ResourceLoader;
+import cucumber.runtime.java.ExtensionRuntimeAccess;
+import cucumber.runtime.java.Java8StepDefinition;
 import cucumber.runtime.java.MacroStepDefinition;
 import cucumber.runtime.model.PathWithLines;
 import gherkin.I18n;
@@ -83,9 +86,14 @@ public class ExtensionRuntime extends Runtime {
                 Field f = null;
                 f = realObject.getClass().getDeclaredField("stepDefinition");
                 f.setAccessible(true);
-                StepDefinition step = (StepDefinition) f.get(realObject);
-                if (step instanceof MacroStepDefinition) {
-                    return false;
+                Object baseStepObject = f.get(realObject);
+                if (null != baseStepObject) {
+                    StepDefinition step = (StepDefinition) baseStepObject;
+                    if (step instanceof MacroStepDefinition) {
+                        return false;
+                    }
+                    boolean state = ExtensionRuntimeAccess.JavaStepDefinitionGetAllowRunStep(step);
+                    return state;
                 }
             } catch (Exception e) {
 

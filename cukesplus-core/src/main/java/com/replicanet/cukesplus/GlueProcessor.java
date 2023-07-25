@@ -86,7 +86,10 @@ public class GlueProcessor
 		System.out.println("CukesPlus starting : (C) 2015 Replica Software : www.replicasoftware.com");
 		String defaultPropertiesFile = System.getProperty("com.replicanet.cukesplus.default.properties", "CukesPlus.properties");
 		try {
+			int beforeSize = System.getProperties().size();
 			System.getProperties().load(new FileInputStream(defaultPropertiesFile));
+			int afterSize = System.getProperties().size();
+			System.out.println("Default properties file: " + defaultPropertiesFile + " : Loaded " + (afterSize - beforeSize) + " properties");
 		} catch (Exception e) {
 //			System.out.println("Default properties file was not loaded: " + defaultPropertiesFile);
 			System.out.println(e.getMessage());

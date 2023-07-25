@@ -1,5 +1,5 @@
 @noerrors
-Feature: Demonstrate web recording
+Feature: Demonstrate web automation
   Scenario: A web test
     Given open the web page "${test.url}"
     When click on the web element "${test.account.name}"
