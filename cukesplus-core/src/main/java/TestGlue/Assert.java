@@ -7,8 +7,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 
 public class Assert {
     static Scenario scenario;
@@ -23,5 +22,13 @@ public class Assert {
         arg2 = PropertiesResolution.resolveInput(scenario,arg2);
 
         assertThat(arg1 , is(equalTo(arg2)));
+    }
+
+    @Then("^assert that \"(.*)\" contains text \"(.*)\"$")
+    public void assert_that_contains_text(String arg1, String arg2) throws Throwable {
+        arg1 = PropertiesResolution.resolveInput(scenario,arg1);
+        arg2 = PropertiesResolution.resolveInput(scenario,arg2);
+
+        assertThat(arg1 , is(containsString(arg2)));
     }
 }
