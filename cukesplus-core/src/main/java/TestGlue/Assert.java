@@ -17,10 +17,7 @@ public class Assert {
         this.scenario = scenario;
     }
 
-    public void set_property_equal_to(String arg1, String arg2) throws Throwable {
-    }
-
-    @Then("^assert that \"([^\"]*)\" is equal to \"([^\"]*)\"$")
+    @Then("^assert that \"(.*)\" is equal to \"(.*)\"$")
     public void assert_that_is_equal_to(String arg1, String arg2) throws Throwable {
         arg1 = PropertiesResolution.resolveInput(scenario,arg1);
         arg2 = PropertiesResolution.resolveInput(scenario,arg2);

@@ -15,7 +15,7 @@ public class Properties {
         this.scenario = scenario;
     }
 
-    @Given("^set property \"([^\"]*)\" equal to \"([^\"]*)\"$")
+    @Given("^set property \"(.*)\" equal to \"(.*)\"$")
     public void set_property_equal_to(String arg1, String arg2) throws Throwable {
         arg1 = PropertiesResolution.resolveInput(scenario,arg1);
         arg2 = PropertiesResolution.resolveInput(scenario,arg2);

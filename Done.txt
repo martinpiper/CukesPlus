@@ -345,3 +345,8 @@ Create CukesPlus project structure.
 	> Can output "Skipped"
 	>> TestGlue.Conditional
 	See: cukesplus-core/src/test/resources/features/Conditional.feature
+
+
+
+
+* Selenium syntax expanded to include text and attribute fetch using web element locator.

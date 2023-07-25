@@ -192,7 +192,7 @@ console.log(eventLog);
 		}
 	}
 
-	@Given("^open the web page \"([^\"]*)\"$")
+	@Given("^open the web page \"(.*)\"$")
 	public void iOpenTheWebPage(String url) throws Throwable
 	{
 		url = PropertiesResolution.resolveInput(scenario, url);
@@ -201,7 +201,7 @@ console.log(eventLog);
 		driver.get(url);
 	}
 
-	@When("^click on the web element \"([^\"]*)\"$")
+	@When("^click on the web element \"(.*)\"$")
 	public void iClickOnTheWebElementLayout(String locator) throws Throwable
 	{
 		locator = PropertiesResolution.resolveInput(scenario, locator);
@@ -210,7 +210,7 @@ console.log(eventLog);
 		webElement.click();
 	}
 
-	@When("^enter text \"([^\"]*)\" into web element \"([^\"]*)\"$")
+	@When("^enter text \"(.*)\" into web element \"(.*)\"$")
 	public void iEnterTextIntoWebElement(String text, String locator) throws Throwable
 	{
 		text = PropertiesResolution.resolveInput(scenario, text);
@@ -224,5 +224,31 @@ console.log(eventLog);
 	public void takeWebBrowserScreenshot() throws Throwable
 	{
 		screenshotToReport(scenario);
+	}
+
+	@When("^get text from web element \"(.*)\" and set property \"(.*)\"$")
+	public void get_text_from_web_element_and_set_property(String locator, String propertyName) throws Throwable {
+		locator = PropertiesResolution.resolveInput(scenario, locator);
+		propertyName = PropertiesResolution.resolveInput(scenario, propertyName);
+
+		WebElement webElement = driver.findElement(By.xpath(locator));
+		String text = webElement.getText();
+		setReportProperty(propertyName, text);
+	}
+
+	private void setReportProperty(String propertyName, String text) {
+		System.setProperty(propertyName, text);
+		scenario.write("Setting property: '" + propertyName + "' equal to: '" + text + "'");
+	}
+
+	@When("^get text attribute \"(.*)\" from web element \"(.*)\" and set property \"(.*)\"$")
+	public void get_text_from_web_element_attribute_and_set_property(String attribute, String locator, String propertyName) throws Throwable {
+		locator = PropertiesResolution.resolveInput(scenario, locator);
+		attribute = PropertiesResolution.resolveInput(scenario, attribute);
+		propertyName = PropertiesResolution.resolveInput(scenario, propertyName);
+
+		WebElement webElement = driver.findElement(By.xpath(locator));
+		String text = webElement.getAttribute(attribute);
+		setReportProperty(propertyName, text);
 	}
 }
