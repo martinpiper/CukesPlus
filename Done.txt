@@ -335,3 +335,13 @@ Create CukesPlus project structure.
 
 
 * Indicate how many properties were loaded from property: com.replicanet.cukesplus.default.properties
+
+
+
+
+* Conditional syntax.
+	> Allows the execution state to be set. To allow expansion of conditional syntax.
+		See: getAllowRunStep
+	> Can output "Skipped"
+	>> TestGlue.Conditional
+	See: cukesplus-core/src/test/resources/features/Conditional.feature

@@ -56,14 +56,6 @@
 
 
 
-* Conditional syntax.
-	> Allows the execution state to be set. To allow expansion of conditional syntax.
-		See: getAllowRunStep
-	> Can output "Skipped"
-	>> TestGlue.Conditional
-
-
-
 * Macro expansion, loop
 	Can expand properties available at the start of execution
 

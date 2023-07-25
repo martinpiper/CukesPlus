@@ -40,17 +40,9 @@ public class Conditional {
     }
 
     @IgnoreConditionalExecution
-    @When("^if \"(.*)\" is numerically greater than \"(.*)\"$")
-    public void ifIsNumericallyGreaterThan(String first, String second) throws Throwable {
-        level++;
-
-        if (levelToIgnore > 0) {
-            // Ignore any other conditional checks if there is already an ignored state active
-            // This check is needed because of @IgnoreConditionalExecution
-            showSkipped();
-            levelToIgnore++;
-            return;
-        }
+    @When("^if \"(.*)\" is numerically equal to \"(.*)\"$")
+    public void ifIsNumericallyEqualTo(String first, String second) throws Throwable {
+        if (conditionalNeedsToReturnNow()) return;
 
         first = PropertiesResolution.resolveInput(scenario,first);
         second = PropertiesResolution.resolveInput(scenario,second);
@@ -58,9 +50,102 @@ public class Conditional {
         Double firstDouble = Double.parseDouble(first);
         Double secondDouble = Double.parseDouble(second);
 
-        if (!(firstDouble > secondDouble)) {
+        if (!(Double.compare(firstDouble,secondDouble) == 0)) {
             levelToIgnore++;
         }
+    }
+
+    @IgnoreConditionalExecution
+    @When("^if \"(.*)\" is numerically not equal to \"(.*)\"$")
+    public void ifIsNumericallyNotEqualTo(String first, String second) throws Throwable {
+        if (conditionalNeedsToReturnNow()) return;
+
+        first = PropertiesResolution.resolveInput(scenario,first);
+        second = PropertiesResolution.resolveInput(scenario,second);
+
+        Double firstDouble = Double.parseDouble(first);
+        Double secondDouble = Double.parseDouble(second);
+
+        if (!(Double.compare(firstDouble,secondDouble) != 0)) {
+            levelToIgnore++;
+        }
+    }
+
+    @IgnoreConditionalExecution
+    @When("^if \"(.*)\" is numerically greater than \"(.*)\"$")
+    public void ifIsNumericallyGreaterThan(String first, String second) throws Throwable {
+        if (conditionalNeedsToReturnNow()) return;
+
+        first = PropertiesResolution.resolveInput(scenario,first);
+        second = PropertiesResolution.resolveInput(scenario,second);
+
+        Double firstDouble = Double.parseDouble(first);
+        Double secondDouble = Double.parseDouble(second);
+
+        if (!(Double.compare(firstDouble,secondDouble) > 0)) {
+            levelToIgnore++;
+        }
+    }
+
+    @IgnoreConditionalExecution
+    @When("^if \"(.*)\" is numerically greater than or equal to \"(.*)\"$")
+    public void ifIsNumericallyGreaterThanOrEqualTo(String first, String second) throws Throwable {
+        if (conditionalNeedsToReturnNow()) return;
+
+        first = PropertiesResolution.resolveInput(scenario,first);
+        second = PropertiesResolution.resolveInput(scenario,second);
+
+        Double firstDouble = Double.parseDouble(first);
+        Double secondDouble = Double.parseDouble(second);
+
+        if (!(Double.compare(firstDouble,secondDouble) >= 0)) {
+            levelToIgnore++;
+        }
+    }
+
+    @IgnoreConditionalExecution
+    @When("^if \"(.*)\" is numerically less than \"(.*)\"$")
+    public void ifIsNumericallyLessThan(String first, String second) throws Throwable {
+        if (conditionalNeedsToReturnNow()) return;
+
+        first = PropertiesResolution.resolveInput(scenario,first);
+        second = PropertiesResolution.resolveInput(scenario,second);
+
+        Double firstDouble = Double.parseDouble(first);
+        Double secondDouble = Double.parseDouble(second);
+
+        if (!(Double.compare(firstDouble,secondDouble) < 0)) {
+            levelToIgnore++;
+        }
+    }
+
+    @IgnoreConditionalExecution
+    @When("^if \"(.*)\" is numerically less than or equal to \"(.*)\"$")
+    public void ifIsNumericallyLessThanOrEqualTo(String first, String second) throws Throwable {
+        if (conditionalNeedsToReturnNow()) return;
+
+        first = PropertiesResolution.resolveInput(scenario,first);
+        second = PropertiesResolution.resolveInput(scenario,second);
+
+        Double firstDouble = Double.parseDouble(first);
+        Double secondDouble = Double.parseDouble(second);
+
+        if (!(Double.compare(firstDouble,secondDouble) <= 0)) {
+            levelToIgnore++;
+        }
+    }
+
+    private static boolean conditionalNeedsToReturnNow() {
+        level++;
+
+        if (levelToIgnore > 0) {
+            // Ignore any other conditional checks if there is already an ignored state active
+            // This check is needed because of @IgnoreConditionalExecution
+            showSkipped();
+            levelToIgnore++;
+            return true;
+        }
+        return false;
     }
 
 
