@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/Assert.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/Assert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-test/CukesPlus.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-test/CukesPlus.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-test/features/WebRecording.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-test/features/WebRecording.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-test/macros/test1.macro" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-test/macros/test1.macro" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus.iws" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,7 +173,7 @@
     <configuration name="Selenium test" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.Main" />
       <module name="cukesplus-test" />
-      <option name="PROGRAM_PARAMETERS" value="--plugin pretty --plugin html:target/cucumber --plugin json:target/report1.json --glue TestGlue features\WebRecording.feature" />
+      <option name="PROGRAM_PARAMETERS" value="--plugin pretty --plugin html:target/cucumber --plugin json:target/report1.json --glue macros --glue TestGlue features\WebRecording.feature" />
       <option name="VM_PARAMETERS" value="-Dwebdriver.chrome.driver=&quot;C:\Temp\chromedriver.exe&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cukesplus-test" />
       <method v="2">
@@ -264,6 +260,47 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Feature: Conditional" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="1.2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/Conditional.feature" />
+      <option name="GLUE" value="TestGlue" />
+      <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.Main" />
+      <module name="cukesplus-core" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvmSMFormatter --monochrome" />
+      <shortenClasspath name="NONE" />
+      <option name="SUGGESTED_NAME" value="Feature: Conditional" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Simple Conditional behaviour 1 : equal to" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="1.2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/Conditional.feature" />
+      <option name="GLUE" value="TestGlue" />
+      <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.Main" />
+      <module name="cukesplus-core" />
+      <option name="NAME_FILTER" value="^Simple Conditional behaviour 1 \: equal to$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvmSMFormatter --monochrome --name &quot;^Simple Conditional behaviour 1 \: equal to$&quot;" />
+      <shortenClasspath name="NONE" />
+      <option name="SUGGESTED_NAME" value="Scenario: Simple Conditional behaviour 1 : equal to" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in core" type="JUnit" factoryName="JUnit">
       <module name="cukesplus-core" />
       <option name="PACKAGE_NAME" value="com.replicanet.cukesplus" />
@@ -321,23 +358,6 @@
       <option name="PACKAGE_NAME" value="com.replicanet.cukesplus" />
       <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.FeatureMacroProcessorTest" />
       <option name="METHOD_NAME" value="processFeatureFile6" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FeatureMacroProcessorTest.processMacroSyntaxToGlue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="cukesplus-core" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.replicanet.cukesplus.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.replicanet.cukesplus" />
-      <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.FeatureMacroProcessorTest" />
-      <option name="METHOD_NAME" value="processMacroSyntaxToGlue" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -479,11 +499,12 @@
       <item itemvalue="Application.Recording test which waits for events" />
       <item itemvalue="Application.Selenium test" />
       <item itemvalue="Application.tests many lines" />
+      <item itemvalue="Cucumber Java.Feature: Conditional" />
+      <item itemvalue="Cucumber Java.Scenario: Simple Conditional behaviour 1 : equal to" />
       <item itemvalue="JUnit.All in core" />
       <item itemvalue="JUnit.tests" />
       <item itemvalue="JUnit.FeatureMacroProcessorTest.processFeatureFile6" />
       <item itemvalue="JUnit.FeatureMacroProcessorTest.processFeatureFile1" />
-      <item itemvalue="JUnit.FeatureMacroProcessorTest.processMacroSyntaxToGlue" />
       <item itemvalue="JUnit.FeatureMacroProcessorTest" />
       <item itemvalue="Maven.cukesplus [package] skip tests" />
       <item itemvalue="Maven.cukesplus [package] skip tests (1)" />
@@ -491,11 +512,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cucumber Java.Scenario: Simple Conditional behaviour 1 : equal to" />
         <item itemvalue="Maven.cukesplus [install]" />
         <item itemvalue="JUnit.FeatureMacroProcessorTest.processFeatureFile6" />
         <item itemvalue="JUnit.FeatureMacroProcessorTest" />
         <item itemvalue="JUnit.FeatureMacroProcessorTest.processFeatureFile1" />
-        <item itemvalue="JUnit.FeatureMacroProcessorTest.processMacroSyntaxToGlue" />
       </list>
     </recent_temporary>
   </component>
