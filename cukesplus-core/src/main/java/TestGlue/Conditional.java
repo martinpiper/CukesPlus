@@ -29,6 +29,10 @@ public class Conditional {
 
     @After
     public void afterHook(Scenario scenario) throws Exception {
+        // We do not report exceptions in level if the scenario failed because the endif will of course not match the if level since it wasn't executed
+        if (scenario.isFailed()) {
+            return;
+        }
         if (level != 0 || levelToIgnore != 0) {
             reportLevelException();
         }
@@ -131,6 +135,20 @@ public class Conditional {
         Double secondDouble = Double.parseDouble(second);
 
         if (!(Double.compare(firstDouble,secondDouble) <= 0)) {
+            levelToIgnore++;
+        }
+    }
+
+    @IgnoreConditionalExecution
+    @When("^if string \"(.*)\" is not empty$")
+    public void if_string_is_not_empty(String stringValue) throws Throwable {
+        if (conditionalNeedsToReturnNow()) return;
+
+        stringValue = PropertiesResolution.resolveInput(scenario,stringValue);
+
+//        System.out.println("*** Debug: '"+stringValue+"'");
+
+        if (stringValue.isEmpty()) {
             levelToIgnore++;
         }
     }

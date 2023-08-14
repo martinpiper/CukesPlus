@@ -334,3 +334,21 @@ Feature: Tests Conditional behaviour
     Then assert that "${test.foo}" is equal to "true2"
 
 
+  Scenario: Very simple file size syntax check
+    Given set property "test.foo" equal to the file size of "src/test/resources/features/Conditional.feature"
+    Then assert that file "pom.xml" is binary equal to file "pom.xml"
+
+
+  Scenario: Simple Conditional behaviour 4-1 : String not empty
+    Given set property "test.foo" equal to "false"
+    When if string "" is not empty
+    Given set property "test.foo" equal to "true2"
+    When endif
+    Then assert that "${test.foo}" is equal to "false"
+
+  Scenario: Simple Conditional behaviour 4-2 : String not empty
+    Given set property "test.foo" equal to "false"
+    When if string "1234" is not empty
+    Given set property "test.foo" equal to "true2"
+    When endif
+    Then assert that "${test.foo}" is equal to "true2"

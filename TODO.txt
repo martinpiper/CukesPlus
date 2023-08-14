@@ -1,5 +1,17 @@
 * TODO items :)
 
+* Scenario Outline could do with an automatic property that is set for the row number being executed from the Examples table
+	Or the current table line number
+	Or the current scenario test index which couints for each scenario
+
+
+
+
+* File binary identical syntax
+
+
+
+
 * Debug printing for macro file parsing is displayed before the copyright banner...
 	Info: Processing macros\test1.macro
 	Info: Processing macros\test6.macro
