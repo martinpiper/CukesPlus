@@ -71,6 +71,7 @@
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="InspectionProjectProfileManager">
     <profile version="1.0">
       <option name="myName" value="Project Default" />
@@ -233,7 +234,7 @@
       <module fileurl="file://$PROJECT_DIR$/cukesplus-test/cukesplus-test.iml" filepath="$PROJECT_DIR$/cukesplus-test/cukesplus-test.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="corretto-1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="RemoteRepositoriesConfiguration">
@@ -257,7 +258,8 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
   <component name="libraryTable">
-    <library name="Maven: ACEServer:ACEServer:0.0.12-SNAPSHOT">
+    <library name="Maven: ACEServer:ACEServer:0.0.12-SNAPSHOT" type="java-imported" external-system-id="Maven">
+      <properties groupId="ACEServer" artifactId="ACEServer" version="0.0.12-SNAPSHOT" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/ACEServer/ACEServer/0.0.12-SNAPSHOT/ACEServer-0.0.12-SNAPSHOT.jar!/" />
       </CLASSES>
@@ -268,7 +270,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/ACEServer/ACEServer/0.0.12-SNAPSHOT/ACEServer-0.0.12-SNAPSHOT-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: cglib:cglib-nodep:2.1_3">
+    <library name="Maven: cglib:cglib-nodep:2.1_3" type="java-imported" external-system-id="Maven">
+      <properties groupId="cglib" artifactId="cglib-nodep" version="2.1_3" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3.jar!/" />
       </CLASSES>
@@ -279,7 +282,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.code.gson:gson:2.3.1">
+    <library name="Maven: com.google.code.gson:gson:2.3.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="com.google.code.gson" artifactId="gson" version="2.3.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.3.1/gson-2.3.1.jar!/" />
       </CLASSES>
@@ -290,7 +294,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.3.1/gson-2.3.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.guava:guava:18.0">
+    <library name="Maven: com.google.guava:guava:18.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="com.google.guava" artifactId="guava" version="18.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0.jar!/" />
       </CLASSES>
@@ -301,7 +306,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: commons-codec:commons-codec:1.10">
+    <library name="Maven: commons-codec:commons-codec:1.10" type="java-imported" external-system-id="Maven">
+      <properties groupId="commons-codec" artifactId="commons-codec" version="1.10" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.10/commons-codec-1.10.jar!/" />
       </CLASSES>
@@ -312,7 +318,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.10/commons-codec-1.10-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: commons-collections:commons-collections:3.2.1">
+    <library name="Maven: commons-collections:commons-collections:3.2.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="commons-collections" artifactId="commons-collections" version="3.2.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar!/" />
       </CLASSES>
@@ -323,7 +330,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: commons-io:commons-io:2.3">
+    <library name="Maven: commons-io:commons-io:2.3" type="java-imported" external-system-id="Maven">
+      <properties groupId="commons-io" artifactId="commons-io" version="2.3" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.3/commons-io-2.3.jar!/" />
       </CLASSES>
@@ -334,7 +342,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.3/commons-io-2.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: commons-logging:commons-logging:1.2">
+    <library name="Maven: commons-logging:commons-logging:1.2" type="java-imported" external-system-id="Maven">
+      <properties groupId="commons-logging" artifactId="commons-logging" version="1.2" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.2/commons-logging-1.2.jar!/" />
       </CLASSES>
@@ -345,7 +354,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.2/commons-logging-1.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: info.cukes:cucumber-core:1.2.4">
+    <library name="Maven: info.cukes:cucumber-core:1.2.4" type="java-imported" external-system-id="Maven">
+      <properties groupId="info.cukes" artifactId="cucumber-core" version="1.2.4" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.4/cucumber-core-1.2.4.jar!/" />
       </CLASSES>
@@ -356,7 +366,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-core/1.2.4/cucumber-core-1.2.4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: info.cukes:cucumber-html:0.2.3">
+    <library name="Maven: info.cukes:cucumber-html:0.2.3" type="java-imported" external-system-id="Maven">
+      <properties groupId="info.cukes" artifactId="cucumber-html" version="0.2.3" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-html/0.2.3/cucumber-html-0.2.3.jar!/" />
       </CLASSES>
@@ -367,7 +378,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-html/0.2.3/cucumber-html-0.2.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: info.cukes:cucumber-java:1.2.4">
+    <library name="Maven: info.cukes:cucumber-java:1.2.4" type="java-imported" external-system-id="Maven">
+      <properties groupId="info.cukes" artifactId="cucumber-java" version="1.2.4" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-java/1.2.4/cucumber-java-1.2.4.jar!/" />
       </CLASSES>
@@ -378,7 +390,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-java/1.2.4/cucumber-java-1.2.4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: info.cukes:cucumber-junit:1.2.4">
+    <library name="Maven: info.cukes:cucumber-junit:1.2.4" type="java-imported" external-system-id="Maven">
+      <properties groupId="info.cukes" artifactId="cucumber-junit" version="1.2.4" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-junit/1.2.4/cucumber-junit-1.2.4.jar!/" />
       </CLASSES>
@@ -389,7 +402,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-junit/1.2.4/cucumber-junit-1.2.4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: info.cukes:cucumber-jvm-deps:1.0.5">
+    <library name="Maven: info.cukes:cucumber-jvm-deps:1.0.5" type="java-imported" external-system-id="Maven">
+      <properties groupId="info.cukes" artifactId="cucumber-jvm-deps" version="1.0.5" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-jvm-deps/1.0.5/cucumber-jvm-deps-1.0.5.jar!/" />
       </CLASSES>
@@ -400,7 +414,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/info/cukes/cucumber-jvm-deps/1.0.5/cucumber-jvm-deps-1.0.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: info.cukes:gherkin:2.12.2">
+    <library name="Maven: info.cukes:gherkin:2.12.2" type="java-imported" external-system-id="Maven">
+      <properties groupId="info.cukes" artifactId="gherkin" version="2.12.2" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/info/cukes/gherkin/2.12.2/gherkin-2.12.2.jar!/" />
       </CLASSES>
@@ -411,7 +426,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/info/cukes/gherkin/2.12.2/gherkin-2.12.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: io.netty:netty:3.5.2.Final">
+    <library name="Maven: io.netty:netty:3.5.2.Final" type="java-imported" external-system-id="Maven">
+      <properties groupId="io.netty" artifactId="netty" version="3.5.2.Final" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty/3.5.2.Final/netty-3.5.2.Final.jar!/" />
       </CLASSES>
@@ -422,7 +438,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty/3.5.2.Final/netty-3.5.2.Final-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: junit:junit:4.11">
+    <library name="Maven: junit:junit:4.11" type="java-imported" external-system-id="Maven">
+      <properties groupId="junit" artifactId="junit" version="4.11" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/" />
       </CLASSES>
@@ -433,7 +450,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: net.java.dev.jna:jna-platform:4.1.0">
+    <library name="Maven: net.java.dev.jna:jna-platform:4.1.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="net.java.dev.jna" artifactId="jna-platform" version="4.1.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0.jar!/" />
       </CLASSES>
@@ -444,7 +462,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: net.java.dev.jna:jna:4.1.0">
+    <library name="Maven: net.java.dev.jna:jna:4.1.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="net.java.dev.jna" artifactId="jna" version="4.1.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/net/java/dev/jna/jna/4.1.0/jna-4.1.0.jar!/" />
       </CLASSES>
@@ -455,7 +474,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/net/java/dev/jna/jna/4.1.0/jna-4.1.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: net.sourceforge.cssparser:cssparser:0.9.16">
+    <library name="Maven: net.sourceforge.cssparser:cssparser:0.9.16" type="java-imported" external-system-id="Maven">
+      <properties groupId="net.sourceforge.cssparser" artifactId="cssparser" version="0.9.16" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/net/sourceforge/cssparser/cssparser/0.9.16/cssparser-0.9.16.jar!/" />
       </CLASSES>
@@ -466,7 +486,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/net/sourceforge/cssparser/cssparser/0.9.16/cssparser-0.9.16-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: net.sourceforge.htmlunit:htmlunit-core-js:2.17">
+    <library name="Maven: net.sourceforge.htmlunit:htmlunit-core-js:2.17" type="java-imported" external-system-id="Maven">
+      <properties groupId="net.sourceforge.htmlunit" artifactId="htmlunit-core-js" version="2.17" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/net/sourceforge/htmlunit/htmlunit-core-js/2.17/htmlunit-core-js-2.17.jar!/" />
       </CLASSES>
@@ -477,7 +498,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/net/sourceforge/htmlunit/htmlunit-core-js/2.17/htmlunit-core-js-2.17-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: net.sourceforge.htmlunit:htmlunit:2.17">
+    <library name="Maven: net.sourceforge.htmlunit:htmlunit:2.17" type="java-imported" external-system-id="Maven">
+      <properties groupId="net.sourceforge.htmlunit" artifactId="htmlunit" version="2.17" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/net/sourceforge/htmlunit/htmlunit/2.17/htmlunit-2.17.jar!/" />
       </CLASSES>
@@ -488,7 +510,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/net/sourceforge/htmlunit/htmlunit/2.17/htmlunit-2.17-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: net.sourceforge.nekohtml:nekohtml:1.9.22">
+    <library name="Maven: net.sourceforge.nekohtml:nekohtml:1.9.22" type="java-imported" external-system-id="Maven">
+      <properties groupId="net.sourceforge.nekohtml" artifactId="nekohtml" version="1.9.22" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/net/sourceforge/nekohtml/nekohtml/1.9.22/nekohtml-1.9.22.jar!/" />
       </CLASSES>
@@ -499,7 +522,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/net/sourceforge/nekohtml/nekohtml/1.9.22/nekohtml-1.9.22-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.commons:commons-exec:1.3">
+    <library name="Maven: org.apache.commons:commons-exec:1.3" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.commons" artifactId="commons-exec" version="1.3" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar!/" />
       </CLASSES>
@@ -510,7 +534,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-exec/1.3/commons-exec-1.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.commons:commons-lang3:3.4">
+    <library name="Maven: org.apache.commons:commons-lang3:3.4" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.commons" artifactId="commons-lang3" version="3.4" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar!/" />
       </CLASSES>
@@ -521,7 +546,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.httpcomponents:httpclient:4.4.1">
+    <library name="Maven: org.apache.httpcomponents:httpclient:4.4.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.httpcomponents" artifactId="httpclient" version="4.4.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.4.1/httpclient-4.4.1.jar!/" />
       </CLASSES>
@@ -532,7 +558,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.4.1/httpclient-4.4.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.httpcomponents:httpcore:4.4.1">
+    <library name="Maven: org.apache.httpcomponents:httpcore:4.4.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.httpcomponents" artifactId="httpcore" version="4.4.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.4.1/httpcore-4.4.1.jar!/" />
       </CLASSES>
@@ -543,7 +570,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.4.1/httpcore-4.4.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.httpcomponents:httpmime:4.4.1">
+    <library name="Maven: org.apache.httpcomponents:httpmime:4.4.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.httpcomponents" artifactId="httpmime" version="4.4.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpmime/4.4.1/httpmime-4.4.1.jar!/" />
       </CLASSES>
@@ -554,7 +582,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpmime/4.4.1/httpmime-4.4.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.aspectj:aspectjrt:1.9.7">
+    <library name="Maven: org.aspectj:aspectjrt:1.9.7" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.aspectj" artifactId="aspectjrt" version="1.9.7" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjrt/1.9.7/aspectjrt-1.9.7.jar!/" />
       </CLASSES>
@@ -565,7 +594,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjrt/1.9.7/aspectjrt-1.9.7-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.aspectj:aspectjweaver:1.9.7">
+    <library name="Maven: org.aspectj:aspectjweaver:1.9.7" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.aspectj" artifactId="aspectjweaver" version="1.9.7" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjweaver/1.9.7/aspectjweaver-1.9.7.jar!/" />
       </CLASSES>
@@ -576,7 +606,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjweaver/1.9.7/aspectjweaver-1.9.7-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.eclipse.jetty.websocket:websocket-api:9.2.11.v20150529">
+    <library name="Maven: org.eclipse.jetty.websocket:websocket-api:9.2.11.v20150529" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.eclipse.jetty.websocket" artifactId="websocket-api" version="9.2.11.v20150529" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/websocket/websocket-api/9.2.11.v20150529/websocket-api-9.2.11.v20150529.jar!/" />
       </CLASSES>
@@ -587,7 +618,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/websocket/websocket-api/9.2.11.v20150529/websocket-api-9.2.11.v20150529-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.eclipse.jetty.websocket:websocket-client:9.2.11.v20150529">
+    <library name="Maven: org.eclipse.jetty.websocket:websocket-client:9.2.11.v20150529" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.eclipse.jetty.websocket" artifactId="websocket-client" version="9.2.11.v20150529" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/websocket/websocket-client/9.2.11.v20150529/websocket-client-9.2.11.v20150529.jar!/" />
       </CLASSES>
@@ -598,7 +630,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/websocket/websocket-client/9.2.11.v20150529/websocket-client-9.2.11.v20150529-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.eclipse.jetty.websocket:websocket-common:9.2.11.v20150529">
+    <library name="Maven: org.eclipse.jetty.websocket:websocket-common:9.2.11.v20150529" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.eclipse.jetty.websocket" artifactId="websocket-common" version="9.2.11.v20150529" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/websocket/websocket-common/9.2.11.v20150529/websocket-common-9.2.11.v20150529.jar!/" />
       </CLASSES>
@@ -609,7 +642,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/websocket/websocket-common/9.2.11.v20150529/websocket-common-9.2.11.v20150529-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.eclipse.jetty:jetty-io:9.2.11.v20150529">
+    <library name="Maven: org.eclipse.jetty:jetty-io:9.2.11.v20150529" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.eclipse.jetty" artifactId="jetty-io" version="9.2.11.v20150529" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-io/9.2.11.v20150529/jetty-io-9.2.11.v20150529.jar!/" />
       </CLASSES>
@@ -620,7 +654,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-io/9.2.11.v20150529/jetty-io-9.2.11.v20150529-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.eclipse.jetty:jetty-util:9.2.11.v20150529">
+    <library name="Maven: org.eclipse.jetty:jetty-util:9.2.11.v20150529" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.eclipse.jetty" artifactId="jetty-util" version="9.2.11.v20150529" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-util/9.2.11.v20150529/jetty-util-9.2.11.v20150529.jar!/" />
       </CLASSES>
@@ -631,7 +666,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-util/9.2.11.v20150529/jetty-util-9.2.11.v20150529-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.hamcrest:hamcrest-all:1.3">
+    <library name="Maven: org.hamcrest:hamcrest-all:1.3" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.hamcrest" artifactId="hamcrest-all" version="1.3" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3.jar!/" />
       </CLASSES>
@@ -642,7 +678,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.hamcrest:hamcrest-core:1.3">
+    <library name="Maven: org.hamcrest:hamcrest-core:1.3" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.hamcrest" artifactId="hamcrest-core" version="1.3" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar!/" />
       </CLASSES>
@@ -653,7 +690,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.seleniumhq.selenium:selenium-api:2.48.2">
+    <library name="Maven: org.seleniumhq.selenium:selenium-api:2.48.2" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.seleniumhq.selenium" artifactId="selenium-api" version="2.48.2" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-api/2.48.2/selenium-api-2.48.2.jar!/" />
       </CLASSES>
@@ -664,7 +702,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-api/2.48.2/selenium-api-2.48.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.seleniumhq.selenium:selenium-chrome-driver:2.48.2">
+    <library name="Maven: org.seleniumhq.selenium:selenium-chrome-driver:2.48.2" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.seleniumhq.selenium" artifactId="selenium-chrome-driver" version="2.48.2" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-chrome-driver/2.48.2/selenium-chrome-driver-2.48.2.jar!/" />
       </CLASSES>
@@ -675,7 +714,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-chrome-driver/2.48.2/selenium-chrome-driver-2.48.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.seleniumhq.selenium:selenium-firefox-driver:2.46.0">
+    <library name="Maven: org.seleniumhq.selenium:selenium-firefox-driver:2.46.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.seleniumhq.selenium" artifactId="selenium-firefox-driver" version="2.46.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-firefox-driver/2.46.0/selenium-firefox-driver-2.46.0.jar!/" />
       </CLASSES>
@@ -686,7 +726,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-firefox-driver/2.46.0/selenium-firefox-driver-2.46.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.seleniumhq.selenium:selenium-htmlunit-driver:2.46.0">
+    <library name="Maven: org.seleniumhq.selenium:selenium-htmlunit-driver:2.46.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.seleniumhq.selenium" artifactId="selenium-htmlunit-driver" version="2.46.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-htmlunit-driver/2.46.0/selenium-htmlunit-driver-2.46.0.jar!/" />
       </CLASSES>
@@ -697,7 +738,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-htmlunit-driver/2.46.0/selenium-htmlunit-driver-2.46.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.seleniumhq.selenium:selenium-ie-driver:2.46.0">
+    <library name="Maven: org.seleniumhq.selenium:selenium-ie-driver:2.46.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.seleniumhq.selenium" artifactId="selenium-ie-driver" version="2.46.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-ie-driver/2.46.0/selenium-ie-driver-2.46.0.jar!/" />
       </CLASSES>
@@ -708,7 +750,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-ie-driver/2.46.0/selenium-ie-driver-2.46.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.seleniumhq.selenium:selenium-java:2.46.0">
+    <library name="Maven: org.seleniumhq.selenium:selenium-java:2.46.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.seleniumhq.selenium" artifactId="selenium-java" version="2.46.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-java/2.46.0/selenium-java-2.46.0.jar!/" />
       </CLASSES>
@@ -719,7 +762,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-java/2.46.0/selenium-java-2.46.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.seleniumhq.selenium:selenium-leg-rc:2.46.0">
+    <library name="Maven: org.seleniumhq.selenium:selenium-leg-rc:2.46.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.seleniumhq.selenium" artifactId="selenium-leg-rc" version="2.46.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-leg-rc/2.46.0/selenium-leg-rc-2.46.0.jar!/" />
       </CLASSES>
@@ -730,7 +774,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-leg-rc/2.46.0/selenium-leg-rc-2.46.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.seleniumhq.selenium:selenium-remote-driver:2.48.2">
+    <library name="Maven: org.seleniumhq.selenium:selenium-remote-driver:2.48.2" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.seleniumhq.selenium" artifactId="selenium-remote-driver" version="2.48.2" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-remote-driver/2.48.2/selenium-remote-driver-2.48.2.jar!/" />
       </CLASSES>
@@ -741,7 +786,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-remote-driver/2.48.2/selenium-remote-driver-2.48.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.seleniumhq.selenium:selenium-safari-driver:2.46.0">
+    <library name="Maven: org.seleniumhq.selenium:selenium-safari-driver:2.46.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.seleniumhq.selenium" artifactId="selenium-safari-driver" version="2.46.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-safari-driver/2.46.0/selenium-safari-driver-2.46.0.jar!/" />
       </CLASSES>
@@ -752,7 +798,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-safari-driver/2.46.0/selenium-safari-driver-2.46.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.seleniumhq.selenium:selenium-support:2.46.0">
+    <library name="Maven: org.seleniumhq.selenium:selenium-support:2.46.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.seleniumhq.selenium" artifactId="selenium-support" version="2.46.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-support/2.46.0/selenium-support-2.46.0.jar!/" />
       </CLASSES>
@@ -763,7 +810,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-support/2.46.0/selenium-support-2.46.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.w3c.css:sac:1.3">
+    <library name="Maven: org.w3c.css:sac:1.3" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.w3c.css" artifactId="sac" version="1.3" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/w3c/css/sac/1.3/sac-1.3.jar!/" />
       </CLASSES>
@@ -774,7 +822,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/w3c/css/sac/1.3/sac-1.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.webbitserver:webbit:0.4.14">
+    <library name="Maven: org.webbitserver:webbit:0.4.14" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.webbitserver" artifactId="webbit" version="0.4.14" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/webbitserver/webbit/0.4.14/webbit-0.4.14.jar!/" />
       </CLASSES>
@@ -785,7 +834,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/webbitserver/webbit/0.4.14/webbit-0.4.14-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: xalan:serializer:2.7.2">
+    <library name="Maven: xalan:serializer:2.7.2" type="java-imported" external-system-id="Maven">
+      <properties groupId="xalan" artifactId="serializer" version="2.7.2" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/xalan/serializer/2.7.2/serializer-2.7.2.jar!/" />
       </CLASSES>
@@ -796,7 +846,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/xalan/serializer/2.7.2/serializer-2.7.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: xalan:xalan:2.7.2">
+    <library name="Maven: xalan:xalan:2.7.2" type="java-imported" external-system-id="Maven">
+      <properties groupId="xalan" artifactId="xalan" version="2.7.2" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/xalan/xalan/2.7.2/xalan-2.7.2.jar!/" />
       </CLASSES>
@@ -807,7 +858,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/xalan/xalan/2.7.2/xalan-2.7.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: xerces:xercesImpl:2.11.0">
+    <library name="Maven: xerces:xercesImpl:2.11.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="xerces" artifactId="xercesImpl" version="2.11.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/xerces/xercesImpl/2.11.0/xercesImpl-2.11.0.jar!/" />
       </CLASSES>
@@ -818,7 +870,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/xerces/xercesImpl/2.11.0/xercesImpl-2.11.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: xml-apis:xml-apis:1.4.01">
+    <library name="Maven: xml-apis:xml-apis:1.4.01" type="java-imported" external-system-id="Maven">
+      <properties groupId="xml-apis" artifactId="xml-apis" version="1.4.01" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar!/" />
       </CLASSES>

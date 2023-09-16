@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-aspect/cukesplus-aspect.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-aspect/cukesplus-aspect.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/Conditional.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/Conditional.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/Properties.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/Properties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/Conditional.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/Conditional.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/cukesplus-core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/cukesplus-core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-test/cukesplus-test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-test/cukesplus-test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus.iws" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,6 +45,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="1s3vvwCFwogFf32iqs7HLK9kwJX" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -120,6 +126,8 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit3&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3&quot;: &quot;junit.framework.TestCase&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Work/CukesPlus/cukesplus-core/src/main/java/com/replicanet/cukesplus&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Work/CukesPlus/cukesplus-core/src/test/resources/features&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
@@ -158,7 +166,7 @@
       <recent name="TestGlue2" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.core Conditional">
+  <component name="RunManager" selected="Application.test with macros">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -400,6 +408,7 @@
         <option name="myRunnerSettings" />
         <option name="myRunnerParameters">
           <MavenRunnerParameters>
+            <option name="cmdOptions" />
             <option name="profiles">
               <set />
             </option>
@@ -412,6 +421,9 @@
             <option name="pomFileName" />
             <option name="profilesMap">
               <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
             </option>
             <option name="resolveToWorkspace" value="false" />
             <option name="workingDirPath" value="$PROJECT_DIR$" />
@@ -426,6 +438,7 @@
         <option name="myRunnerSettings" />
         <option name="myRunnerParameters">
           <MavenRunnerParameters>
+            <option name="cmdOptions" />
             <option name="profiles">
               <set />
             </option>
@@ -434,12 +447,15 @@
                 <option value="-X" />
                 <option value="-DskipTests=true" />
                 <option value="clean" />
-                <option value="package" />
+                <option value="install" />
               </list>
             </option>
             <option name="pomFileName" />
             <option name="profilesMap">
               <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
             </option>
             <option name="resolveToWorkspace" value="false" />
             <option name="workingDirPath" value="$PROJECT_DIR$" />
@@ -454,6 +470,7 @@
         <option name="myRunnerSettings" />
         <option name="myRunnerParameters">
           <MavenRunnerParameters>
+            <option name="cmdOptions" />
             <option name="profiles">
               <set />
             </option>
@@ -461,12 +478,15 @@
               <list>
                 <option value="-DskipTests=true" />
                 <option value="clean" />
-                <option value="package" />
+                <option value="install" />
               </list>
             </option>
             <option name="pomFileName" />
             <option name="profilesMap">
               <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
             </option>
             <option name="resolveToWorkspace" value="false" />
             <option name="workingDirPath" value="$PROJECT_DIR$" />

@@ -672,8 +672,7 @@ public class FeatureMacroProcessor
 								{
 									String paramToken = step.substring(pos);
 
-									if (paramToken.startsWith("$$"))
-									{
+									if (paramToken.startsWith("$$")) {
 										newStep += step.substring(lastPos, pos);
 										newStep += "$";
 										lastPos = pos + 2;
@@ -682,24 +681,24 @@ public class FeatureMacroProcessor
 
 									// Macro parameters can only contain dollar at the start plus letters and numbers. No punctuation etc
 									String paramTokens[] = paramToken.split("[^a-zA-Z0-9]", 3);
+									try {
+										paramTokens[1] = "$" + paramTokens[1];
 
-									paramTokens[1] = "$" + paramTokens[1];
-
-									newStep += step.substring(lastPos, pos);
+										newStep += step.substring(lastPos, pos);
 
 
-									// Look for the numbered token position
-									int tokPos = getTokPos(macro, paramTokens[1]);
+										// Look for the numbered token position
+										int tokPos = getTokPos(macro, paramTokens[1]);
 
-									// Replace the token with suitable text
-									if (tokPos == -1)
-									{
-										newStep += "<<Not found " + paramTokens[1] + ">>";
-										emitError("Parameter '" + paramTokens[1] + "' not found error parsing " + featureURI + " line " + lineNumber + " macro file " + macro.sourceFile + " line " + macro.stepLineNumbers.get(lineIndex) + " the line '" + trimmed + "'");
-									}
-									else
-									{
-										newStep += params.get(tokPos - 1);
+										// Replace the token with suitable text
+										if (tokPos == -1) {
+											newStep += "<<Not found " + paramTokens[1] + ">>";
+											emitError("Parameter '" + paramTokens[1] + "' not found error parsing " + featureURI + " line " + lineNumber + " macro file " + macro.sourceFile + " line " + macro.stepLineNumbers.get(lineIndex) + " the line '" + trimmed + "'");
+										} else {
+											newStep += params.get(tokPos - 1);
+										}
+									} catch (Exception e) {
+										emitError("Parsing error: Parameter '" + paramTokens[1] + "' not found error parsing " + featureURI + " line " + lineNumber + " macro file " + macro.sourceFile + " line " + macro.stepLineNumbers.get(lineIndex) + " the line '" + trimmed + "'");
 									}
 
 									lastPos = pos + paramTokens[1].length();
