@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/cukesplus-aspect/cukesplus-aspect.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-aspect/cukesplus-aspect.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/cukesplus-core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/cukesplus-core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureMacroProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-test/cukesplus-test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-test/cukesplus-test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.ipr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus.iws" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iws" afterDir="false" />
-    </list>
+    <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -123,13 +112,15 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit3&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3&quot;: &quot;junit.framework.TestCase&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Work/CukesPlus/cukesplus-core/src/main/java/com/replicanet/cukesplus&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Work/CukesPlus/cukesplus-core/src/test/resources/features&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Work/BDD6502/BDD6502.ipr&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -514,25 +505,25 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.test all not @noerrors" />
-      <item itemvalue="Application.core with macros" />
-      <item itemvalue="Application.core Conditional" />
-      <item itemvalue="Application.test with macros" />
-      <item itemvalue="Application.test with macros with line number" />
-      <item itemvalue="Application.feature editor base" />
-      <item itemvalue="Application.feature editor test" />
       <item itemvalue="Application.Recording test which waits for events" />
       <item itemvalue="Application.Selenium test" />
+      <item itemvalue="Application.core Conditional" />
+      <item itemvalue="Application.core with macros" />
+      <item itemvalue="Application.feature editor base" />
+      <item itemvalue="Application.feature editor test" />
+      <item itemvalue="Application.test all not @noerrors" />
+      <item itemvalue="Application.test with macros with line number" />
+      <item itemvalue="Application.test with macros" />
       <item itemvalue="Application.tests many lines" />
       <item itemvalue="Cucumber Java.Feature: Conditional" />
       <item itemvalue="Cucumber Java.Scenario: Simple Conditional behaviour 1 : equal to" />
       <item itemvalue="JUnit.All in core" />
       <item itemvalue="JUnit.tests" />
-      <item itemvalue="JUnit.FeatureMacroProcessorTest.processFeatureFile6" />
-      <item itemvalue="JUnit.FeatureMacroProcessorTest.processFeatureFile1" />
       <item itemvalue="JUnit.FeatureMacroProcessorTest" />
-      <item itemvalue="Maven.cukesplus [package] skip tests" />
+      <item itemvalue="JUnit.FeatureMacroProcessorTest.processFeatureFile1" />
+      <item itemvalue="JUnit.FeatureMacroProcessorTest.processFeatureFile6" />
       <item itemvalue="Maven.cukesplus [package] skip tests (1)" />
+      <item itemvalue="Maven.cukesplus [package] skip tests" />
       <item itemvalue="Maven.cukesplus [install]" />
     </list>
     <recent_temporary>
