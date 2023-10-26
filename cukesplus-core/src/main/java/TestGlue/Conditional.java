@@ -6,6 +6,10 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.When;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Conditional {
     static Scenario scenario;
     static int level = 0;
@@ -152,6 +156,24 @@ public class Conditional {
             levelToIgnore++;
         }
     }
+
+    @IgnoreConditionalExecution
+    @When("^if string \"(.*)\" matches regex \"(.*)\"$")
+    public void if_string_matches_regex(String first, String second) throws Throwable {
+        if (conditionalNeedsToReturnNow()) return;
+
+        first = PropertiesResolution.resolveInput(scenario,first);
+        second = PropertiesResolution.resolveInput(scenario,second);
+
+        Pattern pattern = Pattern.compile(second , Pattern.MULTILINE);
+        Matcher matcher = pattern.matcher(first);
+//        System.out.println("*** Debug: '"+stringValue+"'");
+
+        if (!matcher.find()) {
+            levelToIgnore++;
+        }
+    }
+
 
     private static boolean conditionalNeedsToReturnNow() {
         level++;

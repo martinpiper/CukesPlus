@@ -10,14 +10,39 @@ import cucumber.api.java.en.When;
 import org.apache.commons.io.FileUtils;
 
 public class Properties {
+    static int testIteration = 0;
     static Scenario scenario;
     @Before
     public void beforeHook(Scenario scenario) {
         this.scenario = scenario;
+
+        testIteration++;
+        System.setProperty("test.cukesplus.testIteration" , Integer.toString(testIteration));
+        System.out.println("Set test.cukesplus.testIteration="+Integer.toString(testIteration));
     }
+
 
     @Given("^set property \"(.*)\" equal to \"(.*)\"$")
     public void set_property_equal_to(String propertyName, String theValue) throws Throwable {
+        propertyName = PropertiesResolution.resolveInput(scenario,propertyName);
+        theValue = PropertiesResolution.resolveInput(scenario,theValue);
+
+        System.setProperty(propertyName,theValue);
+    }
+
+    @Given("^set property \"(.*)\" equal to \"(.*)\" aligning to single newlines$")
+    public void set_property_aigning_to_newline(String propertyName, String theValue) throws Throwable {
+        propertyName = PropertiesResolution.resolveInput(scenario,propertyName);
+        theValue = PropertiesResolution.resolveInput(scenario,theValue);
+
+        theValue = theValue.replaceAll("\r" , "\n");
+        theValue = theValue.replaceAll("\n\n" , "\n");
+
+        System.setProperty(propertyName,theValue);
+    }
+
+    @Given("^set property \"(.*)\" equal to:$")
+    public void set_property_equal_to_block(String propertyName, String theValue) throws Throwable {
         propertyName = PropertiesResolution.resolveInput(scenario,propertyName);
         theValue = PropertiesResolution.resolveInput(scenario,theValue);
 

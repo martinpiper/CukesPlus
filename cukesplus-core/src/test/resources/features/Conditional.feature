@@ -352,3 +352,29 @@ Feature: Tests Conditional behaviour
     Given set property "test.foo" equal to "true2"
     When endif
     Then assert that "${test.foo}" is equal to "true2"
+
+
+  Scenario: Complex text block matching
+    Given set property "test.foo" equal to:
+      """
+      .C:0452  EA          NOP
+      .C:0453  EA          NOP
+      .C:0454  EA          NOP
+      .C:0455  AC 00 DD    LDY $DD00
+      .C:0458  B9 00 06    LDA $0600,Y
+      .C:045b  AC 00 DD    LDY $DD00
+      .C:045e  19 08 06    ORA $0608,Y
+      .C:0461  AC 00 DD    LDY $DD00
+      .C:0464  19 10 06    ORA $0610,Y
+      .C:0467  AC 00 DD    LDY $DD00
+      .C:046a  19 18 06    ORA $0618,Y
+      .C:046d  60          RTS
+      .C:046e  41 52       EOR ($52,X)
+      .C:0470  4D 41 4C    EOR $4C41
+      """
+
+#    Given set property "test.foo" equal to "${test.foo}" aligning to single newlines
+#    Given set property "test.foo" where "${test.foo}" contains the string "LDY $DD00" until it contains the string "RTS"
+    * if string "${test.foo}" matches regex ".*LD[XY] \$DD00.*\R.*LDA \$....,[XY].*\R.*LD[XY] \$DD00.*\R.*ORA \$....,[XY].*\R.*LD[XY] \$DD00.*\R.*ORA \$....,[XY].*\R.*LD[XY] \$DD00.*\R.*ORA \$....,[XY].*\R"
+    * debug print to scenario "matched!"
+    * endif
