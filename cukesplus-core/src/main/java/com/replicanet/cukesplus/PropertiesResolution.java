@@ -19,20 +19,21 @@ public class PropertiesResolution {
 
     public static String resolveInput(Scenario scenario, String input) throws ParseException {
         int lastOpeningPos;
-        while ( (lastOpeningPos = input.lastIndexOf("${")) != -1) {
-            int closingPos = input.indexOf('}', lastOpeningPos);
+        String working = input;
+        while ( (lastOpeningPos = working.lastIndexOf("${")) != -1) {
+            int closingPos = working.indexOf('}', lastOpeningPos);
             if (closingPos == -1) {
                 throw new IllegalArgumentException("Opening ${ was not matched with a closing } at " + lastOpeningPos);
             }
 
-            String propertyToFind = input.substring(lastOpeningPos+2, closingPos);
+            String propertyToFind = working.substring(lastOpeningPos+2, closingPos);
             String toReplaceWith = System.getProperty(propertyToFind, "");
 
             writeDebug(scenario,"Resolved property '" + propertyToFind + "' to value '" + toReplaceWith + "'");
 
-            String newInput = input.substring(0,lastOpeningPos) + toReplaceWith + input.substring(closingPos+1);
-            input = newInput;
+            String newInput = working.substring(0,lastOpeningPos) + toReplaceWith + working.substring(closingPos+1);
+            working = newInput;
         }
-        return input;
+        return working;
     }
 }

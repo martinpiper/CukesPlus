@@ -38,6 +38,17 @@ public class SeleniumGlue
 		if (scenario.isFailed())
 		{
 			screenshotToReport(scenario);
+
+			try {
+				String appendErrorText = System.getProperty("test.cukesplus.error.append.text", "");
+				if (!appendErrorText.isEmpty()) {
+					String appendErrorFilename = System.getProperty("test.cukesplus.error.append.filename", "");
+					appendErrorFilename = appendErrorFilename.trim();
+					if (!appendErrorFilename.isEmpty()) {
+						java.nio.file.Files.write(java.nio.file.Paths.get(appendErrorFilename), appendErrorText.getBytes(), java.nio.file.StandardOpenOption.APPEND);
+					}
+				}
+			} catch (Exception ignored) { }
 		}
 		if (System.getProperty("com.replicanet.cukesplus.recording.selenium") != null)
 		{

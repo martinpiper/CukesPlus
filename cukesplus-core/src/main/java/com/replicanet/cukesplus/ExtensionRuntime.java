@@ -83,6 +83,9 @@ public class ExtensionRuntime extends Runtime {
 
             // Test to see if we should just allow this step to proceed without executing anything
             try {
+
+                System.setProperty("test.cukesplus.step.line" , Integer.toString(realObject.getStepLocation().getLineNumber()));
+
                 Field f = null;
                 f = realObject.getClass().getDeclaredField("stepDefinition");
                 f.setAccessible(true);

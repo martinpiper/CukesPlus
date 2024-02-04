@@ -350,3 +350,8 @@ Create CukesPlus project structure.
 
 
 * Selenium syntax expanded to include text and attribute fetch using web element locator.
+
+
+
+
+* Add property "test.cukesplus.step.line" to indicate the line number of the current step being executed.

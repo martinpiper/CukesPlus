@@ -1,6 +1,13 @@
 Feature: Tests Conditional behaviour
-  
-  
+
+
+  Scenario: Property expansion test
+    Given set property "test.foo" equal to ""
+    Given set property "test.foo" equal to "a${test.foo}"
+    Given set property "test.foo" equal to "a${test.foo}"
+    Then assert that "${test.foo}" is equal to "aa"
+
+
   Scenario: Simple Conditional behaviour 1 : equal to
     Given set property "test.foo" equal to "false"
     When if "1" is numerically equal to "2"

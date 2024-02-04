@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Done.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Done.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-aspect/target/cukesplus-aspect-0.0.2-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/Conditional.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/Conditional.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/Properties.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/Properties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/SeleniumGlue.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/SeleniumGlue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/PropertiesResolution.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/PropertiesResolution.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/Conditional.feature" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/test/resources/features/Conditional.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" afterDir="false" />
@@ -584,9 +587,14 @@
           <option name="timeStamp" value="215" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/Conditional.java</url>
-          <line>171</line>
-          <option name="timeStamp" value="231" />
+          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/ExtensionRuntime.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="232" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/Properties.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="237" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -598,6 +606,11 @@
       <configuration name="Application">
         <watch expression="matcher" language="JAVA" />
         <watch expression="pattern" />
+        <watch expression="System.getProperty(&quot;test.cukesplus.step.line&quot;)" language="JAVA" />
+        <watch expression="input.substring(0,lastOpeningPos)" language="JAVA" />
+        <watch expression="toReplaceWith" language="JAVA" />
+        <watch expression="input.substring(closingPos+1)" language="JAVA" />
+        <watch expression="newInput" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
