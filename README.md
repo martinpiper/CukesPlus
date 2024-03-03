@@ -14,8 +14,13 @@ Adds lots of useful functionality to Java Cucumber. This is accomplished by hook
 * Properties remapping for step parameters
 * Syntax reporting provides reference documentation of steps and macros
 
+Videos
 
 [![Watch the video](https://img.youtube.com/vi/u-1dqnN10rE/1.jpg)](https://youtu.be/u-1dqnN10rE)
+[![Watch the video](https://img.youtube.com/vi/fdeVc2q6oB0/1.jpg)](https://youtu.be/fdeVc2q6oB0)
+[![Watch the video](https://img.youtube.com/vi/nQWzvSPWfV0/1.jpg)](https://youtu.be/nQWzvSPWfV0)
+[![Watch the video](https://img.youtube.com/vi/-Ptq6ZY3Kxk/1.jpg)](https://youtu.be/-Ptq6ZY3Kxk)
+
 
 Using
 -----
