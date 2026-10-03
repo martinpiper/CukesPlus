@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c37fe1fd-a7e8-4d0f-90e3-d1486344cfdd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureServerCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureServerCheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/SeleniumGlue.java" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/SeleniumGlue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus-core/target/cukesplus-core-0.0.2-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cukesplus.iws" beforeDir="false" afterPath="$PROJECT_DIR$/cukesplus.iws" afterDir="false" />
@@ -162,7 +162,7 @@
       <recent name="TestGlue2" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.feature editor test">
+  <component name="RunManager" selected="Application.Selenium test">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -183,7 +183,7 @@
       <option name="MAIN_CLASS_NAME" value="com.replicanet.cukesplus.Main" />
       <module name="cukesplus-test" />
       <option name="PROGRAM_PARAMETERS" value="--plugin pretty --plugin html:target/cucumber --plugin json:target/report1.json --glue macros --glue TestGlue features\WebRecording.feature" />
-      <option name="VM_PARAMETERS" value="-Dwebdriver.chrome.driver=&quot;C:\Users\marti\Downloads\chrome-win64-142\chrome-win64\chromedriver.exe&quot;" />
+      <option name="VM_PARAMETERS" value="-Dwebdriver.chrome.driver=&quot;c:\temp\chrome-win64\chromedriver.exe&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cukesplus-test" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -594,6 +594,11 @@
           <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/com/replicanet/cukesplus/FeatureServerCheck.java</url>
           <line>257</line>
           <option name="timeStamp" value="243" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cukesplus-core/src/main/java/TestGlue/SeleniumGlue.java</url>
+          <line>221</line>
+          <option name="timeStamp" value="248" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

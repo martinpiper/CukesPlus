@@ -11,6 +11,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -208,7 +209,16 @@ console.log(eventLog);
 	{
 		url = PropertiesResolution.resolveInput(scenario, url);
 
-		driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+
+//		options.setAcceptInsecureCerts(true);
+		options.addArguments("--ignore-certificate-errors");
+		options.addArguments("--ignore-ssl-errors=yes");
+		options.addArguments("--allow-insecure-localhost");
+		// This turns off the "site in insecure, proceed?" popup
+		options.addArguments("--unsafely-treat-insecure-origin-as-secure="+url);
+
+		driver = new ChromeDriver(options);
 		driver.get(url);
 	}
 
