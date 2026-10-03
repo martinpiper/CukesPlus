@@ -355,3 +355,7 @@ Create CukesPlus project structure.
 
 
 * Add property "test.cukesplus.step.line" to indicate the line number of the current step being executed.
+
+
+
+* Added a feature file first line summary state

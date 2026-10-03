@@ -605,6 +605,7 @@ public class FeatureServerCheck
 				String toRet = "{\n" +
 						"\"lines\" : [\n";
 
+				String firstLineSummary = "passed";
 				// MPi: TODO: Optimise contiguous ranges of lines
 				boolean first = true;
 				for (Map.Entry<Integer, String> entry : stateByLine.entrySet())
@@ -617,7 +618,24 @@ public class FeatureServerCheck
 					toRet += "\t{ \"type\" : \"";
 					toRet += entry.getValue() + "_step_line";
 					toRet += "\" ,   \"from\" : " + entry.getKey() + " ,    \"to\" : " + entry.getKey() + "}";
+					if (!entry.getValue().contains("passed"))
+					{
+						if (entry.getValue().contains("failed"))
+						{
+							firstLineSummary = "failed";
+						}
+						else
+						{
+							if (!firstLineSummary.contains("failed"))
+							{
+								firstLineSummary = entry.getValue();
+							}
+						}
+					}
 				}
+
+				// Flag the top of the feature file with a colour
+				toRet += " ,\n\t{ \"type\" : \""+firstLineSummary+"_step_line\" ,   \"from\" : 1 ,    \"to\" : 1}\n";
 
 				toRet += "]\n}\n";
 				return toRet;
