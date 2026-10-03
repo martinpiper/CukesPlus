@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -98,12 +99,12 @@ public class FeatureServerCheck
 		return filesList;
 	}
 
-	public static void writeFileList(Set<String> filesList) {
+	public static void writeFileList(Set<String> filesList, String query) {
 		String htmlFileList = "<html><body bgcolor=\"#E6E6FA\"><table>";
 		for (String path : filesList)
 		{
 			path = path.replace("\\", "/");
-			htmlFileList += "<tr><td><a href = \"demo/autocompletion.html?filename=" + path + "\" target='_parent'>" + path + "</a></td></tr>";
+			htmlFileList += "<tr><td><a href = \"demo/autocompletion.html?filename=" + path + "&tags=" + URLEncoder.encode(query) + "\" target='_parent'>" + path + "</a></td></tr>";
 		}
 		htmlFileList += "</table></body></html>";
 		try
@@ -130,7 +131,7 @@ public class FeatureServerCheck
 			return false;
 		}
 
-		writeFileList(buildFileList(argv));
+		writeFileList(buildFileList(argv),"");
 
 		System.clearProperty(SERVER_FEATURE_EDITOR);
 
@@ -675,7 +676,7 @@ public class FeatureServerCheck
 			@Override
 			public void afterPut(String s, String query)
 			{
-				writeFileList(buildFileList(argv));
+				writeFileList(buildFileList(argv), query);
 			}
 		});
 		// http://127.0.0.1:8001/ace-builds-master/demo/autocompletion.html?filename=features/test.feature
