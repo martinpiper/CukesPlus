@@ -5,6 +5,7 @@ Feature: Testing this CukesPlus
     Given I run this test
     
   
+  @tag1
   Scenario Outline: First test
     Given I run this test
     Given I run this test with more glue "<a>" here and "<b>" there
@@ -14,6 +15,7 @@ Feature: Testing this CukesPlus
     | 1 | 2 |
     | 3 | 4 |
 
+  @tag2
   Scenario:
     When this value foooo matches the string (hello) then dance
 

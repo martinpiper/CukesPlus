@@ -7,9 +7,11 @@ import gherkin.deps.com.google.gson.JsonElement;
 import gherkin.deps.com.google.gson.JsonParser;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
 import java.net.InetSocketAddress;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -136,7 +138,8 @@ public class FeatureServerCheck
 		{
 			final InputStream emptyReply = new ByteArrayInputStream("".getBytes(StandardCharsets.UTF_8));
 
-			public InputStream beforeGet(String uri)
+			@Override
+			public InputStream beforeGet(String uri, String query)
 			{
 				if (uri.endsWith(FEATURE_DEBUG_JSON))
 				{
@@ -152,11 +155,11 @@ public class FeatureServerCheck
 				}
 				else if (uri.endsWith(RUN_FILE))
 				{
-					return handleRunFile(uri);
+					return handleRunFile(uri, query);
 				}
 				else if (uri.endsWith(RUN_SUITE))
 				{
-					return handleRunSuite(argv);
+					return handleRunSuite(argv, query);
 				}
 				else if (uri.endsWith(CLEAR_RESULTS))
 				{
@@ -175,19 +178,34 @@ public class FeatureServerCheck
 				String realFile = uri.substring(0, pos);
 				realFile += RUN_FILE;
 
-				InputStream ret = handleRunFile(realFile);
+				InputStream ret = handleRunFile(realFile, "");
 
 				System.clearProperty("com.replicanet.cukesplus.recording.selenium");
 				return ret;
 			}
 
-			private InputStream handleRunFile(String uri)
+			public String getParameterByName(String query, String paramName) {
+				return Arrays.stream(query.split("&"))
+						.map(param -> param.split("=", 2))
+						.filter(pair -> pair.length > 0 && pair[0].equals(paramName))
+						.map(pair -> pair.length > 1 ? URLDecoder.decode(pair[1]) : "")
+						.findFirst()
+						.orElse(null);
+			}
+
+			String getTags(String query)
+			{
+				String tagsParam = getParameterByName(query, "tags");
+				return tagsParam;
+			}
+			private InputStream handleRunFile(String uri, String query)
 			{
 				int pos = uri.lastIndexOf(RUN_FILE);
 				String realFile = uri.substring(0, pos);
 
 				// Remove all passed in feature files then add the single file we want to run
 				List<String> trimmedArgv = new LinkedList<String>();
+
 				boolean addNext = false;
 				boolean skipNext = false;
 				for (String arg : argv)
@@ -240,7 +258,7 @@ public class FeatureServerCheck
 				}
 
 				trimmedArgv.add(realFile);
-				return handleRunSuite(trimmedArgv.toArray(new String[trimmedArgv.size()]));
+				return handleRunSuite(trimmedArgv.toArray(new String[trimmedArgv.size()]), query);
 			}
 
 			private String makeSafeArg(String arg)
@@ -253,7 +271,7 @@ public class FeatureServerCheck
 				return arg;
 			}
 
-			private InputStream handleRunSuite(String[] thisArgv)
+			private InputStream handleRunSuite(String[] thisArgv, String query)
 			{
 				if (doingRun)
 				{
@@ -262,6 +280,8 @@ public class FeatureServerCheck
 				}
 
 				doingRun = true;
+
+				String tags = getTags(query);
 
 				List<String> newArgs = new LinkedList<>();
 				newArgs.add("java");
@@ -280,6 +300,12 @@ public class FeatureServerCheck
 				newArgs.add("-cp");
 				newArgs.add(System.getProperty("java.class.path"));
 				newArgs.add(theClass.getCanonicalName());
+
+				if (StringUtils.isNotBlank(tags))
+				{
+					newArgs.add("--tags");
+					newArgs.add(tags);
+				}
 
 				for (String arg : thisArgv)
 				{
@@ -642,12 +668,12 @@ public class FeatureServerCheck
 			}
 
 			@Override
-			public void afterGet(String s)
+			public void afterGet(String s, String query)
 			{
 			}
 
 			@Override
-			public void afterPut(String s)
+			public void afterPut(String s, String query)
 			{
 				writeFileList(buildFileList(argv));
 			}
