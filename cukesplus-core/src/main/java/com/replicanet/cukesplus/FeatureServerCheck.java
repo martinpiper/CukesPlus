@@ -104,7 +104,7 @@ public class FeatureServerCheck
 		for (String path : filesList)
 		{
 			path = path.replace("\\", "/");
-			htmlFileList += "<tr><td><a href = \"demo/autocompletion.html?filename=" + path + "&tags=" + URLEncoder.encode(query) + "\" target='_parent'>" + path + "</a></td></tr>";
+			htmlFileList += "<tr><td><a href = \"demo/autocompletion.html?filename=" + path + "\" target='_parent'>" + path + "</a></td></tr>";
 		}
 		htmlFileList += "</table></body></html>";
 		try
